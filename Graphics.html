@@ -1,4 +1,5 @@
 
+<!--######################################################################################-->
 Graphics
 [http://addictedtor.free.fr/graphiques/ R Graph Gallery]
 
@@ -6,9 +7,11 @@ Graphics
 x = c(1,2,3) y = c(1,2,3) plot(x,y, col='red', type='l')
 * type: "p" for points, "l" for lines, "o" for overplotted points and lines, "b", "c") for (empty if "c") points joined by lines, "s" and "S" for stair steps and "h" for histogram-like vertical lines.
 
-#### Plot Multiple Timeseries
+<h4> Plot Multiple Timeseries</h4>
 # draw data from matrix mat # plot each column # use lines between data points ... t='l' # limit range of y-coordinate ... ylim=c(0,120) matplot(mat,t='l',ylim=c(0,120))
 
+
+<!--######################################################################################-->
 Pause between Plots
 If you are running plots in a script, you will want R to pause until you have viewed one plot, before it creates the next:
 par(ask=TRUE) for(i in 1:3) {
@@ -30,6 +33,7 @@ colors = rev(heat.colors(levels))
 filled.contour( 1:max_q,1:max_v,h, main = paste("Fundamental Diagram Sensor ",det_id," (",det_group,")",sep=""), xlab = "count", ylab = "speed", levels = breaks, nlevels = levels, col = colors)
 h[data$q[i]+1,data$v[i]+1] = data$cnt[i]
 
+<!--######################################################################################-->
 Examples
 
 Plot Least Squares Fit
