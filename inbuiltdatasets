@@ -1,0 +1,49 @@
+	%==============================================================================================%
+ 	\begin{frame}
+ 		\frametitle{1.10 Built-In Data Sets}
+ 		\textbf{Inbuilt Data Sets}\\
+ 		Several data sets , intended as learning tools, are automatically installed when R is installed.
+ 		Many more are installed within packages to complement learning to use those packages. \\
+ 		\bigskip
+ 		
+ 		\textbf{iris}\\ One
+ 		of these is the famous Iris data set, which is used in many data mining exercises.
+ 		
+ 		\begin{itemize}
+ 			\item airquality  ( very useful )
+ 			\item mtcars
+ 			\item Nile
+ 		\end{itemize}
+ 		More are available once packages are loaded.
+ 		
+ 	\end{frame}
+ 	%==============================================================================================%
+ 	\begin{frame}
+ 		% % SLIDE 1 - COVER SLIDE
+ 		\begin{figure}
+ 			\centering
+ 			\includegraphics[width=1.2\linewidth]{images/Rdatasets}        
+ 		\end{figure}
+ 	\end{frame}   
+ 	%==============================================================================================%
+ 	\begin{frame}
+ 		% % SLIDE 1 - COVER SLIDE
+ 		\begin{figure}
+ 			\centering
+ 			\includegraphics[width=1.2\linewidth]{images/RdatasetsMore}   
+ 		\end{figure}
+ 	\end{frame}   
+ 	%==============================================================================================%
+ 	\begin{frame}
+ 		
+ 		\begin{itemize}
+ 			\item To see what data sets are available, simply type \texttt{data()}.
+ 			\item  To load a data set, simply type in the
+ 			name of the data set. Some data sets are very large.
+ 			\item  To just see the first few (or last) rows, we
+ 			use the \texttt{head()} function or alternatively the \texttt{tail()} function. 
+ 			\item The default number of rows of
+ 			these commands is 6. Other numbers can be specified.
+ 		\end{itemize}
+ 		
+ 	\end{frame}
