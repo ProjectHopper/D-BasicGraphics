@@ -1,0 +1,121 @@
+ 
+<h3> Exercise 1: </h3>
+Evaluate the following:
+ 
+ the area of a circle of radius 2              
+ the natural log of  100                            
+ the log of 100 to the base 10    	(HINT: 	use the help command)
+ the exponential of 10                            
+ the square of 12                                          
+ the sine of 1.5 π                          
+ the absolute value of  -9              
+ the square root of 110              
+ the factorial of 6
+ 
+ Rad = 2; Area = pi * Rad^2
+ Area
+ 
+ log(100)
+ log(100,10)
+ 
+ exp(10)
+ 12^2
+ sin(1.5*pi)
+ abs(-9)
+ sqrt(110)
+ 
+ factorial(6) 
+ 1:6
+ prod(1:6)
+ 
+ 
+ 
+ Exercise 2
+ 
+ Suppose you keep track of your mileage each time you go to the petrol station. At your last 8 fill-ups the mileage was
+ 
+ 65311  65624  65908  66219  66499  66821  67145  67447
+ 
+ Create a vector ‘miles’ from this data. Use the function <tt>diff()</tt> on the data. What does it give?
+ 
+ 
+ You should see the number of miles between fill-ups. 
+ <pre><code>
+ miles = c(65311, 65624, 65908, 66219, 66499, 66821, 67145, 67447)
+ x = diff(miles)
+ </code></pre>
+ 
+ 
+ 
+ 
+<ol>
+<li> Find the minimum number and  the maximum of miles between fill-ups.
+<li> How many values are there in our data set?
+<li> Find the mean and median number of miles between fill-ups
+<li> What is the standard deviation of miles between fill-ups? What is the variance?
+<li> Compute the five number summary for both sets of data.
+</ol>
+
+<h3> Exercise 3 </h3>
+ 
+ Your cell phone bill varies from month to month. Suppose your year has the following monthly amounts
+ 
+ 46 33 39 37 46 30 48 32 49 35 30 48
+ 
+ Enter this data into a variable called ‘bill’. Use the sum() command to find the amount you spent this year on the cell phone. 
+ 
+ 1.      What is the smallest amount you spent in a month? 
+ 2.      What is the highest amount spent? 
+ 3.      What is the inter quartile range of this dataset?  		(use IQR() command)
+ 4.      Which month (i.e. index number ) has the largest value? 
+ 5.      How many months was the amount greater than €40?
+ 6.      What percentage was this?
+ 
+<h3> Exercise 4 </h3>
+ 
+ <pre><code>
+ x = c(1,3,5,7,9)
+ y = c(2,3,5,7,11,13)
+ </code></pre>
+ 
+ For the vectors x and y ,what happens when you run the following pieces of code?
+ x+1
+ y*2
+ length(x); length(y)
+ x + y
+ sum(x>5) and sum(x[x>5])
+ sum(x>5 | x< 3) # read | as 'or', & and 'and'
+ y[3]
+ y[-3]
+<h4> Simple Exercises </h4>
+
+<pre><code>
+yr <- c(1,2,3,4,5,6,7,8,9,10);
+profit <- c(100,60,140,140,180,150,220,310,380,400);
+QC <- c(170,45,130,150,140,180,140,170,180,180);
+
+Mrkt <- c(73,80,84,82,79,76,85,92,89,90);
+growth <-c(0.01,0.03,0.04,0.05,0.04,0.03,0.02,0.04,0.02,0.04);
+unemp <-c(0.071,0.065,0.064,0.059,0.054,0.053,0.052,0.049,0.052,0.054);
+
+WB.dat<-c(97,78,85,96,87,76,83,	75,97);
+WA.dat<-c(92,76,84,91,87,72,79,	77,93);
+WC.dat<-c( 85.14, 82.03, 78.93, 79.50, 104.76, 87.04, 82.19 , 82.58, 89.57);
+
+Grade <-c(56,45,80,73,71,55,95,86,34,66);
+Studyhrs <-c(9,6,12,14,11,6,19,16,2,9);
+Score <-c(15,12,13,13,13,15,13,5,13,12,10,7,9,8,13,13,13,13);
+
+</code></pre>
+
+<p>
+<ol>
+<li> Do not copy and paste this directly into the R environment. </li>
+<li> Open a new script. Copy the code above into this script. Save this script in your working directory as <b><tt>myData.R</tt></b>.<br> Close the script editor.</li>
+<li> Use the <b><tt>source()</tt></b> command to access this data. (Make sure you are in the correct working directory). </li>
+<pre><code>
+getwd()
+source("myData.R")
+</code></pre>
+<li> Run some simple commands on the various data sets.) </li>
+</ol>
