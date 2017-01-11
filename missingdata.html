@@ -1,0 +1,28 @@
+
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Missing Data}
+\begin{itemize}
+\item In some cases the components of a vector may not be
+completely known. When an element or value is 'not available' or a
+'missing value' in the statistical sense, a place within a vector
+may be reserved for it by assigning it the special value NA.
+
+\item In general any operation on an NA becomes an NA.
+\item The motivation for this rule is simply that if the specification of an operation
+is incomplete, the result cannot be known and hence is not available.
+\end{itemize}
+\end{slide}
+
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Missing Data (contd)}
+\begin{itemize}
+\item The command is.na() can be used to determine whether there
+are any missing values in a data set, by means of a logical
+vector.
+
+\begin{verbatim}
+> is.na(x)
+[1] FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+\end{itemize}
+\end{slide}
