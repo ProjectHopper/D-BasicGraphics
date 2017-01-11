@@ -1,0 +1,108 @@
+
+
+\section{Matrices}
+\subsection{Creating a matrix}
+Matrices can be created using the \texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered
+2) Dimensions of the matrix, specifying either the numbers of rows or columns.
+
+Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.
+\begin{verbatim}
+Vec1=c(1,4,5,6,4,5,5,7,9)		# 9 elements
+A=matrix(Vec,nrow=3)		#3 by 3 matrix. Values assigned by column.
+A
+B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
+B				          #3 by 3 matrix. Values assigned by row.
+\end{verbatim}	
+If you have assigned values by column, but require that they are assigned by row, you can use the transpose function
+\begin{verbatim}
+t().
+t(A)				# Transpose
+A=t(A)	
+\end{verbatim}
+
+Another methods of creating a matrix is to "bind" a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively.
+\begin{verbatim}
+x1 =c(1,2) ; x2 = c(3,6)
+rbind(x1,x2)
+cbind(x1,x2)
+\end{verbatim}
+
+
+
+
+Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank.
+\begin{verbatim}
+A[1,]	  # access first row of A
+B[,2]   # access first column of B
+\end{verbatim}
+Addition and subtractions
+For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on.
+A+B
+A-B
+
+\subsection{Matrix Multiplication}
+To multiply matrices, we require a special operator for matrices; $"\%*\%"$.
+If we just used the normal multiplication, we would get an element-wise multiplication.
+\begin{verbatim}
+A * B  		#Element-wise multiplication
+A %*% B  	#Matrix multiplication
+\end{verbatim}
+
+We can compute crossproducts using the crossprod () command. If only one matrix is used it
+\begin{verbatim}
+crossprod(A,B) 		# A'B
+crossprod(A) 			# A'A
+\end{verbatim}
+Diagonals
+The diag() command is a very versatile function for using matrices.
+It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.
+
+
+Most importantly, if k is a scalar, diag() will create a k x k identity matrix.
+\begin{verbatim}
+Vec2=c(1,2,3)
+diag(Vec2)	#	Constructs a diagonal matrix based on values of Vec2
+diag(A)	#        Returns diagonal elements of A as a vector
+diag(3)	#	creates a 3 x 3 identity matrix
+diag(diag(A)) #  	Diagonal matrix D of matrix A ( Jacobi Method)
+\end{verbatim}
+Determinants, Inverse Matrices and solving Linear systems
+To compute the determinant of a square matrix, we simply use the det() command
+det(A)
+det(B)
+To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question
+solve(A)
+
+To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x.
+\begin{verbatim}
+b=vec2  # from before
+solve(A, b)
+\end{verbatim}
+Row and Column Statistics.
+Statistic on the rows and columns can easily be computed if required.
+\begin{verbatim}
+rowMeans(A)  # Returns vector of row means.
+rowSums(A)  # Returns vector of row sums.
+colMeans(A)  # Returns vector of column means.
+colSums(A)  # Returns vector of coumn means.
+\end{verbatim}
+Eigenvalues and Eigenvectors
+The eigenvalues and eigenvectors can be computed using the eigen() function.  A data object is created.
+This is a very important type of matrix analysis, and many will encounter it again in future modules.
+\begin{verbatim}
+Y = eigen(A)
+names(Y)
+"	y$val are the eigenvalues of A
+"	y$vec are the eigenvectors of A
+\end{verbatim}
+
+
+\section{Matrices}
+A matrix refers to a numeric array of rows and columns.
+
+One of the easiest ways to create a matrix is to combine vectors of equal
+length using \texttt{cbind()}, meaning "column bind". Alternatively one can use  \texttt{rbind()}, meaning ``row bind".
+
+
+\subsubsection{Matrices Inversion}
+\subsubsection{Matrices Multiplication}
