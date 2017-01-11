@@ -1,0 +1,86 @@
+%---------------------------------------------------------------------
+\begin{slide}{Non-linear regression}
+Example: In an experiment to determine the effect of concentrations of chemicals on absorbances the following
+results were obtained:
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Abs & 0.084 & 0.183 & 0.326 & 0.464 & 0.643 & 0.671 & 0.701 \\
+  Conc & 0.123 & 0.288 & 0.562 & 0.921 & 1.420 & 1.723 & 2.121 \\
+  \hline
+\end{tabular}
+
+
+\end{slide}
+
+\begin{slide}{Non-linear regression}
+\begin{itemize}
+\item A scatterplot indicates that a linear model may be suitable.
+\item Model 1:  $Abs = \beta_{0} + \beta_{1}Conc$.
+\item But there is a slight curve in the trend, which indicates that a possible quadratic relationship.
+\item Model 2: $Abs = \beta_{0} + \beta_{1}Conc +  \beta_{2}Conc^2$
+\item We will construct a model for each and compare the $R^2$ and adjusted $R^2$ values.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Model fitting}
+We fit a linear model and a quadratic model. We need to create a new variable, `conc.sq`' which is simply the square
+of the concentrations.
+\begin{verbatim}
+>Abs<-c(0.084, 0.183, 0.326, 0.464,
+0.643 ,0.671,0.701)
+>Conc<-c(0.123, 0.288, 0.562, 0.921,
+1.420,1.723,2.121)
+>
+>plot(Conc,Abs)
+>fit1 = lm(Abs~Conc)
+>
+>Conc.sq = Conc^2
+>fit2 = lm(Abs~Conc + Conc.sq)
+\end{verbatim}
+\end{slide}
+
+\begin{slide}{Quadratic model}
+\begin{verbatim}
+Call:
+lm(formula = Abs ~ Conc + Conc.sq)
+.....
+Coefficients:
+        Estimate Std. Error t value Pr(>|t|)
+(Int)   0.004891   0.011649    0.42 0.696186
+Conc    0.655907   0.027240   24.08 1.76e-05 ***
+Conc.sq -0.154218   0.012072  -12.78 0.000216 ***
+......
+Multiple R-squared: 0.9985,
+Adjusted R-squared: 0.9977
+......
+\end{verbatim}
+Validates use of quadratic terms.
+\end{slide}
+\begin{slide}{Comparing R square values}
+\begin{verbatim}
+> summary(fit1)$r.squared
+[1] 0.936624
+> summary(fit1)$adj.r.squared
+[1] 0.9239488
+> summary(fit2)$adj.r.squared
+[1] 0.9977258
+> summary(fit2)$r.squared
+[1] 0.9984839
+\end{verbatim}
+Clearly the second model is better.
+\end{slide}
+
+
+\begin{slide}{Non linear models}
+\begin{itemize}
+\item
+When a curve is evident in the data, can try using
+quadratic, cubic etc terms.
+
+\item Can also try logs, exponentials etc.
+
+\end{itemize}
+
+\end{slide}
