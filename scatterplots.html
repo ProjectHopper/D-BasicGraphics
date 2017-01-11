@@ -1,0 +1,380 @@
+<!-- ################################################################################################################################# -->
+
+{Scatter plots}
+
+<ul>
+
+<li> The plot() command is used to draw a simple scatter plot of
+two vectors of the length.
+<li> Vectors x and y are defined in
+'week9a.r'.
+<pre><code>
+>plot(x,y)
+</code></pre>
+</ul>
+
+
+<!-- ######################################################################################################## -->
+{Axes options: Labels}
+	
+	<ul>
+		<li> Many plotting functions, such as plot(), allow you to include axis and text options.
+		<li> We can use the parameters `xlab' and 'ylab' to label the x-axis and y-axis respectively.
+	</ul>
+	
+	<pre><code>
+	
+	>x=rnorm(15)  # generate 10 random numbers 
+	>y=rnorm(15)  # using rnorm() for x and y
+	>
+	>plot(x,y)    # without labels
+	>plot(x,y, xlab='x axis name', 
+	+ ylab='y axis name')
+	
+	</code></pre>
+	
+
+<!-- ######################################################################################################## -->
+{Axes options: Limits}
+	<ul>
+		<li> The plot() function will automatically fit the size of the plot to the data.
+		<li> Should a larger plot area be required, the limits of the x-axis and y-axis can be specified
+		either separately or in conjuction.
+		<li> Use the range() function to determine suitable limits.
+		<li> Specify the lower and upper limits as a vector.
+	</ul>
+
+<!-- ######################################################################################################## -->
+{Axes options: Limits}
+	
+	<pre><code>
+	
+	>plot(x,y)  # plot limits fitted to data
+	>
+	>
+	> range(x)  
+	[1] -1.687220  1.410094
+	>
+	> range(y)
+	[1] -2.729680  3.195901
+	>
+	>plot(x,y, xlim=c(-2,2), ylim=c(-3.4,3.4))
+	
+	</code></pre>
+	
+
+
+
+
+
+<!-- ######################################################################################################## -->
+{Text options: Plot text}
+	
+	<ul>
+		
+		<li> Text can be added to graphs using the text( ) function.
+		
+		<li> text( ) places text within the graph.
+		<li> The first argument is the x and y co-ordinates of where to place the text.
+		<li> Then the text to be used, in quotation marks.
+		
+		<li> Use location (x,y)=(-2.5,-3) for this example.
+		
+	</ul>
+	
+	<pre><code>
+	>text(-2.5,-3, "text to be added")
+	</code></pre>
+
+<!-- ######################################################################################################## -->
+{Text options: Margin text}
+	
+	<ul>
+		<li> Text can also be added to graphs using the mtext( ) function.
+		<li> mtext( ) places text in one of the four margins.
+		<li> First specify the text to be added.
+		<li> Then select the margin to be used: 
+		(1=bottom, 2=left, 3=top, 4=right).
+		<li> Character size and colour can be chosen using the `cex' and `col' parameters.
+	</ul>
+	
+	
+	<pre><code>
+	>mtext("margin text to be added ", side=4)
+	</code></pre>
+
+
+
+	
+
+
+<!-- ######################################################################################################## -->
+
+
+
+{Multiple plots}
+	Multiple plots in a single graphic window
+	<ul>
+		<li> You can have more than one plot in a graphic window.
+		<li> For example, par(mfrow=c(1,2))allows you to have two plots side by side.
+		<li> par(mfrow=c(2,3)) allows 6 plots to appear on a page (2 rows of 3 plots each).
+		<li> Note that the arrangement remains in effect until you change it.
+		<li> If you want to go back to the one plot per page setting, type  par(mfrow=c(1,1)).
+		<li> This can be used for any combination of plots, i.e. boxplots, histograms, scatterplots etc.
+	</ul>
+	
+
+<!-- ######################################################################################################## -->
+{Multiple plots: Code}
+	<pre><code>
+	
+	par(mfrow=c(1,2)) 
+	# two plots side by side
+	
+	boxplot(xdat,
+	main='boxplot name',
+	ylab='label of y-axis',
+	xlab='label of x-axis')
+	
+	boxplot(xdat,
+	main='boxplot name',
+	xlab='label of x-axis',
+	horizontal=TRUE)
+	
+	par(mfrow=c(1,1)) # reset
+	</code></pre>
+
+
+
+<!-- ######################################################################################################## -->
+{Combining scatterplots}
+	
+	<ul>
+		<li> It is possible to plot two sets of bivariate data on the same scatter plot.
+		<li> This is done by adding a second set of data points to an existing scatterplot, using the points() command.
+		<li> Graphical settings such as plot character and colour can be used to distinguish between
+		both sets of data points.
+		<li> Axes limits must be set so that all sets of observations are fully included in the plot.
+		<li> Titles, plot text, etc can be added accordingly.
+	</ul>
+	
+
+<!-- ######################################################################################################## -->
+{Combining scatterplots: code}
+	
+	
+	<pre><code>
+	
+	> z=rnorm(15)
+	> #x and y from before
+	
+	> range(z)
+	[1] -1.527107  1.782608
+	
+	> plot(x,y, pch =18, col="red",
+	xlim=c(-3.5,3.5),ylim=c(-3.5,3.5))
+	> points(x,z, pch = 17, col="blue")
+	> points(y,z, pch = 16, col="green")
+	</code></pre>
+	
+
+<!-- ######################################################################################################## -->
+{Adding legends}
+	<ul>
+		<li> A legend can be added to a plot using the legend() function.
+		<li> The first parameter is the location of the legend box. 
+		<li> The location can be specified by using either the
+		x-y co-ordinates or by specifying a location in the plot such as ``top", ``topright",`` bottomleft".
+		<li> The legend parameter uses a character vector of the description of each set of points.
+		<li> We use the `pch' and `col' parameters to specify the plot character and colour for each element of the legend. A vector is used in each case.
+		<li> Obviously there should be a correspondence to the plot characters used in the plot.
+	</ul>
+	
+
+
+<!-- ######################################################################################################## -->
+
+{Adding legends: Code}
+	<pre><code>
+	>legend("topright", 
+	legend=c("x-y pts","x-z pts ","y-z pts"), 
+	pch=c(18,17,16), 
+	col=c("red","blue","green"))
+	</code></pre>
+
+
+
+
+<!-- ######################################################################################################## -->
+{Axes options: Labels}
+	
+	<ul>
+		<li> Many plotting functions, such as plot(), allow you to include axis and text options.
+		<li> We can use the parameters `xlab' and 'ylab' to label the x-axis and y-axis respectively.
+	</ul>
+	
+	<pre><code>
+	
+	>x=rnorm(15)  # generate 10 random numbers
+	>y=rnorm(15)  # using rnorm() for x and y
+	>
+	>plot(x,y)    # without labels
+	>plot(x,y, xlab='x axis name',
+	+ ylab='y axis name')
+	
+	</code></pre>
+	
+
+<!-- ######################################################################################################## -->
+{Axes options: Limits}
+	<ul>
+		<li> The plot() function will automatically fit the size of the plot to the data.
+		<li> Should a larger plot area be required, the limits of the x-axis and y-axis can be specified
+		either separately or in conjuction.
+		<li> Use the range() function to determine suitable limits.
+		<li> Specify the lower and upper limits as a vector.
+	</ul>
+
+<!-- ######################################################################################################## -->
+{Axes options: Limits}
+	
+	<pre><code>
+	
+	>plot(x,y)  # plot limits fitted to data
+	>
+	>
+	> range(x)
+	[1] -1.687220  1.410094
+	>
+	> range(y)
+	[1] -2.729680  3.195901
+	>
+	>plot(x,y, xlim=c(-2,2), ylim=c(-3.4,3.4))
+	
+	</code></pre>
+	
+
+
+
+
+
+<!-- ######################################################################################################## -->
+{Text options: Plot text}
+	
+	<ul>
+		
+		<li> Text can be added to graphs using the text( ) function.
+		
+		<li> text( ) places text within the graph.
+		<li> The first argument is the x and y co-ordinates of where to place the text.
+		<li> Then the text to be used, in quotation marks.
+		
+		<li> Use location (x,y)=(-2.5,-3) for this example.
+		
+	</ul>
+	
+	<pre><code>
+	>text(-2.5,-3, "text to be added")
+	</code></pre>
+
+<!-- ######################################################################################################## -->
+{Text options: Margin text}
+	
+	<ul>
+		<li> Text can also be added to graphs using the mtext( ) function.
+		<li> mtext( ) places text in one of the four margins.
+		<li> First specify the text to be added.
+		<li> Then select the margin to be used:
+		(1=bottom, 2=left, 3=top, 4=right).
+		<li> Character size and colour can be chosen using the `cex' and `col' parameters.
+	</ul>
+	
+	
+	<pre><code>
+	>mtext("margin text to be added ", side=4)
+	</code></pre>
+
+
+
+<!-- ######################################################################################################## -->
+
+
+
+{Multiple plots}
+	Multiple plots in a single graphic window
+	<ul>
+		<li> You can have more than one plot in a graphic window.
+		<li> For example, par(mfrow=c(1,2))allows you to have two plots side by side.
+		<li> par(mfrow=c(2,3)) allows 6 plots to appear on a page (2 rows of 3 plots each).
+		<li> Note that the arrangement remains in effect until you change it.
+		<li> If you want to go back to the one plot per page setting, type  par(mfrow=c(1,1)).
+		<li> This can be used for any combination of plots, i.e. boxplots, histograms, scatterplots etc.
+	</ul>
+	
+
+<!-- ######################################################################################################## -->
+{Multiple plots: Code}
+	<pre><code>
+	
+	par(mfrow=c(1,2))
+	# two plots side by side
+	
+	boxplot(xdat,
+	main='boxplot name',
+	ylab='label of y-axis',
+	xlab='label of x-axis')
+	
+	boxplot(xdat,
+	main='boxplot name',
+	xlab='label of x-axis',
+	horizontal=TRUE)
+	
+	par(mfrow=c(1,1)) # reset
+	</code></pre>
+
+
+
+<!-- ######################################################################################################## -->
+{Combining scatterplots}
+	
+	<ul>
+		<li> It is possible to plot two sets of bivariate data on the same scatter plot.
+		<li> This is done by adding a second set of data points to an existing scatterplot, using the points() command.
+		<li> Graphical settings such as plot character and colour can be used to distinguish between
+		both sets of data points.
+		<li> Axes limits must be set so that all sets of observations are fully included in the plot.
+		<li> Titles, plot text, etc can be added accordingly.
+	</ul>
+	
+
+<!-- ######################################################################################################## -->
+{Combining scatterplots: code}
+	
+	
+	<pre><code>
+	
+	> z=rnorm(15)
+	> #x and y from before
+	
+	> range(z)
+	[1] -1.527107  1.782608
+	
+	> plot(x,y, pch =18, col="red",
+	xlim=c(-3.5,3.5),ylim=c(-3.5,3.5))
+	> points(x,z, pch = 17, col="blue")
+	> points(y,z, pch = 16, col="green")
+	</code></pre>
+	
+
+<!-- ######################################################################################################## -->
+{Adding legends}
+	<ul>
+		<li> A legend can be added to a plot using the legend() function.
+		<li> The first parameter is the location of the legend box.
+		<li> The location can be specified by using either the
+		x-y co-ordinates or by specifying a location in the plot such as ``top", ``topright",`` bottomleft".
+		<li> The legend parameter uses a character vector of the description of each set of points.
+		<li> We use the `pch' and `col' parameters to specify the plot character and colour for each element of the legend. A vector is used in each case.
+		<li> Obviously there should be a correspondence to the plot characters used in the plot.
+	</ul>
+	
