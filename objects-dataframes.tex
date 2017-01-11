@@ -1,0 +1,127 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\usepackage{framed}
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{MS4024}\chead{R Programming}\rhead{Data Frames}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\begin{document}
+\tableofcontents
+
+
+\section{Data Frames}
+Technically, a data frame in \texttt{R} is a very important type of data object;  a type of table where the typical use employs the rows as observations (or cases) and the columns as variables.
+Inter alia, a data frame differs from a matrix in that it can contain character values. Many data sets are stored as data frames.
+
+Let us consider the following two variables; \textbf{age} and \textbf{height}.
+
+\begin{framed}
+\begin{verbatim}
+age=18:29
+\end{verbatim}
+\end{framed}
+\begin{verbatim}
+> age
+[1] 18 19 20 21 22 23 24 25 26 27 28 29
+\end{verbatim}
+In similar fashion, we entered the average heights in a vector called height.
+\begin{framed}
+\begin{verbatim}
+height=c(76.1,77,78.1,78.2,78.8,79.7,79.9,81.1,81.2,81.8,82.8,83.5)
+\end{verbatim}
+\end{framed}
+\begin{verbatim}
+> height
+[1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8 83.5
+\end{verbatim}
+
+
+
+%-----------------------------------------------------------------------------%
+
+We will now use \texttt{R}'s \texttt{data.frame()} command to create our first data frame and store the results in the data frame “\textit{village}”.
+\begin{framed}
+\begin{verbatim}
+village=data.frame(age=age,height=height)
+\end{verbatim}
+\end{framed}
+
+How do we access the data in each column? One way is to state the variable containing the data frame, followed by a dollar sign, then the name of the column we wish to access (as with lists . For example, if we wanted to access the data in the "age" column, we would do the following:
+\begin{verbatim}
+ > village$age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+\end{verbatim}
+The additional typing required by the "dollar sign" notation can quickly become tiresome, so \texttt{R} provides the ability to "attach" the variables in the data frame to our workspace.
+
+\begin{verbatim}
+> attach(village)
+\end{verbatim}
+
+Let's re-examine our workspace. ( The \texttt{ls()} command lists all data objects in the workspace )
+\begin{verbatim}
+> ls()
+[1] "village"
+\end{verbatim}
+
+No evidence of the variables in the workspace. However, R has made copies of the variables in the columns of the data frame, and most importantly, we can access them without the "dollar notation."
+\begin{verbatim}
+> age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+> height
+ [1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8
+[12] 83.5
+\end{verbatim}
+%-------------------------------------------------------------------%
+\subsection{using rownames and colnames}
+Previously we have seen \texttt{rownames()} and \texttt{colnames()} to determine the names from an existing data frame. We can use these commands to create names for a new data frame.
+Vectors can be bound together either by row or by column.
+\begin{verbatim}
+> X=1:3; Y=4:6
+> cbind(X,Y)
+     X Y
+[1,] 1 4
+[2,] 2 5
+[3,] 3 6
+>
+> rbind(X,Y)
+  [,1] [,2] [,3]
+X    1    2    3
+Y    4    5    6
+\end{verbatim}
+
+We can use this approach to create a data frame :
+
+\begin{verbatim}
+> data.frame(rbind(X,Y))
+  X1 X2 X3
+X  1  2  3
+Y  4  5  6
+\end{verbatim}
+
+We can then use rownames() and colnames() to assign meaningful names to this data frame.
+\end{document}

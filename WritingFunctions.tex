@@ -1,0 +1,23 @@
+
+
+
+%-----------------------------------------------------------------------------------------------------------%
+\section{Functions}
+
+Write a function to compute the area of a triangle, based on the length of its three sides $\{a,b,c\}$.
+
+\begin{framed}
+	\begin{verbatim}
+	TriArea <- function(a,b,c){
+	s = (a + b + c) / 2 
+	area = sqrt(s * (s-a) * (s-b) * (s-c))
+	return(area)
+	}
+	\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+TriArea(3,4,5)
+\end{verbatim}
+
+
