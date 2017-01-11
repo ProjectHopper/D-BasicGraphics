@@ -12,7 +12,23 @@ may be reserved for it by assigning it the special value NA.
 is incomplete, the result cannot be known and hence is not available.
 \end{itemize}
 \end{slide}
-
+ 	%==============================================================================================%
+ 	\begin{frame}
+ 		\frametitle{2.10 Missing Data}
+ 		\begin{itemize}
+ 			\item In some cases the entire contents of a vector may not be known. For example, missing data
+ 			from a particular data set. \item A place can be reserved for this by assigning it the special value
+ 			NA.
+ 			NA is a logical constant of length 1 which contains a missing value indicator.
+ 			\item  NA stands
+ 			for Not Available.
+ 			\item Missing values can adversely affect calculations. Add \texttt{na.rm=T} to commands
+ 			
+ 			\begin{framed}
+ 			\texttt{mean(X,na.rm=T)}
+ 			\end{framed}
+ 		\end{itemize}
+ 	\end{frame}
 %------------------------------------------------------------------------------------------------------%
 \begin{slide}{Missing Data (contd)}
 \begin{itemize}
