@@ -1,0 +1,47 @@
+%------------------------------------------------------------------%
+\begin{frame}[fragile]
+\frametitle{\texttt{lapply} and \texttt{sapply}}
+\begin{itemize}
+\itemThe local version of \texttt{apply()} is \texttt{lapply()}, which computes a function for each member of a list (provided each member  is compatible with the function argument, e.g. that the list member is numeric for a function like \texttt{mean()} ).
+\item
+The lapply() command returns a list of the same length as a list “X”, each element of which is the result of applying a specified function to the corresponding element of X.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------------------------%
+\begin{frame}[fragile]
+\frametitle{\texttt{lapply} and \texttt{sapply}}
+A user friendly version of lapply() is sapply()
+The sapply() command is a variant of lapply() – returning a matrix instead of a list - again of the same length as a list “X”, each element of which is the result of applying a specified function to the corresponding element of X.
+
+\end{frame}
+
+%------------------------------------------------------------------%
+\begin{frame}[fragile]
+\frametitle{\texttt{lapply} and \texttt{sapply}}
+\begin{verbatim}
+> x <- list(a=1:10, b=exp(-3:3), logic=c(T,F,F,T))
+>
+> # compute the mean for each list element
+>
+> lapply(x,mean)
+$a
+[1] 5.5
+$b
+[1] 4.535125
+$logic
+[1] 0.5
+\end{verbatim}
+
+\end{frame}
+
+
+%------------------------------------------------------------------%
+\begin{frame}[fragile]
+\frametitle{\texttt{lapply} and \texttt{sapply}}
+\begin{verbatim}
+> sapply(x,mean)
+a b logic
+5.500000 4.535125 0.500000
+\end{verbatim}
+\end{frame}
