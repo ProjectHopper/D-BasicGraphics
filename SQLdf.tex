@@ -1,0 +1,176 @@
+SQLDF uses an SQLite database to perform querys and updates. However it’s good to know that once R kicks data to the database, SQLite only will return queries. This means any data manipulation done in SQLite will only remain in SQLite.
+
+Introduction to SQL
+
+Queries
+
+Queries begin with the select statement, followed by what we want to select:
+
+# This query will return everything from df
+sqldf("select * from df")
+# This will only return 2 columns, Wind and Ozone, from df
+sqldf("select Ozone, Wind from df")
+These queries can be assigned to R objects. (I think select Ozone, Wind from df is much nicer than df[, names(df) %in% c(“Ozone, Wind”)]).
+
+We can easily create aggregated data using expressions in the select statement. Expressions include:
+
+AVG: The avg() function returns the average value of all non-NULL X within a group.
+COUNT: The count(X) function returns a count of the number of times that X is not NULL in a group. The count(*) function (with no arguments) returns the total number of rows in the group.
+MAX: The max() aggregate function returns the maximum value of all values in the group.
+MIN: The min() aggregate function returns the minimum non-NULL value of all values in the group.
+SUM: The sum() and total() aggregate functions return sum of all non-NULL values in the group.
+Unfortunately SQLite in quite limited and doesn’t support other expressions such as std (stand deviation) and var (variance).
+
+Query Examples
+
+titantic <- data.frame(Titanic)
+head(titantic)
+##   Class    Sex   Age Survived Freq
+## 1   1st   Male Child       No    0
+## 2   2nd   Male Child       No    0
+## 3   3rd   Male Child       No   35
+## 4  Crew   Male Child       No    0
+## 5   1st Female Child       No    0
+## 6   2nd Female Child       No    0
+
+sqldf("select sum(Freq) as Count from titantic")
+## Loading required package: tcltk
+##   Count
+## 1  2201
+sqldf("select sum(Freq) as Count from titantic group by Sex")
+##   Count
+## 1   470
+## 2  1731
+sqldf("select Sex, sum(Freq) as Count from titantic group by Sex")
+##      Sex Count
+## 1 Female   470
+## 2   Male  1731
+sqldf("select Sex, Class, Age, sum(Freq) as Count from titantic where Survived = 'No' group by Sex, Class, Age")
+##       Sex Class   Age Count
+## 1  Female   1st Adult     4
+## 2  Female   1st Child     0
+## 3  Female   2nd Adult    13
+## 4  Female   2nd Child     0
+## 5  Female   3rd Adult    89
+## 6  Female   3rd Child    17
+## 7  Female  Crew Adult     3
+## 8  Female  Crew Child     0
+## 9    Male   1st Adult   118
+## 10   Male   1st Child     0
+## 11   Male   2nd Adult   154
+## 12   Male   2nd Child     0
+## 13   Male   3rd Adult   387
+## 14   Male   3rd Child    35
+## 15   Male  Crew Adult   670
+## 16   Male  Crew Child     0
+Inserting Variables
+
+Previously I’ve written sql strings with placeholders for variable names. The use gsub to swap them out. Eg. “select avg(predicted) as Pred, avg(variable) from table group by variable”. This can be done using the unix bash script style variable notation and fn$sqldf. This uses gsubfn, a quasi-perl-style string interpolation. gsubfn is used by sqldf so its already loaded. Note the fn prefix to invoke the interpolation functionality.
+
+Eg.
+
+Windvalue <- 10
+Ozonevalue <- "High"
+fn$sqldf("select * from df where Wind > $Windvalue and Ozone_Grpd = '$Ozonevalue'")
+##   Ozone Solar_R Wind Temp Month Day Ozone_Grpd
+## 1    71     291 13.8   90     6   9       High
+## 2    63     220 11.5   85     7  20       High
+## 3    89     229 10.3   90     8   8       High
+Updates
+
+We can update our table within the database and apply all the transformations we want. This only applies the changes to the database not the table in our workspace! To account for this we can then select everything back from the database by running select * from main .(table name). This selects from the database table rather than the workspace table.
+
+library("sqldf")
+
+df <- sqldf(c("alter table df add month_grpd char(30)",
+              "alter table df add Wind_Ozone num",
+              "alter table df add Wind_1 num",
+              "alter table df add Wind_2 num",
+              "alter table df add Wind_norm num",
+              "update df set
+
+                  month_grpd = case
+                    when Month = 5 then 'May'
+                    when Month = 6 then 'Jun'
+                    when Month = 7 then 'Jul'
+                    when Month = 8 then 'Aug'
+                    when Month = 9 then 'Sep'
+                    else 'Not bothered'
+                  end,
+
+                  Wind_Ozone = Wind*Ozone,
+
+                  Wind_1 = case
+                    when Wind > 9.7 then 0
+                    else Wind
+                  end,
+
+                  Wind_2 = case
+                    when Wind <= 9.7 then 0
+                    else Wind
+                  end,
+
+                  Wind_norm = Wind/(select avg(Wind) from df)", 
+              "select * from main.df"))
+
+head(df)
+##   Ozone Solar_R Wind Temp Month Day Ozone_Grpd month_grpd Wind_Ozone
+## 1    41     190  7.4   67     5   1     Medium        May      303.4
+## 2    36     118  8.0   72     5   2     Medium        May      288.0
+## 3    12     149 12.6   74     5   3        Low        May      151.2
+## 4    18     313 11.5   62     5   4     Medium        May      207.0
+## 5    NA      NA 14.3   56     5   5       <NA>        May         NA
+## 6    28      NA 14.9   66     5   6     Medium        May      417.2
+##   Wind_1 Wind_2 Wind_norm
+## 1    7.4      0    0.7432
+## 2    8.0      0    0.8034
+## 3    0.0     12    1.2654
+## 4    0.0     11    1.1549
+## 5    0.0     14    1.4361
+## 6    0.0     14    1.4964
+Joins
+
+Database style joins are possibly the easiest way to merge and join data together. Data can be stacked on up of each other (a la rbind) using UNION and UNION ALL.
+
+Different joins supported by SQLite include:
+
+Left Join (merges what it can from the right onto the left)
+Inner Join (merges common rows from both tables)
+Cross Join (cartesian product of tables)
+# lets create a fake variable
+df2 <- data.frame(mon = rep(5:9, each=16), day = seq(1, 31, 2))
+df2$crazy_var <- df2$mon * rnorm(80, 30, 2)
+
+sqldf("select Month, Day, month_grpd, Ozone, Wind_norm, crazy_var 
+      from
+      (
+        select a.*, b.crazy_var
+        from
+        df a
+        left join
+        df2 b
+        on a.Month = b.mon and a.Day = b.day
+        where b.crazy_var is not NULL
+
+        union all
+
+        select a.*, b.crazy_var
+        from
+        (
+          select a.*
+          from
+          df a
+          left join
+          df2 b
+          on a.Month = b.mon and a.Day = b.day
+          where b.crazy_var is NULL
+        ) a
+        left join
+        (
+          select mon, avg(crazy_var) as crazy_var
+          from
+          df2
+          group by mon
+        ) b
+        on a.Month = b.mon
+      )")
