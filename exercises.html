@@ -119,3 +119,140 @@ source("myData.R")
 </code></pre>
 <li> Run some simple commands on the various data sets.) </li>
 </ol>
+
+
+
+		
+		
+		\section{Exercise} The following are measurements (in mm) of a critical
+		dimension on a sample of twelve engine crankshafts:
+		
+		\begin{verbatim}
+		224.120 	224.001 	224.017 	223.982 	223.989 	223.961
+		223.960 	224.089 	223.987 	223.976 	223.902 	223.980
+		\end{verbatim}
+		(a) Calculate the mean and standard deviation for these data.
+		(b) The process mean is supposed to be ? = 224mm. Is this the
+		case? Give reasons for your answer.
+		(c) Construct a 99\% confidence interval for these data and interpret.
+		(d) Check that the normality assumption is valid using 2 suitable plots.
+		
+		\begin{verbatim}
+		> x<-c(224.120,224.001,224.017,223.982 ,223.989 ,223.961,
+		+ 223.960 ,224.089 ,223.987 ,223.976 , 223.902 ,223.980)
+		>
+		> mean(x)
+		[1] 223.997
+		>
+		> sd(x)
+		[1] 0.05785405
+		>
+		> t.test(x,mu=224,conf.level=0.99)
+		
+		One Sample t-test
+		
+		data:  x
+		t = -0.1796, df = 11, p-value = 0.8607
+		alternative hypothesis: true mean is not equal to 224
+		99 percent confidence interval:
+		223.9451 224.0489
+		sample estimates:
+		mean of x
+		223.997
+		
+		\end{verbatim}
+		\section{Exercise 2} 
+		The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
+		\begin{verbatim}
+		Americans
+		174.68   	169.87 	   	165.07    	165.95 		204.99 		177.61 	
+		170.11 	 	170.71 	   	181.52 		167.68 		158.62 		182.90
+		Japanese
+		158.76  		168.85  		159.64  		180.02  		164.24
+		161.91  		163.99  		152.71  		157.32  		147.20
+		\end{verbatim}
+		
+		
+		\section{Exercise 3}
+		
+		A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
+		
+		\begin{verbatim}
+		Student	1	2	3	4	5	6	7	8
+		Exam 1	57	76	47	39	62	56	49	81
+		Exam 2	67	81	62	49	57	61	59	71
+		\end{verbatim}
+		Test the hypothesis that in the group as a whole the mean mark gained did not vary according to the exam against the hypothesis that the mean mark in the second exam was higher
+		\begin{verbatim}
+		>
+		> Ex1<-c(57,76,47,39,62,56,49,81)
+		> Ex2<-c(67,81,62,49,57,61,59,71)
+		> t.test(Ex1-Ex2)
+		
+		One Sample t-test
+		
+		data:  Ex1 - Ex2
+		t = -1.6733, df = 7, p-value = 0.1382
+		alternative hypothesis: true mean is not equal to 0
+		95 percent confidence interval:
+		-12.065666   2.065666
+		sample estimates:
+		mean of x
+		-5
+		\end{verbatim}
+		
+		\section{Exercise 4}
+		A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
+		
+		\begin{verbatim}
+		
+		> prop.test(450,1025,p=0.40,alternative="greater")
+		
+		1-sample proportions test with continuity correction
+		
+		data:  450 out of 1025, null probability 0.4
+		X-squared = 6.3425, df = 1, p-value = 0.005894
+		alternative hypothesis: true p is greater than 0.4
+		95 percent confidence interval:
+		0.413238 1.000000
+		sample estimates:
+		p
+		0.4390244
+		\end{verbatim}
+		
+		Exercise 23b:  A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
+		\begin{verbatim}
+		> x.vec=c(45,520)
+		> n.vec=c(400,3270)
+		>  prop.test(x.vec,n.vec)
+		
+		2-sample test for equality of proportions with continuity correction
+		
+		data:  x.vec out of n.vec
+		X-squared = 5.5702, df = 1, p-value = 0.01827
+		alternative hypothesis: two.sided
+		95 percent confidence interval:
+		-0.08133043 -0.01171238
+		sample estimates:
+		prop 1    prop 2
+		0.1125000 0.1590214
+		\end{verbatim}
+		
+		?
+		\section{Exercise}
+		
+		Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
+		The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
+		
+		\begin{verbatim}
+		scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
+		
+		par(mfrow=c(2,1)) 	# two rows , one column
+		
+		hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
+		
+		boxplot(scores ,horizontal=TRUE)
+		
+		par(mfrow =c(1,1)) 	#reset
+		\end{verbatim}
+		
