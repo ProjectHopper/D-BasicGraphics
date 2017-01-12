@@ -1,17 +1,17 @@
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 
 <br>{Data Frames : Introduction}
 A data frame can be thought of
 <ul>
-\item as a data matrix or data set \item is a generalisation of a
-matrix \item is a data structure of vectors and/or factors of the
-same length \item  has a unique set of row names. \item Data in
-the same position across columns come from the same subject. \item
+<li> as a data matrix or data set <li> is a generalisation of a
+matrix <li> is a data structure of vectors and/or factors of the
+same length <li>  has a unique set of row names. <li> Data in
+the same position across columns come from the same subject. <li>
 most data sets are in the form of a data frame.
 </ul>
 
 <br>
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 
 <br>{Data Frames: Creating a data frame}
 
@@ -26,24 +26,24 @@ Gender=c("M", "M", "F", "F", "M", "M"))
 
 <br>
 
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 
 
 {Data Frames: Indexing}
 
 <ul>
-\item The $n$th row of a data frame can be accessed as follows:
+<li> The $n$th row of a data frame can be accessed as follows:
 <pre><code>
 > framename[n,]
 </code></pre>
-leaving the column argument empty. \item Similarly the $m$th
+leaving the column argument empty. <li> Similarly the $m$th
 column of a data frame can be accessed as follows:
 <pre><code>
 > framename[,m]
 </code></pre>
 this time leaving the row argument empty.
 
-\item A particular value can be accessed by specifying the row and
+<li> A particular value can be accessed by specifying the row and
 column numbers together.
 <pre><code>
 > framename[n,m]
@@ -54,23 +54,24 @@ column numbers together.
 
 
 
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 {Data Frames: Attributes}
 
 All objects (except simple values) can have one or more attributes attached to them.
 These commands can be used to determine particular attributes.
 <ul>
-    \item names() - can find the labels of the individual columns.
-    \item dim() - can find the dimensions of a data object.
+    <li> names() - can find the labels of the individual columns.
+    <li> dim() - can find the dimensions of a data object.
 </ul>
 
 <br>
 
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 <br>{Data Frames: Assessing Data}
 An assessment of how the data frame is structured can be made by visual inspection.
 If a data set is called, it will be printed on screen in its entirety.
-This is often hard to read and very unhelpful. \\ Often a visual inspection of the first few rows will suffice.
+This is often hard to read and very unhelpful. 
+<p> Often a visual inspection of the first few rows will suffice.
 To access the first six rows of a data frame, use the head() command.
 <pre><code>
 > head(ChickWeight)
@@ -87,23 +88,23 @@ To access the first six rows of a data frame, use the head() command.
 
 
 
-<!-- #############################################################################################################################################################################################-------%
+<!-- ############################################################################################################################################################################################ -->
 <br>{Data Frames: Accessing columns}
 <ul>
-\item The names of columns can be found by using the names()
+<li> The names of columns can be found by using the names()
 command.
 <pre><code>
 > names(ChickWeight)
 [1] "weight" "Time"   "Chick"  "Diet"
 </code></pre>
 
-\item Individual columns can be accessed using the '\$' operator.
+<li> Individual columns can be accessed using the '\$' operator.
 <pre><code>
 >ChickWeight$weight
 </code></pre>
 
 
-\item The columns can now be studied in the same ways as basic
+<li> The columns can now be studied in the same ways as basic
 vectors.
 <pre><code>
 > mean(ChickWeight$weight)
@@ -133,7 +134,7 @@ respectively.
 <!-- ##########################################################################################################################################################################################################################################----%
 <br>{Subsetting data sets}
 <ul>
-\item Often, we would wish to make a subset of a larger data
+<li> Often, we would wish to make a subset of a larger data
 set.We would use logical and relational operators to do so. We can
 pick all rows which fulfil the criteria.
 
@@ -142,7 +143,7 @@ pick all rows which fulfil the criteria.
 > ChickWeight[ChickWeight$Chick=='1',]
 > ChickWeight[ChickWeight$weight>50,]
 </code></pre>
-\item It doesn't make sense to subset by columns. Therefore, the
+<li> It doesn't make sense to subset by columns. Therefore, the
 following code wouldn't work.
 
 <pre><code>

@@ -1,20 +1,25 @@
-%----------------------------------------------------------------------------------------------------------------- %
-\newpage
-\section{Outliers}
-\subsection{Grubb's Test for Outliers}
-\begin{framed}
-	\begin{verbatim}
-	library(outliers)
-	grubbs.test(X)
-	\end{verbatim}
-\end{framed}
-\subsection{Dixon Test for Outliers}
-\subsection{Outliers on Boxplots}
-Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
-\begin{framed}
-	\begin{verbatim}
-	boxplot(X, horizontal = TRUE)
-	\end{verbatim}
-\end{framed}
+<!-- ############################################################################################################################################### -->
 
-\newpage
+\section{Outliers}
+<h3>Grubb's Test for Outliers</h3>
+<pre>
+<code>
+library(outliers)
+grubbs.test(X)
+</code>
+</pre>
+<!-- ############################################################################################################################################### -->
+
+\subsection{Dixon Test for Outliers}
+
+<p>
+<h4>Outliers on Boxplots</h4>
+Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
+
+<pre>
+<code>
+boxplot(X, horizontal = TRUE)
+</code>
+</pre>
+
+<!-- ############################################################################################################################################### -->
