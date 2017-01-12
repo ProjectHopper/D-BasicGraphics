@@ -1,3 +1,6 @@
+<h3> proc time </h3>
+
+<pre><code>
 g <- rnorm(100000)
 h <- rep(NA, 100000)
 
@@ -11,3 +14,4 @@ for (i in 1:100000){
 
 # Stop the clock
 proc.time() - ptm
+</code></pre><p>
