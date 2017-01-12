@@ -2,7 +2,7 @@ SQLDF uses an SQLite database to perform querys and updates. However it’s good
 
 Introduction to SQL
 
-Queries
+<h4>Queries</h4>
 
 Queries begin with the select statement, followed by what we want to select:
 
@@ -22,7 +22,7 @@ SUM: The sum() and total() aggregate functions return sum of all non-NULL values
 Unfortunately SQLite in quite limited and doesn’t support other expressions such as std (stand deviation) and var (variance).
 
 Query Examples
-
+<pre><code>
 titantic <- data.frame(Titanic)
 head(titantic)
 ##   Class    Sex   Age Survived Freq
@@ -63,7 +63,9 @@ sqldf("select Sex, Class, Age, sum(Freq) as Count from titantic where Survived =
 ## 14   Male   3rd Child    35
 ## 15   Male  Crew Adult   670
 ## 16   Male  Crew Child     0
-Inserting Variables
+<c/ode>
+
+<h3>Inserting Variables</h3>
 
 Previously I’ve written sql strings with placeholders for variable names. The use gsub to swap them out. Eg. “select avg(predicted) as Pred, avg(variable) from table group by variable”. This can be done using the unix bash script style variable notation and fn$sqldf. This uses gsubfn, a quasi-perl-style string interpolation. gsubfn is used by sqldf so its already loaded. Note the fn prefix to invoke the interpolation functionality.
 
