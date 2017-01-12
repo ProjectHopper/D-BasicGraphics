@@ -1,7 +1,7 @@
- 
+﻿ 
 <h3> Exercise 1: </h3>
 Evaluate the following:
- 
+<pre> 
  the area of a circle of radius 2              
  the natural log of  100                            
  the log of 100 to the base 10    	(HINT: 	use the help command)
@@ -27,15 +27,16 @@ Evaluate the following:
  factorial(6) 
  1:6
  prod(1:6)
+</pre> 
+
+<!-- ############################################################################################################ --> 
  
- 
- 
- Exercise 2
+<h3>Exercise 2</h3>
  
  Suppose you keep track of your mileage each time you go to the petrol station. At your last 8 fill-ups the mileage was
- 
+<pre> 
  65311  65624  65908  66219  66499  66821  67145  67447
- 
+</pre> 
  Create a vector ‘miles’ from this data. Use the function <tt>diff()</tt> on the data. What does it give?
  
  
@@ -49,37 +50,41 @@ Evaluate the following:
  
  
 <ol>
-<li> Find the minimum number and  the maximum of miles between fill-ups.
+<li> Find the minimum number and the maximum of miles between fill-ups.
 <li> How many values are there in our data set?
 <li> Find the mean and median number of miles between fill-ups
 <li> What is the standard deviation of miles between fill-ups? What is the variance?
 <li> Compute the five number summary for both sets of data.
 </ol>
-
+<!-- ############################################################################################################ -->
 <h3> Exercise 3 </h3>
  
  Your cell phone bill varies from month to month. Suppose your year has the following monthly amounts
- 
+<pre> 
  46 33 39 37 46 30 48 32 49 35 30 48
- 
+</pre> 
  Enter this data into a variable called ‘bill’. Use the sum() command to find the amount you spent this year on the cell phone. 
- 
- 1.      What is the smallest amount you spent in a month? 
- 2.      What is the highest amount spent? 
- 3.      What is the inter quartile range of this dataset?  		(use IQR() command)
- 4.      Which month (i.e. index number ) has the largest value? 
- 5.      How many months was the amount greater than €40?
- 6.      What percentage was this?
- 
+
+<ol> 
+<li>      What is the smallest amount you spent in a month? 
+<li>       What is the highest amount spent? 
+<li>       What is the inter quartile range of this dataset?  		(use IQR() command)
+<li>       Which month (i.e. index number ) has the largest value? 
+<li>       How many months was the amount greater than €40?
+<li>       What percentage was this?
+</ol>
+
+<!-- ############################################################################################################ --> 
 <h3> Exercise 4 </h3>
  
  <pre><code>
- x = c(1,3,5,7,9)
- y = c(2,3,5,7,11,13)
+ x <- c(1,3,5,7,9)
+ y <- c(2,3,5,7,11,13)
  </code></pre>
  
- For the vectors x and y ,what happens when you run the following pieces of code?
- x+1
+For the vectors x and y, what happens when you run the following pieces of code?
+ 
+<pre><code>x+1
  y*2
  length(x); length(y)
  x + y
@@ -87,7 +92,10 @@ Evaluate the following:
  sum(x>5 | x< 3) # read | as 'or', & and 'and'
  y[3]
  y[-3]
-<h4> Simple Exercises </h4>
+</code></pre>
+
+<!-- ############################################################################################################ -->
+<h4> Exercise 5 </h4>
 
 <pre><code>
 yr <- c(1,2,3,4,5,6,7,8,9,10);
@@ -111,7 +119,8 @@ Score <-c(15,12,13,13,13,15,13,5,13,12,10,7,9,8,13,13,13,13);
 <p>
 <ol>
 <li> Do not copy and paste this directly into the R environment. </li>
-<li> Open a new script. Copy the code above into this script. Save this script in your working directory as <b><tt>myData.R</tt></b>.<br> Close the script editor.</li>
+<li> Open a new script. Copy the code above into this script. Save this script in your working directory as <b><tt>myData.R</tt></b>.
+<br> Close the script editor.</li>
 <li> Use the <b><tt>source()</tt></b> command to access this data. (Make sure you are in the correct working directory). </li>
 <pre><code>
 getwd()

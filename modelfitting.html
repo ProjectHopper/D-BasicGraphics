@@ -1,0 +1,243 @@
+<h5>Linear regression model</h5>
+
+We can draw a scatterplot to assess the relationship between X and Y.
+The commmand we will use is plot.
+To fit a linear model,
+the relevant r command is lm().
+Lets save the output as a data object called Fit1.
+
+Summary()  
+is a very useful command when using Linear models.
+
+<h5>Correlation and Covariance</h5>
+
+Pearson rho is the most commonly used correlation measure.
+
+Another commonly used measure is the Spearman Rank Correlation. 
+
+covaraince is related to correlation. In fact many students understand it only as an intermediate calculation when computing the correlation.
+
+It is common to express correlations in terms of a matrix. Necessarily the diagonal elements are all ones.
+
+It is possible to directly compute the correlation matrix from the covariance matrix using the functiob <code>cov2cor()</code>.
+
+
+
+
+<h5>Linear Regression Models</h5>
+
+
+\begin{itemize}
+\item Simple Linear Regression Models
+\item Multiple Linear Regression Models
+\item  Influence and Outliers
+\end{itemize}
+
+\subsection{The Line of Best Fit}
+
+Note that the data in the above scatter-plot is approximately linear. As the age increases, the average height increases at an approximately constant rate.
+
+One could not fit a single line through each and every data point, but one could imagine a line that is fairly close to each data point, with some of the data points appearing above the line, others below for balance. 
+
+In this section, we will calculate and plot the Line of Best Fit, or the Least Squares Regression Line.
+
+
+We will use R's <pre>lm</pre> command to compute a "linear model" that fits the data in the scatterplot.
+
+The command lm is a very sophisticated command with a host of options (type ?lm to view a full description), but in its simplest form, it is quite easy to use. 
+
+
+The syntax height~age is called a model equation and is a very sophisticated R construct. 
+
+We are using its most simple form here.
+
+The symbol separating "height" and "age" in the syntax height~age is a "tilde."
+
+
+It is located on the key to the immediate left of the the #1 key on your keyboard.
+
+You must use the Shift Key to access the "tilde."
+
+
+<pre><code>
+> res=lm(height~age)	
+</code></pre>
+
+
+Let's examine what is returned in the variable res.
+
+\begin{framed}
+\begin{verbatim}
+> res
+
+Call:
+lm(formula = height ~ age)
+
+Coefficients:
+(Intercept)          age  
+     64.928        0.635  
+
+\end{verbatim}
+\end{framed}
+
+Note the "Coefficients" part of the contents of res. These coefficients are the intercept and slope of the line of best fit. Essentially, we are being told that the equation of the line of best fit is:
+
+height = 0.635 age + 64.928.
+
+Note that this result has the form y = m x + b, where m is the slope and b is the intercept of the line.
+
+It is a simple matter to superimpose the "Line of Best Fit" provided by the contents of the variable res. The command abline will use the data in res to draw the "Line of Best Fit."
+
+\begin{framed}
+\begin{verbatim}
+> abline(res)
+
+\end{verbatim}
+\end{framed}
+
+The result of this command is the "Line of Best Fit" shown in Figure 2.
+
+
+%-------------------------------------------------------------------------------%
+
+
+
+The estimates (i.e regression coefficients) may be determined directly using the coef() command.
+
+
+Investigate this using the RESID command.
+
+.
+
+The basic function for fitting ordinary model is lm().
+
+Syntax
+
+Fitted.Model = lm(formula, data=data.frame)
+
+The R command summary() provides a comprehensive summary of the results of the regression analysis.
+
+\subsection{Updating fitted models}
+
+The update function is a convenient function that allows a previously fitted model to be altered with new specifications.
+
+
+\subsection{Useful Commands}
+
+The estimates (i.e regression coefficients) may be determined directly using the coef() command. coef(fit1) returns the intercept and slope estimates for the model.
+
+
+The summary function provides a comprehensive overview of all inference estimates for a model fit, including p-values for all predictor variables.
+
+
+The summary output is constructed as a list, and as such, components can be aaccessed using the dollar sign.(Find the names of the component using the names command)
+
+\subsection{Residuals}
+
+Residuals are normally distributed with mean zero. 
+
+Investigate this using the RESID command.
+
+Testing Residuals for Normality
+
+
+A fundamental assumption of linear models is that the
+
+Residuals are normally distributed with mean zero.
+
+
+The Anderson Darling test is the conventional inference test for assessing whether a data set is normally distributed. It requires liading the normtest pagkage into the R environment. A nother inference procedure for testing normality is the Shapiro Wilk test. (We will use this one fir this module, but use Anderson Darling in future).
+
+<pre><code>
+shapiro.test(x)	
+</code></pre>
+
+\section{Regression}
+%======================================================================================================== %
+\subsection{5. Simple Linear Regression}
+
+
+You're probably thinking that it would be a mistake to use simple linear regression considering the plot we just produced. Well, there are ways of transforming data so that we can use linear regression methods. We'll fit a Michaelis-Menten function to these data. Using our data, the form of this function is as follows: 
+
+Vm and K are the parameters we are interested in estimating from these data. With a little bit of algebraic gymnastics, we can get the above equation to look like this: 
+
+It may not look like this helped, but it did. If you look closely, you'll see that this has the form of a simple linear regression model. Making these substitutions, conc/vel=ytrans, K/Vm=a, and 1/Vm=b, the equation becomes: 
+
+Here's our game plan. We'll first create the new transformed variable ytrans, then fit the linear regression to estimate the parameter a and b. Then we can calculate Vm and K from there. 
+We can easily add another variable to our data frame: 
+> df$ytrans <- df$conc/df$vel
+Take a look at df and see that there is a new column added. Plot the new variable against conc to check whether a linear regression model is appropriate. 
+> plot(df$conc, df$ytrans)
+Now we are ready to fit our regression model. We'll use the function lm(), which stands for linear model. 
+> lmfit <- lm(ytrans~conc, data=df)
+By default, you will get an error if there are any missing values in your data when you run this function. If this happens, you may want to omit those cases that contain missing values and fit the model on the remaining cases. To do so, run the same function with an argument to specify the desired action. 
+> lmfit <- lm(ytrans~conc, data=df, na.action=na.omit)
+
+
+This might make more sense if you know that R designates missing values by NA. Now lets look at this function call. 
+The desired model is specified with ytrans~conc. Think of the tilde as an equal sign when specifying a model. ytrans is our response, so it goes on the left side. conc is our explanatory variable, so it goes on the right. An intercept term is assumed so you do not need to include it in the model definition. However, it is possible to force a zero intercept if you wanted. 
+Notice that there was not any output automatically generated when you fit the regression. 
+
+The results have been saved in an object we called lmfit. This object is actually a list that contains several objects, which you can see with the function names() 
+
+<pre><code>
+> names(lmfit)
+[1] "coefficients"  "residuals"     "effects"       "rank"      
+[5] "fitted.values" "assign"        "qr"            "df.residual"  
+[9] "xlevels"       "call"          "terms"         "model"  
+
+<code><pre>
+
+Any of these terms can be viewed or used with the same method you used to view a variable in a data frame: object name, followed by a dollar sign, then the element name. For example, lmfit$call. If you want to view most of the standard regression output, use the summary() function: 
+\begin{framed}
+	\begin{verbatim}
+	> summary(lmfit)
+	
+	Call:
+	lm(formula = ytrans ~ conc, data = df)
+	
+	Residuals:
+	1          2          3          4          5          6          7 
+	8.333e-04 -1.727e-03 -1.864e-04  5.013e-04  1.363e-04  9.112e-05  3.515e-04 
+	
+	Coefficients:
+	Estimate Std. Error t value Pr(>|t|)    
+	(Intercept) 0.004303   0.000451   9.541 0.000214 ***
+	conc        0.259603   0.003102  83.703 4.61e-09 ***
+	---
+	Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+	
+	Residual standard error: 0.0009071 on 5 degrees of freedom
+	Multiple R-Squared: 0.9993,     Adjusted R-squared: 0.9991 
+	F-statistic:  7006 on 1 and 5 DF,  p-value: 4.612e-09 
+	\end{verbatim}
+
+You can also easily view diagnostic plots (residuals, observed vs fitted, Cook's distance, etc.): 
+> plot(lmfit)
+R knows that this is the output from a linear model and will generate the appropriate plots. How does it know? Check to see what class it is: 
+> class(lmfit)
+[1] "lm"
+You can get the coefficients from your model fit with the coef() function: 
+> coef(lmfit)
+(Intercept)        conc 
+0.004303145 0.259602617
+These are estimates for the parameters we called a and b, respectively. The output from coef() is just a vector of length 2. Let's use the coefficients to add a line to our graph of ytrans vs conc: 
+> plot(df$conc, df$ytrans)
+> abline(coef(lmfit))
+Here's what it looks like:
+
+The last thing we have to do is back-calculate to get our non-linear parameters, Vm and K: 
+> Vm <- 1/coef(lmfit)[2]
+> K <- Vm*coef(lmfit)[1]
+> Vm
+conc 
+3.852041 
+> K
+conc 
+0.01657589 
+Remember that the output from the coef function is a vector of length 2 so we can access the desired coefficient using the brackets as shown. We now have our parameter estimates! 
+
+
+
+
+--------------------------------------------------------------------------------
