@@ -1,8 +1,8 @@
-
+﻿
 \section{Data Entry, Data Import and Export}
 
 \subsection{The \texttt{scan()} function}
-The \texttt{scan()} function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the \texttt{R} environment.
+The \texttt{scan()} function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the <b><tt>R</tt></b> environment.
 It is best used in the manner as described in the following example. 
 
 \begin{itemize}
@@ -11,8 +11,8 @@ It is best used in the manner as described in the following example.
 \item Once you have entered all the values, press return again to return to normal operation.
 \end{itemize}
 %--------------------------%
-\begin{framed}
-\begin{verbatim}
+
+<pre><code>
 > X=scan()
 1: 4
 2: 5
@@ -20,58 +20,58 @@ It is best used in the manner as described in the following example.
 4: 6
 5: 
 Read 4 items
-\end{verbatim}
-\end{framed}
+</code></pre><p>
+
 %--------------------------------------------------------------%
 
 \subsection{Spreadsheet Interface}
-\texttt{R} provides a spreadsheet interface for editing the values of existing data sets.
-We use the command \texttt{data.entry()} , and name of the data object as the argument.
-\begin{framed}
-\begin{verbatim}
+<b><tt>R</tt></b> provides a spreadsheet interface for editing the values of existing data sets.
+We use the command <b><tt>data.entry()</tt></b> , and name of the data object as the argument.
+
+<pre><code>
 > data.entry(X) # Edit the data set and exit interface
 > X
-\end{verbatim}
-\end{framed}
+</code></pre><p>
+
  
-\subsection{Data export}
+<h3>Data export</h3>
 The basic tool to produce output files is \texttt{write.table()}.
- 
-The only required argument to write.table()is the name of a dataset or matrix; with just a single argument, the output will be printed on the console, making it easy to test that the file you’ll be creating is in the correct format. 
-
+<p> 
+The only required argument to <b><tt>write.table()</tt></b> is the name of a dataset or matrix; with just a single argument, the output will be printed on the console, making it easy to test that the file you’ll be creating is in the correct format. 
+<p>
 Usually, the second argument, file= will be used to specify the destination as either a character string to represent a file, or a connection (i.e. database connectivity).
-
+<p>
 By default, character strings are surrounded by quotes by write.table(); use the quote=FALSE argument to suppress this feature. To suppress row names or column names from being written to the file, use the row.names=FALSE or col.names=FALSE arguments, respectively. 
-
-Note that col.names=TRUE (the default) produces the same sort of headers that are read using the header=TRUE argument of read.table(). 
-
+<p>
+Note that col.names=TRUE (the default) produces the same sort of headers that are read using the header=TRUE argument of <tt>read.table()</tt>. 
+<p>
 Finally, the sep= argument can be used to specify a separator other than a blank space. Using sep=’,’ (comma separated) or sep=’\t’ (tab-separated) are two common choices.
+<p>
 
 
-\begin{framed}
-\begin{verbatim}
+<pre><code>
 write.table(CO2 ,file=’co2.txt’, row.names=FALSE, sep=’,’)
 >
-\end{verbatim}
-\end{framed}
+</code></pre><p>
+
 
 Similarly to read.csv and read.csv2, the functions write.csv and write.csv2 are provided as wrappers to read.table, with appropriate options set to produce comma- or semicolon-separated files. 
-
-\subsection{CSV Files}
+<p>
+<h4>CSV Files</h4>
 The sample data can also be in comma separated values (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well.
 The first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format.
 
-\begin{framed}
-\begin{verbatim}Col1,Col2,Col3 
+
+<pre><code>Col1,Col2,Col3 
 100,a1,b1 
 200,a2,b2 
 300,a3,b3 
-\end{verbatim}
-\end{framed}
+</code></pre><p>
+
 
 After we copy and paste the data above in a file named "mydata.csv" with a text editor, we can read the data with the read.csv function.
-\begin{framed}
-\begin{verbatim}
+
+<pre><code>
 > mydata = read.csv("mydata.csv")  # read csv file 
 > mydata                           # print data frame 
   Col1 Col2 Col3 
@@ -79,9 +79,8 @@ After we copy and paste the data above in a file named "mydata.csv" with a text 
 2  200   a2   b2 
 3  300   a3   b3 
 > help(read.csv)
-\end{verbatim}
-\end{framed}
+</code></pre><p>
+
 In various European locales, as the comma character serves as decimal point, the read.csv2 function should be used instead.
 
-\end{document}
-
+<!-- ################################################################# -->
