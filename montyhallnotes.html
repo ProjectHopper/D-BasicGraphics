@@ -1,31 +1,5 @@
-\documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{eurosym}
-\usepackage{vmargin}
-\usepackage{amsmath}
-\usepackage{graphics}
-\usepackage{epsfig}
-\usepackage{subfigure}
-\usepackage{fancyhdr}
-%\usepackage{listings}
-\usepackage{framed}
-\usepackage{graphicx}
 
-\setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
 
-\pagestyle{fancy}
-\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-\lhead{MS4024} \rhead{Mr. Kevin O'Brien}
-\chead{Numerical Computation}
-%\input{tcilatex}
-
-\begin{document}
 
 \section{Monty Hall Problem}
 Suppose that there are three closed doors on the set of the  \textbf{\emph{Let's Make a Deal}}, a TV game show presented by Monty Hall. Behind one of these doors is a car; behind the other two are goats. The contestant does not know where the car is, but Monty Hall does.
@@ -34,8 +8,7 @@ The contestant selects a door, but not the outcome is not immediately evident. M
 
 After Monty has shown a goat behind the door that he opens, the contestant is always given the option to switch doors. What is the probability of winning the car if she stays with her first choice? What if she decides to switch?
 
-
-\newpage
+<p>
 \subsection{Implementation (part 1)}
 We have 3 doors to choose from, so we will define a vector of three door names ``A",``B" and "C". The command \texttt{\textbf{sample(,n)}} takes a sample of size n from a specified set of values. Here we just want to select one door to be our "correct door" and another to be ``selected" door (i.e. the contestant selects)
 
