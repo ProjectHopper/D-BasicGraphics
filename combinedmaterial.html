@@ -1,4 +1,947 @@
+\documentclass[]{article}
+\voffset=-1.5cm
+\oddsidemargin=0.0cm
+\textwidth = 470pt
 
+\usepackage{graphicx}
+\usepackage{framed}
+
+\begin{document}
+	\Large
+	\tableofcontents
+	\newpage
+	%=========================================================================== %
+	\section{Grubb's Test for Outliers}
+	\begin{itemize}
+		\item To check if there are any outliers in a data set, we use the \textbf{Grubbs' Test}. 
+		\item This procedure is implemented in \texttt{R} using the \texttt{grubb.test()} function in the \textbf{outliers package}.
+		\item (You may need to install this first , use the command \\ \texttt{install.packages("outliers")}. 
+	\end{itemize}
+	
+	\begin{framed}
+		\begin{verbatim}
+		library(outliers)
+		grubbs.test(myDataset)
+		\end{verbatim}
+	\end{framed}
+	\begin{itemize}
+		\item Boxplots may also be used to assess a data set for potential outliers. 
+	\end{itemize}
+	\begin{framed}
+		\begin{verbatim}
+		boxplot(myDataset, horizontal=TRUE)
+		\end{verbatim}
+	\end{framed}
+	%==============================================================================
+	\newpage
+	\subsection{Example - Pollutants in Water}
+	\begin{itemize}
+		\item The reproducibility of a method for the determination of a pollutant in water was
+		investigated by taking twelve samples from a single batch of water and determining the concentration of pollutant in each. The following results were obtained:
+		\begin{framed}
+			\begin{verbatim}
+			x <- c( 5.98, 8.80, 6.89, 8.49, 8.48, 7.47, 
+			7.97, 5.94, 7.32, 6.64, 6.94, 3.51)
+			\end{verbatim}
+		\end{framed}
+		\item It is expected that from this sample a 95\% confidence interval for the concentration of pollutant will be obtained.
+	\end{itemize}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1.1\linewidth]{grubbstest}
+	\end{figure}
+	
+	\begin{itemize}
+		\item Here we have a low p-value (0.02405).
+		\item Usually we would reject the null hypothesis, and treat this observation as an outlier
+	\end{itemize}
+	%========================================================================== %
+	\newpage
+	\section{Hypothesis Testing : Single Sample}
+	
+	\begin{itemize}
+		\item Data Sets $x$ ise drawn from populations $X$.
+		\item Want to test the hypothesis that the mean of the populations is the some specified value (e.g 100).
+		\[ \mbox{Ho:} \mu_X = 100 \]
+		\[ \mbox{Ha:} \mu_X \neq 100 \]
+	\end{itemize}
+	
+	\begin{framed}
+		\begin{verbatim}
+		t.test(myDataset,mu=100)
+		\end{verbatim}
+	\end{framed}
+	
+	
+	\subsection*{Additional Specification}
+	
+	\begin{itemize}
+		\item \textbf{Confidence Level}\\ The defaut confidence level for the confidence intervals is $95\%$. To change it to a different level (say $99\%$), use the additional argument \texttt{conf.level=}. 
+		The effect of this is noticeable on the confidence levels output.
+		
+		\item \textbf{One sided Tests}\\ The default setting for the \texttt{t.test()} function is a two sided test.
+		It is also possible to have both of the one-sided tests.
+	\end{itemize}
+	%======================================================================= %
+	\newpage
+	\subsection{Example}
+	% Inference Procedures - Question 1 (6 marks)
+	A test of a specific blood factor has been devised so that, for adults in the UK and
+	Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
+	
+	A clinical research organization needs to test whether the mean score of sufferers from a
+	particular disease differs from the mean score of the general population on this test.
+	A study has obtained the following test scores for 12 randomly selected patients
+	suffering from the disease.
+	\begin{framed}
+		\begin{verbatim}
+		119 131 115 107 125 96 128 99 103 103 105 109
+		\end{verbatim}
+	\end{framed}
+	\begin{enumerate}
+		\item Compute a 99\% confidence interval for the mean of patient’s blood factor
+		scores.[2 Marks]
+		\item We wish to determine whether or not the mean score for patients is significantly
+		different from the general population. Using the confidence interval, perform a
+		hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
+		\item Perform a hypothesis test for this procedure, using a significance level of 5\%.
+		What is the p-value? [1 Mark]
+	\end{enumerate}
+	
+	%========================================================================== %
+	\newpage
+	\section{Hypothesis Testing : Two Independent Samples}
+	\subsection{The \texttt{var.test} procedure}
+	
+	\begin{itemize}
+		\item Data Sets $x$ and $y$ are drawn from populations $X$ and $Y$.
+		\item Want to test the hypothesis that the variances of both populations are equal.
+		\[ \mbox{Ho:} \sigma^2_X = \sigma^2_Y \]
+		\item The alternative hypothesis is that they are not equal.
+		\[ \mbox{Ha:} \sigma^2_X \neq \sigma^2_Y \]
+		\item If two values are equal, then their ratio is equal to 1.
+		\[ \mbox{if} A = B \mbox{ then the ratio } A/B = 1 \]
+		\item We use the \texttt{var.test()}, and the data sets $x$ and $y$ to perform this procedure. 
+	\end{itemize}
+	\begin{framed}
+		\begin{verbatim}
+		var.test(x,y)
+		\end{verbatim}
+	\end{framed}
+	\begin{itemize}
+		\item If we get a high $p-$ value, then we \textbf{fail to reject} the null hypothesis.
+	\end{itemize}
+	\subsection{The \texttt{t.test} procedure}
+	
+	\begin{itemize}
+		\item Data Sets $x$ and $y$ are drawn from populations $X$ and $Y$.
+		\item Want to test the hypothesis that the mean of both populations is the same.
+		\[ \mbox{Ho:} \mu_X = \mu_Y \]
+		\item There are two different procedures to check this
+		\begin{enumerate}
+			\item The independent two-sample t-test
+			\item The Levene two-sample t-test
+		\end{enumerate}
+		\item The Levene Test does not require the assumption of equal variances.
+		\item Often the conclusion of both tests are usually the same, but this is not always the case. One test may reject the null hypothesis, while the other will fail to reject.
+		\item It is important to check whether the assumption of equal variance is valid (i.e. using \texttt{var.test()} 
+		before proceeding with the t-test.
+	\end{itemize}
+	
+	%============================================================== %
+	\begin{framed}
+		\begin{verbatim}
+		t.test(x,y,var.equal=FALSE)
+		t.test(x,y,var.equal=TRUE)
+		\end{verbatim}
+	\end{framed}
+	\newpage
+	%========================================================================================= %
+	\subsection*{}
+	\begin{itemize}
+		\item A test of a specific blood factor has been devised so that, for adults in the UK and
+		Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
+		\item A clinical research organization is carrying out research on the blood factor levels for
+		sufferers of a particular disease.
+		\item A study has obtained the following test scores for 12 randomly selected patients
+		suffering from the disease in one area of the UK
+	\end{itemize}
+	
+	\begin{framed}
+		\begin{verbatim}
+		119 131 115 107 125 96 128 99 103 103 105 109
+		\end{verbatim}
+	\end{framed}
+	(see DAT49)
+	A similar study has obtained the following test scores for 14 randomly selected
+	patients suffering from the disease in Dublin, Ireland.
+	\begin{framed}
+		120 140 112 109 114 116 99 108 109 111 109 131 117 101
+	\end{framed}
+	(see DAT79)
+	The variance of both data sets are equal.
+	
+	You may assume that both data sets are normally distributed.
+	
+	The clinical research organization wishes to determine if there is a significant difference
+	between the two groups of patients. Perform an appropriate hypothesis test for this
+	hypothesis test, using a significance level of 5\%. 
+	
+	
+<!-- ############################################################################################### -->
+
+\section{Inference Procedures}
+\textbf{Key Points:}
+\begin{itemize}
+\item The two main types of inference procedures are \textbf{Hypothesis Tests} and \textbf{Confidence Intervals}. You are expected to be familiar with both.
+
+\item There are two ways of conducting a hypothesis test. The first method is to compute the test statistic, and compare to  critical values.
+
+\item The second method is to compute the probability value  (i.e. p-value), and compare it to the significance level. Nearly all computer programs use the p-value approach. In this course we will focus on the p-value approach.
+\end{itemize}
+\begin{framed}
+\noindent Some procedures have an visual cue approach, using asterisks, to help the user determine the significant of tests (inter alia \textit{One asterisk means significant result. Three asterisks means highly significant result}). Other than that, we will use a simplistic system for interpreting significance values (i.e. p-values).
+\begin{itemize}
+\item If the p-value is less than 0.02 we reject the null hypothesis.
+\item If the p-value is greater than 0.05 we fail to reject the null hypothesis
+\item If the p-value us between the two thresholds then we deem the procedure to be inconclusive.
+\end{itemize}
+\end{framed}
+
+
+\subsection{Significance Level ($\alpha$)}
+
+In hypothesis testing, the significance level (usually dnoted by the Greek letter alpha $\alpha$) is the criterion used for rejecting the null hypothesis. The significance level is used in hypothesis testing as follows: 
+
+\begin{itemize}
+\item First, the difference between the results of the experiment and the null hypothesis is determined.
+\item Then, assuming the null hypothesis is true, the probability of a difference that large or larger is computed .
+\item Finally, this probability is compared to the significance level. 
+\item If the probability is less than or equal to the significance level, then the null hypothesis is rejected and the outcome is said to be statistically significant.
+\end{itemize}
+Traditionally, experimenters have used either the 0.05 level (sometimes called the $5\%$ level) or the 0.01 level ($1\%$ level), although the choice of levels is largely subjective. The lower the significance level, the more the data must diverge from the null hypothesis to be significant. Therefore, the 0.01 level is more conservative than the 0.05 level. 
+
+
+\subsection{The probability value }
+
+The probability value (sometimes called the $p-$value) is the probability of obtaining a statistic as different from or more different from the parameter specified in the null hypothesis as the statistic obtained in the experiment.
+
+\subsubsection{The Precise Meaning of the p-value}
+
+There is often confusion about the precise meaning of the probability computed in a significance test. The convention in hypothesis testing is that the null hypothesis ($H_o$) is assumed to be true.
+
+The difference between the statistic computed in the sample and the parameter specified by the null hypothesis is computed and the probability of obtaining a difference this large or large is calculated. This probability value is the probability of obtaining data as extreme or more extreme than the current data (assuming the null hypothesis is true).
+
+It is not the probability of the null hypothesis itself. Thus, if the probability value is 0.005, this does not mean that the probability that the null hypothesis is either true or false is 0.005. It means that the probability of obtaining data as different or more different from the null hypothesis as those obtained in the experiment is 0.005.
+
+The inferential step to conclude that the null hypothesis is false goes as follows: The data (or data more extreme) are very unlikely given that the null hypothesis is true.
+
+This means that:
+
+\begin{enumerate}
+\item a very unlikely event occurred or
+
+\item the null hypothesis is false.
+\end{enumerate}
+The inference usually made is that the null hypothesis is false.  (Importantly though,  it doesn't prove the null hypothesis to be false)
+
+\subsection{Using p-values to reject the null hypothesis}
+According to one view of hypothesis testing, the significance level should be specified before any statistical calculations are performed. Then, when the p-value is computed from a significance test, it is compared with the significance level.
+
+
+
+The null hypothesis is rejected if p-value is at or below the significance level; it is not rejected if p-value is above the significance level. The degree to which $p$ ends up being above or below the significance level does not matter.The null hypothesis either is or is not rejected at the previously stated significance level.
+
+\begin{itemize}
+
+\item Thus, if an experimenter originally stated that he or she was using the α = 0.05 significance level and p-value was subsequently calculated to be 0.042, then the person would reject the null hypothesis at the 0.05 level. 
+\item If p-value had been 0.0001 instead of 0.042 then the null hypothesis would still be rejected at the 0.05 significance level.
+\item The experimenter would not have any basis to be more confident that the null hypothesis was false with a p-value of 0.0001 than with a p-value of 0.041.
+\item Similarly, if the p had been 0.051 then the experimenter would fail to reject the null hypothesis.
+\end{itemize}
+
+
+
+The experimenter would have no more basis to doubt the validity of the null hypothesis than if p-value had been 0.482. The conclusion would be that the null hypothesis could not be rejected at the 0.05 level. In short, this approach is to specify the significance level in advance and use p-value only to determine whether or not the null hypothesis can be rejected at the stated significance level.
+
+
+Many statisticians and researchers find this approach to hypothesis testing not only too rigid, but basically illogical. It is very reasonable to  have more confidence that the null hypothesis is false with a p-value of 0.0001 then with a p-value of 0.042?
+
+
+The less likely the obtained results (or more extreme results) under the null hypothesis, the more confident one should be that the null hypothesis is false. The null hypothesis should not be rejected once and for all. The possibility that it was falsely rejected is always present, and, all else being equal, the lower the p-value, the lower this possibility. According to this view, research reports should not contain the p-value, only whether or not the values were significant (at or below the significance level).
+
+However it is much more reasonable to just report the p-values. That way each reader can make up his or her mind about just how convinced they are that the null hypothesis is false.
+
+\subsubsection{Guidelines for Data Project}
+For this module, as a rule of thumb, we will use the threshold of 0.02 for rejecting the null hypothesis. If the p-value is less than 0.02 we reject the null hypothesis. If it is greater than 0.05, we fail to reject the null hypothesis. If between the two, consider it to be an inconclusive result. (i.e. suggest that more data is needed).
+
+If the p-value is greater than 0.1 we would never reject the null hypothesis.
+\begin{itemize} 
+\item Greater than 0.05 - Fail to reject $H_o$
+\item Less than 0.02 - Reject $H_o$
+\item Between 0.02 and 0.05 - advise that it is close to both conclusions.
+\end{itemize}
+
+
+%\subsection{Probability Values}
+%The probability of getting a values as extreme or more as some statistic, such as sum or mean, is known as a p-value. When performing statistical calculations using computer software they are the most commonly used item for making statistical decisions.
+%
+%In this last instance, we would usually fail to reject the null hypothesis.
+
+Many \texttt{R} outputs will give a group of asterisks beside the data to help the user in interpreting the data, depending on how significant the result is. When such output is given, use these results in preference to the previous guidelines.
+\begin{framed}
+\begin{verbatim}
+*** p-value  < 0.0001 
+**  p-value  < 0.001 
+*   p-value  < 0.01	       
+    p-value  < 0.1
+\end{verbatim}
+\end{framed}
+
+\subsection{Sample Size}
+For Student's $t$ distribution, statistical tables such (e.g. \textit{Murdoch Barnes} and \textit{State Examinations Commission} tables) only tabulate quantiles with degrees of freedom of less than 30. This restraint has given rise to the convention that a sample of size greater than 30 is a `large sample' and in this case the standard normal distribution should be used.
+
+However there is a disparity between the $Z$ value and the correct $t$ value. For a sample size of 61 (i.e. degrees of freedom =60), the $97.5\%$ t-quantiles of Student's t distribution is 2.003, and not 1.96.
+
+However, statistical software is free from this restraint. The correct distribution will be automatically used. The Student's $t$ distribution will be used in all appropriate cases. As the sample size increases the Student $t$ distribution converges with the standard normal distribution.
+
+
+\subsection{Commonly Used Inference Procedures}
+\begin{itemize}
+\item	   Hypothesis test for the mean of a single sample
+\item	   Hypothesis test for the mean of two independent samples
+\item	   Hypothesis test for the proportion of a single group
+\item	   Hypothesis test for the proportions of two independent samples
+\end{itemize}
+\newpage
+\section{Testing The Assumption of Normality}
+A fundamental assumption of many statistical procedures  is that some or all variables are normally distributed. When testing the mean of a variable, it is assumed that the variable is normally distributed. An important assumption for linear models (i.e. regression models) is that the residuals (differences between observed and predicted value) are normally distributed with mean zero.
+
+It is important to test that the data is normally distributed before embarking on any further analysis. There are two formal hypothesis tests that can be used to assess normality.
+\begin{itemize}
+\item The Anderson-Darling Test
+\item The Shapiro-Wilk Test
+\end{itemize}
+Shapiro-Wilk test is considered more accurate with smaller datasets (i.e. less than 100). However, both are commonly reported together in statistical reporting. We will just use the Shapiro-Wilk test for this module.
+\subsection{Hypotheses}
+The null hypothesis of both the `Anderson-Darling' and `Shapiro-Wilk' tests is that the population is normally distributed, and the alternative hypothesis is that the data is not normally distributed.
+
+For both tests, the null and alternative hypothesis are :\\
+\qquad $H_0 : $ The data set is normally distributed.\\
+\qquad $H_1 : $ The data set is \textbf{not} normally distributed.\\
+
+\subsection{Anderson-Darling Test}
+To implement the Anderson-Darling Test for Normality, one must first install the \textbf{\emph{nortest}} package.
+
+\begin{framed}
+\begin{verbatim}
+library(nortest)
+#Generate 100 normally distributed random numbers
+set.seed(1234)
+NormDat = rnorm(100)
+ad.test(NormDat)
+\end{verbatim}
+\end{framed}
+\subsection{Shapiro-Wilk Test}
+The Shapiro-Wilk test is directly implementable, without loading any additional packages.
+
+\begin{framed}
+\begin{verbatim}
+#Generate 100 normally distributed random numbers
+set.seed(1234)
+NormDat = rnorm(100)
+
+shapiro.test(NormDat)
+\end{verbatim}
+\end{framed}
+Sample output, using the randomly generated \texttt{NormDat} data set, is as follows:
+\begin{verbatim}
+> shapiro.test(NormDat)
+
+        Shapiro-Wilk normality test
+
+data:  NormDat
+W = 0.9864, p-value = 0.4003
+\end{verbatim}
+Here, the p-value is well above the 0.05 threshold. Hence we \textbf{fail to reject} the null hypothesis, and may proceed to treat the \texttt{NormDat} data set as normally distributed.
+\subsection{Graphical Procedures for Assessing Normality}
+There are two useful graphical methods for determining whether a data set was normally distributed. The first is the histogram, which we have seen previously. If the histogram is reasonably bell-shaped, then the data can be assumed to be normally distributed. The relevant \texttt{R} command is \texttt{\textbf{hist()}}.
+
+
+The second is the \textbf{\emph{quantile-quantile plot}} (or QQ-plot).
+For assessing normality, we implement a qq-plot  using the \texttt{\textbf{qqnorm()}} function.
+
+Additionally the command \texttt{\textbf{qqline()}} function adds a trendline to a normal quantile-quantile plot. If the data is normally distributed, then the points on the plot follow the trendline.
+
+\begin{framed}
+\begin{verbatim}
+#Generate 100 normally distributed random numbers
+
+NormDat = rnorm(100)
+
+qqnorm(NormDat)
+qqline(NormDat)
+\end{verbatim}
+\end{framed}
+
+% Section 8 Testing Normality
+\subsection{Transforming the Data}
+
+Sometimes when we get non-normal data, it may be possible that we can change the scale of our data i.e. transform it to get a normal distribution. One transformation that often (but not always) works for positively skewed data is the natural logarithm (ln) transformation.
+In such a case, we work with the natural logarithms of the data set, rather than the data itself.
+
+\begin{verbatim}
+> set.seed(1919)
+> X = rexp(30,rate=0.50)
+> shapiro.test(X)
+
+        Shapiro-Wilk normality test
+
+data:  X
+W = 0.8213, p-value = 0.0001646
+> shapiro.test(log(X))
+
+        Shapiro-Wilk normality test
+
+data:  log(X)
+W = 0.9402, p-value = 0.09206
+\end{verbatim}
+\subsection{Outliers}
+Another reason that the data may not be normally distributed is the presence of an outlier. We shall look at formal tests for outliers (such as the Grubb's test) later. Recall that boxplots can be used to detect potential outliers.
+\newpage
+\section{Single Sample Inference Procedures}
+
+While analyzing a (single) sample of data values, we will often want to answer several questions:
+\begin{itemize}
+\item	What is the mean value?  (i.e. of 100 roles of a die)
+\item	Is the mean value significantly different from some pre-supposed value?
+(i.e. Hypothesis testing ; is the observed mean reasonably close to our expected value)
+\item	What is the level of uncertainty associated with our estimate of the mean value? (i.e. Confidence interval for the estimates)
+\end{itemize}
+We refer to the methods used to answer these questions as \textbf{\emph{inference procedures}}.
+
+\subsection{Hypothesis test for the mean of a single sample }
+
+This procedure is used to assess whether the population mean $\mu$  has a specified value, based on the sample mean. The hypotheses are conventionally written in a form similar to below (here the hypothesized population mean is simply zero).
+
+       \begin{itemize}
+       \item[Ho] : $\mu = 0$
+       \item[Ha] : $\mu \neq 0$
+       \end{itemize}
+
+There are two hypothesis test for the mean of a single sample.
+
+\begin{itemize}
+ \item [1)] The sample is of a normally-distributed variable for which the population standard deviation ($\sigma$) is known.
+ \item [2)] The sample is of a normally-distributed variable where $\sigma$ is estimated by the sample standard deviation (s).
+\end{itemize}
+In practice, the population parameter values is rarely known. For this reason, we will consider the second case only in this course.
+
+\subsection{The \texttt{t.test()} Function}
+The \texttt{t.test( )}function produces a variety of  outputs for procedures, hence answering such questions. Let us look at the function first to see what sort of output it gives us.
+Recall our simulated data from last week, rolling a die 100 times.
+
+\begin{framed}
+\begin{verbatim}
+## Initialize variables
+die = 1:6
+N=100
+
+## Calculations
+x=sample(die,N, replace=TRUE)
+t.test(x)
+\end{verbatim}
+\end{framed}
+The \texttt{R} output should look something like this:
+\begin{verbatim}
+        One Sample t-test
+data:  x
+t = 19.8867, df = 99, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 3.087767 3.772233
+sample estimates:
+mean of x :     3.43
+\end{verbatim}
+
+Working backwards, the t procedure gives us the mean of the data set, and a $95\%$ confidence interval for that mean.  (Please refer to previous modules)
+
+The previous statement to these refers to the alternative hypothesis: true mean is not equal to zero. Necessarily the null hypothesis (which proposes the opposite of the alternative hypothesis) states that the true mean is zero.
+Is this meaningful in such circumstances? No, it is impossible
+
+Let’s look at the help file to get a clearer idea about how to use this command.
+
+The default setting of the null value is zero (i.e. \textbf{\texttt{mu = 0}}. To assess whether our data set is fair, we must specify \textbf{\texttt{mu = 3.5}}.
+
+We can change the confidence level (and by extension,  the significance level)  by specifying the desired value using the \textbf{\texttt{conf.level = …}}.
+
+In this instance, we will change it to 0.99 ( i.e. $99\%$ confidence). However for the rest of the module, we will use the $95\%$ confidence level. (Remark: Be mindful that I might ask this in the exam.).
+
+\begin{framed}
+\begin{verbatim}
+t.test(x,mu=3.5,conf.level=0.99)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+        One Sample t-test
+data:  x
+t = -0.4059, df = 99, p-value = 0.6857
+alternative hypothesis: true mean is not equal to 3.5
+99 percent confidence interval:
+ 2.977004 3.882996
+sample estimates:
+mean of x
+     3.43
+\end{verbatim}
+The mean value remains constant. We have specified a $99\%$ confidence level, so necessarily a $99\%$ confidence interval is returned. Compare it to the previous output.
+
+The important difference is what is specified as the alternative hypothesis: \textbf{\texttt{true mean is not equal to 3.5}}. Necessarily the null hypothesis is that true mean is equal to 3.5 (i.e. a fair dice). This is meaningful in the contest of the dice-roll experiment.
+
+In this instance the p-value is 0.6857. We fail to reject the null hypothesis that the mean is not 3.5.
+We can use the confidence interval to make an inference. Consider the $95\%$ confidence interval for the mean value (from earlier) : \texttt{(3.087767,3.4372233)}
+
+As the expected mean (i.e. the null value) is within this interval, we would fail to reject the null hypothesis.
+Suppose the $95\%$ confidence interval returned the following limits, with other values being computed accordingly; \texttt{(3.087767,3.4372233)}.
+
+What would be the decision in this case? We would reject the null hypothesis that the mean value is 3.5, and surmise that the dice is a crooked dice that favours lower values.
+
+
+%--------------------------------- %
+\newpage
+\section{Two Sample Inference Procedures}
+\subsection{Hypothesis test for the means of two independent samples}
+The procedure associated with testing a hypothesis concerning the difference between two population means is similar to that for testing a hypothesis concerning the value of one population mean.
+
+The procedure differs mainly in that the standard error of the difference between the means is used to determine the test statistic associated with the sample result. For two tailed tests, the null hypothesis states that the population means are the same, with the alternative stating that the population means are not equal.
+
+       \begin{itemize}
+       \item[Ho] : $\mu_1 = \mu_2$
+       \item[Ha] : $\mu_1 \neq \mu_2$
+       \end{itemize}
+
+\subsection{Implementation with \texttt{R}}
+Firstly, lets construct a second data set. In this scenario, it is not possible to score a 6, hence the dice is crooked.
+(The previous fair dice data set is called $x$. This crooked dice data is labelled $y$)
+\begin{framed}
+\begin{verbatim}
+## Initialize variables
+die2 = 1:5
+N=100
+y=sample(die2,N, replace=TRUE)
+t.test(y)
+\end{verbatim}
+\end{framed}
+
+We can perform a two sample test for independent samples. In such a test the null and alternative hypotheses are as follows:
+
+H0: True mean of $x$ is equal to true mean of $y$.
+
+H1: True mean of $x$ is NOT equal to true mean of $y$.
+
+An estimate for the difference of sample means, and a confidence interval for that estimate is provided in the output. The expected value under the null hypothesis does not have to be specified in this instance.
+
+\begin{framed}
+\begin{verbatim}
+## Initialize variables
+die2 = 1:5
+N=100
+y=sample(die2,N, replace=TRUE)
+t.test(y)
+\end{verbatim}
+\end{framed}
+
+To implement a two sample test, simply specify the names of both data sets.
+
+\begin{framed}
+\begin{verbatim}
+t.test(x,y)
+\end{verbatim}
+\end{framed}
+The output should look something like the output below. Notice the confidence interval for the difference in the means: \texttt{( -0.01885674,0.83885674 )}.
+How do you interpret this output? (Hint: look at the p-value).
+
+\begin{verbatim}
+> t.test(x,y)
+
+        Welch Two Sample t-test
+
+data:  x and y
+t = 1.8862, df = 183.43, p-value = 0.06084
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.01885674  0.83885674
+sample estimates:
+mean of x mean of y
+     3.39      2.98
+\end{verbatim}
+There are in fact two variants of the two sample t-test.
+\begin{itemize}
+\item The Independent Two Sample t-test
+\item The Welch Two Sample t-test
+\end{itemize}
+The Welch Two-Sample test (the procedure from the last segment of \texttt{R}output) does not require the assumption of equal variance in the two samples. Conversely the Independent Two-Sample test does.
+
+To specify that the assumption of equal variance, the additional argument \textbf{\texttt{var.equal=TRUE}} is specified
+
+\begin{framed}
+\begin{verbatim}
+t.test(x,y,var.equal=TRUE)
+\end{verbatim}
+
+\end{framed}
+
+\begin{verbatim}
+> t.test(x,y,var.equal=TRUE)
+
+        Two Sample t-test
+
+data:  x and y
+t = 1.8862, df = 198, p-value = 0.06073
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.01864727  0.83864727
+sample estimates:
+mean of x mean of y
+     3.39      2.98
+\end{verbatim}
+
+%----------------------------------------------------%
+\subsection{Equality of Variances}
+It is possible to formally test whether or not there is equality of variance in two data sets, using the F-test.
+The null hypothesis states that there is equal variance between samples. The alternative is that they do not have equal variance.
+\begin{itemize}
+\item[Ho] $\sigma^2_1 = \sigma^2_2$
+\item[Ha] $\sigma^2_1 \neq \sigma^2_2$
+\end{itemize}
+
+The command is \textbf{\texttt{var.test()}}.Variant specifications of the inference procedure, such as confidence level, can be altered as with the \texttt{\textbf{t.test()}} procedure.
+\begin{framed}
+\begin{verbatim}
+var.test(x,y)
+\end{verbatim}
+\end{framed}
+\begin{verbatim}
+> var.test(x,y)
+
+        F test to compare two variances
+
+data:  x and y
+F = 1.7849, num df = 99, denom df = 99, p-value = 0.004299
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 1.200948 2.652763
+sample estimates:
+ratio of variances
+          1.784889
+\end{verbatim}
+
+
+Notice the reference to the \emph{\textbf{variance ratio}}. The test actually works on the following basis.
+
+\begin{itemize}
+\item[Ho] ${ \sigma^2_1 \over \sigma^2_2} = 1$
+\item[Ha] ${ \sigma^2_1 \over \sigma^2_2} \neq 1$
+\end{itemize}
+A variance ratio of 1 is equivalent to equal variance.
+%----------------------------------------------------%
+\subsection{Paired t-test}
+% (Population Mean between paired samples)
+Two data samples aresaid to be paired (or matched) if they come from repeated observations of the same subject. Here, we assume that the data populations follow the normal distribution.
+
+Using the paired t-test, we can obtain an interval estimate of the difference of the population means. Necessarily there must be equal numbers of elements in both sets.
+
+The \textbf{\texttt{t.test()}} function can be used to perform paired t-tests, by making the appropriate specification:\textbf{\texttt{paired=TRUE}}.
+
+
+\subsubsection{Example}
+In the built-in data set named \textbf{\emph{immer}}, the barley yield in years 1931 and 1932 of the same field are recorded. In the intervening period, fertilizer treatments were applied to each field. The motivation of the study was to determine whether or not the treatment was effective.
+
+The yield data are presented in the data frame columns $Y1$ and $Y2$.
+
+\begin{verbatim}
+> library(MASS)         # load the MASS package
+> head(immer)
+   Loc  Var    Y1    Y2
+1  UF   M      81.0  80.7
+2  UF   S      105.4  82.3
+   .....
+\end{verbatim}
+Assuming that the data in immer follows the normal distribution, find the $95\%$ confidence interval estimate of the difference between the mean barley yields.
+
+We apply the t.test function to compute the difference in means of the matched samples. As it is a paired test, we set the ``paired" argument as TRUE.
+
+\begin{framed}
+\begin{verbatim}
+attach(immer)
+t.test(Y1,Y2, paired=TRUE)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+
+        Paired t-test
+
+data:  Y1 and Y2
+t = 3.324, df = 29, p-value = 0.002413
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  6.121954 25.704713
+sample estimates:
+mean of the differences
+               15.91333
+\end{verbatim}
+Between years 1931 and 1932 in the data set immer, the 95\% confidence interval of the difference in means of the barley yields is the interval between 6.122 and 25.705.
+One can conclude that the fertilizer treatments were successful in improving the yield of barley.
+
+
+\newpage
+\section{Chi-squared Test}
+
+A $chi^2$ test is carried out on tabular data containing counts, e.g. the
+number of animals that died, the number of days of rain, the
+number of stocks that grew in value, etc.
+
+Usually have two qualitative variables, each with a number of
+levels, and want to determine if there is a relationship between the
+two variables, e.g. hair colour and eye colour, social status and
+crime rates, house price and house size, gender and left/right
+handedness.
+
+The data are presented in a contingency table:
+right-handed left-handed TOTAL
+
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+	& right-handed &left-handed & TOTAL\\\hline
+	Male & 43 & 9 & 52 \\
+	Female & 44 & 4 & 48 \\
+	TOTAL & 87 & 13 & 100 \\
+	\hline
+\end{tabular}
+
+
+The hypothesis to be tested is
+$H0 :$There is no relationship between gender and left/right-handedness
+$H1 :$There is a relationship between gender and left/right-handedness
+The values that we collect from our sample are called the observed
+(O) frequencies (counts). Now need to calculate the expected (E)
+frequencies, i.e. the values we would expect to see in the table, if
+H0 was true.
+
+
+
+%----------------------------------------------------%
+\begin{itemize}
+	\item The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
+	\item For a 2 by 2 table, the test is exactly equivalent to prop.test.
+\end{itemize}
+
+
+\footnotesize \begin{verbatim}
+> chisq.test(lewitt.machin)
+\end{verbatim}\normalsize
+
+
+
+	\subsection{Hypothesis test of Proportion}
+	This procedure is used to assess whether an assumed proportion is supported by evidence. For two tailed tests, the null hypothesis states that the population proportion  π has a specified value, with the alternative stating that π has a different value. 
+	
+	The hypotheses are typically as follows:   
+	
+	\begin{itemize}
+		\item[Ho] : $\pi = 0.50$
+		\item[Ha] : $\pi \neq 0.50$
+	\end{itemize}
+
+
+	%section 9 Inference Procedures
+	
+	
+	
+	
+	\section{Exercises}
+	\subsection{Exercise 1}
+	A manufacturer is interested in whether people can tell the difference between a new formulation of a soft drink and the original formulation. The new formulation is cheaper to produce so if people cannot tell the difference, the new formulation will be manufactured. 
+	
+	A sample of 100 people is taken. Each person is given a taste of both formulations and asked to identify the original. Sixty-two percent of the subjects correctly identified the new formulation. Is this proportion significantly different from $50\%$? 
+	
+	The first step in hypothesis testing is to specify the null hypothesis and an alternative hypothesis. In testing proportions, the null hypothesis is that $\pi$, the proportion in the population, is equal to 0.5. The alternate hypothesis is $\pi \neq 0.5$. 
+	
+	The computed p-values is compared to the pre-specified significance level of $5\%$. Since the p-value (0.0214) is less than the significance level of 0.05, the effect is statistically significant. 
+	
+	\begin{verbatim}
+	> prop.test(62,100,0.5)
+	
+	1-sample proportions test with continuity correction
+	
+	data:  62 out of 100, null probability 0.5 
+	X-squared = 5.29, df = 1, p-value = 0.02145
+	alternative hypothesis: true p is not equal to 0.5 
+	95 percent confidence interval:
+	0.5170589 0.7136053 
+	sample estimates:
+	p 
+	0.62 
+	\end{verbatim}
+	
+	Since the effect is significant, the null hypothesis is rejected. It is concluded that the proportion of people choosing the original formulation is greater than 0.50. 
+	
+	This result might be described in a report as follows: 
+	
+	\begin{quote}
+		The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021.
+	\end{quote}  
+	
+	
+\subsection{Exercise 2} The following are measurements (in mm) of a critical
+dimension on a sample of twelve engine crankshafts:
+
+\begin{verbatim}
+224.120 	224.001 	224.017 	223.982 	223.989 	223.961
+223.960 	224.089 	223.987 	223.976 	223.902 	223.980
+\end{verbatim}
+(a) Calculate the mean and standard deviation for these data.
+(b) The process mean is supposed to be ? = 224mm. Is this the
+case? Give reasons for your answer.
+(c) Construct a 99\% confidence interval for these data and interpret.
+(d) Check that the normality assumption is valid using 2 suitable plots.
+
+\begin{verbatim}
+> x<-c(224.120,224.001,224.017,223.982 ,223.989 ,223.961,
++ 223.960 ,224.089 ,223.987 ,223.976 , 223.902 ,223.980)
+>
+> mean(x)
+[1] 223.997
+>
+> sd(x)
+[1] 0.05785405
+>
+> t.test(x,mu=224,conf.level=0.99)
+
+One Sample t-test
+
+data:  x
+t = -0.1796, df = 11, p-value = 0.8607
+alternative hypothesis: true mean is not equal to 224
+99 percent confidence interval:
+223.9451 224.0489
+sample estimates:
+mean of x
+223.997
+
+\end{verbatim}
+\subsubsection{Exercise 3} 
+The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
+\begin{verbatim}
+Americans
+174.68   	169.87 	   	165.07    	165.95 		204.99 		177.61 	
+170.11 	 	170.71 	   	181.52 		167.68 		158.62 		182.90
+Japanese
+158.76  		168.85  		159.64  		180.02  		164.24
+161.91  		163.99  		152.71  		157.32  		147.20
+\end{verbatim}
+\begin{verbatim}
+> t.test(A,J)
+Welch Two Sample t-test
+data:  A and J
+t = 2.8398, df = 19.815, p-value = 0.01018
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+3.360121 21.996879
+sample estimates:
+mean of x mean of y
+174.1425  161.4640
+\end{verbatim}
+
+\subsection{Exercise 54}
+
+A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
+
+\begin{verbatim}
+Student	1	2	3	4	5	6	7	8
+Exam 1	57	76	47	39	62	56	49	81
+Exam 2	67	81	62	49	57	61	59	71
+\end{verbatim}
+Test the hypothesis that in the group as a whole the mean mark gained did not vary according to the exam against the hypothesis that the mean mark in the second exam was higher
+\begin{verbatim}
+>
+> Ex1<-c(57,76,47,39,62,56,49,81)
+> Ex2<-c(67,81,62,49,57,61,59,71)
+> t.test(Ex1-Ex2)
+
+One Sample t-test
+
+data:  Ex1 - Ex2
+t = -1.6733, df = 7, p-value = 0.1382
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+-12.065666   2.065666
+sample estimates:
+mean of x
+-5
+\end{verbatim}
+
+\subsection{Exercise 5}
+A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
+
+\begin{verbatim}
+
+> prop.test(450,1025,p=0.40,alternative="greater")
+
+1-sample proportions test with continuity correction
+
+data:  450 out of 1025, null probability 0.4
+X-squared = 6.3425, df = 1, p-value = 0.005894
+alternative hypothesis: true p is greater than 0.4
+95 percent confidence interval:
+0.413238 1.000000
+sample estimates:
+p
+0.4390244
+\end{verbatim}
+
+%----------------------------------------------------%
+\end{document} 
+\section{ \texttt{boxplot} }
+
+\begin{framed}
+\begin{verbatim}
+set.seed(1234)
+X = rnorm(10,mean=100,sd=4)
+Y = rnorm(12,mean=102,sd=5)
+Z = rnorm(14,mean=103,sd=8)
+var.test(X,Y)
+var.test(X,Z)
+
+\end{verbatim}
+\end{framed}
+
+
+%--------------------------------------------------%
+\section{ \texttt{var.test()} } 
+
+\[ \sigma^2_x = \sigma^2_y \]
+\[ \sigma^2_x = \sigma^2_y \]
+
+\begin{framed}
+\begin{verbatim}
+set.seed(1234)
+X = rnorm(10,mean=100,sd=4)
+Y = rnorm(12,mean=102,sd=5)
+Z = rnorm(14,mean=103,sd=8)
+var.test(X,Y)
+var.test(X,Z)
+
+\end{verbatim}
+\end{framed}
+
+\begin{itemize}
+\item The respective sample sizes of the data sets being test is not relevant for testing the hypothesis of equal variance.
+\end{itemize} 
+
+%--------------------------------------------------%
 
 \section{Basic R editing – Script Editor and \texttt{edit()}}
 <ul>
@@ -11,7 +954,7 @@ Another way to edit code is to use the \texttt{edit()} function – which operat
 <li> To edit the code defining an object X, simply type \texttt{edit(X)}.
 </ul>
 
-<!#### ##################################################################################################- ####>
+<!-- # ##################################################################################################- ## -->
 \section{Changing GUI options}
 <ul>
 <li> We can change the GUI options using the “GUI preferences” option on the Edit menu. 
@@ -19,7 +962,7 @@ Another way to edit code is to use the \texttt{edit()} function – which operat
 <li> A demonstration will be done in class. 
 </ul>
 
-<!#### ##################################################################################################- ####>
+<!-- ## ##################################################################################################- ## -->
 \section{Embedded Datasets}
 Several data sets – intended as learning tools – are automatically installed when \texttt{R} is installed. Many more are installed within packages to complement learning to use those packages.  One of these is the famous ``\textit{iris}" data set, which is used in many data mining exercises.
 <ul>
