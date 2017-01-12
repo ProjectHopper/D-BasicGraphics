@@ -1,47 +1,47 @@
 
-\begin{frame}
+<br>
 \frametitle{Frequency Tables}
 
-\begin{itemize}
-\item A frequency distribution depicts the grouping of data divided into mutually exclusive categories 
+<ul>
+<li> A frequency distribution depicts the grouping of data divided into mutually exclusive categories 
 and the frequency, i.e. number of occurrences in a category.
-\item The \texttt{R} command used to construct frequency table is simply \texttt{table()}
-\item The command can be used for one-way and two-frequency tables.
-\end{itemize}
+<li> The \texttt{R} command used to construct frequency table is simply \texttt{table()}
+<li> The command can be used for one-way and two-frequency tables.
+</ul>
 
-\end{frame}
+<p>
 
-%------------------------------------%
-\begin{frame}[fragile]
+<!-- ##################------ -->
+<br>
 \frametitle{Frequency Tables}
-\begin{itemize}
-\item The \textit{\textbf{mtcars}} contains a binary variable for the two categories of transmission: \textbf{am} 
-\item 0 means automatic and 1 means manual. 
-\item How many cars in the data set are ``automatic" and how many are ``manual"?
-\end{itemize}
+<ul>
+<li> The \textit{\textbf{mtcars}} contains a binary variable for the two categories of transmission: \textbf{am} 
+<li> 0 means automatic and 1 means manual. 
+<li> How many cars in the data set are ``automatic" and how many are ``manual"?
+</ul>
 
-\begin{verbatim}
+<pre><code>
 > table(mtcars$am)
 
  0  1 
 19 13 
-\end{verbatim}
+</code></pre>
 
-\end{frame}
+<p>
 
 
 
-%------------------------------------%
-\begin{frame}[fragile]
+<!-- ##################------ -->
+<br>
 \frametitle{Frequency Tables}
 
-\begin{itemize}
-\item There is a second categorical variables in the data set \textbf{cyl}.
-\item Suppose we want construct a two-way frequency table for \textbf{am} and \textbf{cyl} .
-\item Simply specify both as arguments to the \texttt{table()} command.
-\end{itemize}
+<ul>
+<li> There is a second categorical variables in the data set \textbf{cyl}.
+<li> Suppose we want construct a two-way frequency table for \textbf{am} and \textbf{cyl} .
+<li> Simply specify both as arguments to the \texttt{table()} command.
+</ul>
 
-\begin{verbatim}
+<pre><code>
 > attach(mtcars)
 > 
 > table(am,cyl)
@@ -49,7 +49,7 @@ and the frequency, i.e. number of occurrences in a category.
 am   4  6  8
   0  3  4 12
   1  8  3  2
-\end{verbatim}
+</code></pre>
 
-\end{frame}
-%---------------------------------------%
+<p>
+<!-- ##################--------- -->
