@@ -1,6 +1,6 @@
- 	%==============================================================================================%
- 	\begin{frame}
- 		\frametitle{1.15 Data Objects}
+﻿
+<!-- ######################################################################################################### -->
+<h3> Data Objects</h3>
  		As mentioned previously, R saves data as \textbf{objects}. Examples of data objects are
  		\begin{itemize}
  			\item Vectors
@@ -8,23 +8,24 @@
  			\item Dataframes
  			\item Matrices
  		\end{itemize}
- 		The simple objects we have created previously are simply single element vectors.
- 	\end{frame}
- 	%==============================================================================================%
- 	\begin{frame}
- 		\frametitle{1.16 Listing all items in a workspace}
- 		To list all items in an R environment, we use the \texttt{ls()} function. This provides a list of all data
- 		objects accessible. Another useful command is \texttt{objects()}.
+The simple objects we have created previously are simply single element vectors.
+<br>
+<h4>1.16 Listing all items in a workspace</h4>
+
+To list all items in an R environment, we use the <b><tt>ls()</tt></b> function. This provides a list of all data objects accessible. Another useful command is <b><tt>objects()</tt></b>.
  		\begin{figure}
  			\centering
  			\includegraphics[width=1.2\linewidth]{images/ObjectsList}
  			%\caption{}
  			%\label{fig:ObjectsList}
  		\end{figure}
+<p>
+
+<!-- ######################################################################################################### -->
 \subsection*{Listing all items in a workspace}
-To list all items in an \texttt{R} environment, we use the \texttt{ls()} function. This provides a list of all data objects  accessible.
-\begin{framed}
-\begin{verbatim}
+To list all items in an <b><tt>R</tt><b> environment, we use the <b><tt>ls()</tt></b> function. This provides a list of all data objects  accessible.
+<pre>
+<code>
 > ls()
  [1] "a"          "A"          "authors"    "b"          "books"     
  [6] "C"          "D"          "ex1"        "Gerb"       "Lst"       
@@ -33,28 +34,28 @@ To list all items in an \texttt{R} environment, we use the \texttt{ls()} functio
 [21] "Trig"       "Vec1"       "x"          "X"          "x.at"      
 [26] "x1"         "x2"         "x3R"        "y"          "Y"         
 [31] "y.at"      
-\end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
-
- 
-\section{Removing items}
-Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your \texttt{R} session; another possibility is to use the save function. 
-
-The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the \texttt{list=} argument. 
-
-Once the objects to be saved are specified, the only other required option is the \texttt{file=option}, specifying the destination of the saved R object. Although there is no requirement to do so, it is common to use a suffix of \texttt{.rda} or \texttt{.RData} for saved \texttt{R} workspace files.
-
-For example, to save the \texttt{R} objects x, y, and z to a file called \texttt{myData.rda} ,the following statements could be used:
-
-\begin{verbatim}
+</code>
+</pre>
+<!-- ######################################################################################################### --> 
+<h4>Removing items</h4>
+Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the <b><tt>rm()</tt></b> function to remove unwanted objects right before exiting your <b><tt>R} session; another possibility is to use the save function. 
+<p>
+The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the <b><tt>list=} argument. 
+<p>
+Once the objects to be saved are specified, the only other required option is the <b><tt>file=option}, specifying the destination of the saved R object. Although there is no requirement to do so, it is common to use a suffix of <b><tt>.rda} or <b><tt>.RData} for saved <b><tt>R} workspace files.
+<p>
+For example, to save the <b><tt>R} objects x, y, and z to a file called <b><tt>myData.rda} ,the following statements could be used:
+<p>
+<code>
 > save(x,y,z,fil= ‘mydata.rda’)
-\end{verbatim}
+</code>
  		\frametitle{1.17 Removing items}
  		\begin{itemize}
  			\item Sometimes it is desirable to save a subset of your workspace instead of the entire workspace.
- 			\item One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your R
- 			session; another possibility is to use the \texttt{save()} function.
+ 			\item One option is to use the <b><tt>rm()</tt></b> function to remove unwanted objects right before exiting your R
+ 			session; another possibility is to use the <b><tt>save()</tt></b> function.
  		\end{itemize}
- 	\end{frame}
+
  	
+
+<!-- ######################################################################################################### -->
