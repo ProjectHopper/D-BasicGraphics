@@ -1,32 +1,32 @@
-	%==============================================================================================%
+﻿	<!-- ################################################################################# -->
  	\begin{frame}
- 		\frametitle{Section 3 Inspecting a Data Set}
+ 		{Section 3 Inspecting a Data Set}
  		\large 
- 		\textbf{Summary of useful commands}
- 		\begin{itemize}
- 			\item \texttt{dim()} and \texttt{length()}
- 			\item \texttt{nrow()} and \texttt{ncol()}
- 			\item \texttt{names()}
- 			\item \texttt{summary()}
- 			\item \texttt{tail()}
- 			\item \texttt{head()}
- 			\item \texttt{describe()} (from the \textbf{psych} package)
- 		\end{itemize}
-%---------------------------------------------------------------------------------------------%
+ <h3>Summary of useful commands</h3>
+<ul>
+ <li> <b><tt>dim()</tt></b> and <b><tt>length()</tt></b>
+ <li> <b><tt>nrow()</tt></b> and <b><tt>ncol()</tt></b>
+ <li> <b><tt>names()</tt></b>
+ <li> <b><tt>summary()</tt></b>
+ <li> <b><tt>tail()</tt></b>
+ <li> <b><tt>head()</tt></b>
+ <li> <b><tt>describe()</tt></b> (from the \textbf{psych} package)
+</ul>
+<!-- #################################################################################################################################################################################################---- -->
 \subsection*{Dimensions of a data set}
 We have remarked that some data sets are very large. This is perhaps a good place to consider summary information about data objects.
-For a simple vector – a useful command to determine the length (remark: sample size) is the function \texttt{length()}.
-\begin{framed}
-\begin{verbatim}
+For a simple vector – a useful command to determine the length (remark: sample size) is the function <b><tt>length()</tt></b>.
+<pre>
+<code>
 > Y=5:9
 > length(Y)
 [1] 5
 \end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
+</pre><br>
+<!-- #################################################################################################################################################################################################---- -->
 For more complex data sets (and data frames, which we will see later) – we have several tools for assessing the size of data.
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 > dim(iris)  # dimensions of data set
 [1] 150   5
 > nrow(iris) # number of rows
@@ -34,24 +34,24 @@ For more complex data sets (and data frames, which we will see later) – we hav
 > ncol(iris) # number of columns
 [1] 5
 \end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
-We can also determine the row names and column names using the functions \texttt{rownames()} and \texttt{colnames()}.
+</pre><br>
+<!-- #################################################################################################################################################################################################---- -->
+We can also determine the row names and column names using the functions <b><tt>rownames()</tt></b> and <b><tt>colnames()</tt></b>.
 If there are no specific row or column names – the command will just return the indices.
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 > colnames(iris)
 [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
 
 \end{verbatim}
-\end{framed}
-The command \texttt{summary()} is one of the most useful commands in R. It is a generic function used to produce result summaries of the results of various functions. The function invokes particular methods which depend on the class of the first argument. 
-In other words – \texttt{R} picks out the most suitable type of summary for that data.
-{
-	\small
-\begin{framed}
-\begin{verbatim}
+</pre><br>
+The command <b><tt>summary()</tt></b> is one of the most useful commands in R. It is a generic function used to produce result summaries of the results of various functions. 
+<P>The function invokes particular methods which depend on the class of the first argument. 
+In other words – <b><tt>R</tt></b> picks out the most suitable type of summary for that data.
+
+<pre>
+<code>
 > summary(iris)
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width          Species  
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100   setosa    :50  
@@ -62,30 +62,28 @@ In other words – \texttt{R} picks out the most suitable type of summary for th
  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500                  
 >
 \end{verbatim}
-\end{framed}
+</pre><br>
 }
 
-%---------------------------------------------------------------------------------------------%
-\texttt{summary()} is particularly useful for manipulating data from more complex data objects.
+<!-- #################################################################################################################################################################################################---- -->
+<b><tt>summary()</tt></b> is particularly useful for manipulating data from more complex data objects.
  		
- 		\frametitle{3.1 Dimensions of a data set}
- 		\begin{itemize}
- 			\item We have remarked that some data sets are very large. 
- 			\item This is perhaps a good place to consider
+ 		{3.1 Dimensions of a data set}
+<ul>
+ <li> We have remarked that some data sets are very large. 
+ <li> This is perhaps a good place to consider
  			summary information about data objects. 
- 			\item For a simple vector, a useful command to determine
- 			the length (remark: sample size) is the function \texttt{length()}.
- 		\end{itemize}
- 		\begin{framed}
- 			\texttt{Y=4:18}
- 			\texttt{length(Y)}
+ <li> For a simple vector, a useful command to determine
+ 			the length (remark: sample size) is the function <b><tt>length()</tt></b>.
+</ul>
+<pre>
+ 			<b><tt>Y=4:18}
+ 			<b><tt>length(Y)}
  			
- 		\end{framed}
+ 		</pre><br>
  		For more complex data sets ( and data frames which we will see later) , we have several
  		tools for assessing the size of data.
- 	\end{frame}
- 	%==============================================================================================%
- 	\begin{frame}
+
  		\begin{figure}
  			\centering
  			\includegraphics[width=1.2\linewidth]{images/dimsiris}
@@ -94,17 +92,14 @@ In other words – \texttt{R} picks out the most suitable type of summary for th
  		\end{figure}
  		
  		
- 		
- 	\end{frame}
- 	%==============================================================================================%
- 	\begin{frame}
- 		\frametitle{Column (Variable) names and Row names}
- 		\begin{itemize}
- 			\item We can also determine the row names and column names using the functions \texttt{rownames()}
- 			and \texttt{colnames()}. 
- 			\item If there are no specific row or column names, the command will just return
+
+ 		{Column (Variable) names and Row names}
+<ul>
+ <li> We can also determine the row names and column names using the functions <b><tt>rownames()</tt></b>
+ 			and <b><tt>colnames()</tt></b>. 
+ <li> If there are no specific row or column names, the command will just return
  			the indices.
- 		\end{itemize}
+</ul>
  		\begin{figure}
  			\centering
  			\includegraphics[width=1.0\linewidth]{images/colnamesiris}
@@ -112,29 +107,23 @@ In other words – \texttt{R} picks out the most suitable type of summary for th
  			%\label{fig:colnamesiris}
  		\end{figure}
  		
- 	\end{frame}
- 	%==============================================================================================%
- 	\begin{frame}
- 		\frametitle{3.2 The \texttt{summary()} command}
- 		\begin{itemize}
- 			\item The command \texttt{summary()} is one of the most useful commands in \texttt{R}. 
- 			\item It is a generic function used
+ 
+ 		{3.2 The <b><tt>summary()</tt></b> command}
+<ul>
+ <li> The command <b><tt>summary()</tt></b> is one of the most useful commands in <b><tt>R}. 
+ <li> It is a generic function used
  			to produce result summaries of the results of various functions. 
- 			\item The function invokes particular
+ <li> The function invokes particular
  			methods which depend on the class of the first argument. 
- 			\item In other words, \texttt{R} picks out the most
+ <li> In other words, <b><tt>R} picks out the most
  			suitable type of summary for that data.
- 		\end{itemize}
- 	\end{frame}
- 	%==============================================================================================%
- 	\begin{frame}
- 		
+</ul>
+ 
  		
  		\begin{figure}
  			\centering
  			\includegraphics[width=0.99\linewidth]{images/irissummary}
  			
  		\end{figure}
- 		\texttt{summary()} is particularly useful for manipulating data from more complex data objects.
- 		
- 	\end{frame}
+ 		<b><tt>summary()</tt></b> is particularly useful for manipulating data from more complex data objects.
+ 

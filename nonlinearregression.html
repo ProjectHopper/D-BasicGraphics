@@ -1,33 +1,33 @@
 %---------------------------------------------------------------------
-\begin{slide}{Non-linear regression}
+<br>{Non-linear regression}
 Example: In an experiment to determine the effect of concentrations of chemicals on absorbances the following
 results were obtained:
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
   \hline
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-  Abs & 0.084 & 0.183 & 0.326 & 0.464 & 0.643 & 0.671 & 0.701 \\
-  Conc & 0.123 & 0.288 & 0.562 & 0.921 & 1.420 & 1.723 & 2.121 \\
+  % after <br>: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Abs & 0.084 & 0.183 & 0.326 & 0.464 & 0.643 & 0.671 & 0.701 <br>
+  Conc & 0.123 & 0.288 & 0.562 & 0.921 & 1.420 & 1.723 & 2.121 <br>
   \hline
 \end{tabular}
 
 
-\end{slide}
+<p>
 
-\begin{slide}{Non-linear regression}
-\begin{itemize}
-\item A scatterplot indicates that a linear model may be suitable.
-\item Model 1:  $Abs = \beta_{0} + \beta_{1}Conc$.
-\item But there is a slight curve in the trend, which indicates that a possible quadratic relationship.
-\item Model 2: $Abs = \beta_{0} + \beta_{1}Conc +  \beta_{2}Conc^2$
-\item We will construct a model for each and compare the $R^2$ and adjusted $R^2$ values.
-\end{itemize}
-\end{slide}
+<br>{Non-linear regression}
+<ul>
+<li> A scatterplot indicates that a linear model may be suitable.
+<li> Model 1:  $Abs = \beta_{0} + \beta_{1}Conc$.
+<li> But there is a slight curve in the trend, which indicates that a possible quadratic relationship.
+<li> Model 2: $Abs = \beta_{0} + \beta_{1}Conc +  \beta_{2}Conc^2$
+<li> We will construct a model for each and compare the $R^2$ and adjusted $R^2$ values.
+</ul>
+<p>
 
 
-\begin{slide}{Model fitting}
+<br>{Model fitting}
 We fit a linear model and a quadratic model. We need to create a new variable, `conc.sq`' which is simply the square
 of the concentrations.
-\begin{verbatim}
+<pre><code>
 >Abs<-c(0.084, 0.183, 0.326, 0.464,
 0.643 ,0.671,0.701)
 >Conc<-c(0.123, 0.288, 0.562, 0.921,
@@ -38,11 +38,11 @@ of the concentrations.
 >
 >Conc.sq = Conc^2
 >fit2 = lm(Abs~Conc + Conc.sq)
-\end{verbatim}
-\end{slide}
+</code></pre>
+<p>
 
-\begin{slide}{Quadratic model}
-\begin{verbatim}
+<br>{Quadratic model}
+<pre><code>
 Call:
 lm(formula = Abs ~ Conc + Conc.sq)
 .....
@@ -55,11 +55,11 @@ Conc.sq -0.154218   0.012072  -12.78 0.000216 ***
 Multiple R-squared: 0.9985,
 Adjusted R-squared: 0.9977
 ......
-\end{verbatim}
+</code></pre>
 Validates use of quadratic terms.
-\end{slide}
-\begin{slide}{Comparing R square values}
-\begin{verbatim}
+<p>
+<br>{Comparing R square values}
+<pre><code>
 > summary(fit1)$r.squared
 [1] 0.936624
 > summary(fit1)$adj.r.squared
@@ -68,19 +68,19 @@ Validates use of quadratic terms.
 [1] 0.9977258
 > summary(fit2)$r.squared
 [1] 0.9984839
-\end{verbatim}
+</code></pre>
 Clearly the second model is better.
-\end{slide}
+<p>
 
 
-\begin{slide}{Non linear models}
-\begin{itemize}
-\item
+<br>{Non linear models}
+<ul>
+<li>
 When a curve is evident in the data, can try using
 quadratic, cubic etc terms.
 
-\item Can also try logs, exponentials etc.
+<li> Can also try logs, exponentials etc.
 
-\end{itemize}
+</ul>
 
-\end{slide}
+<p>
