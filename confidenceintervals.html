@@ -2,8 +2,9 @@
 A confidence interval gives an estimated range of values which is likely to include an unknown population parameter, the estimated range being calculated from a given set of sample data. If independent samples are taken repeatedly from the same population, and a confidence interval calculated for each sample, then a certain percentage (confidence level) of the intervals will include the unknown population parameter. 
 
 Confidence intervals are usually calculated so that this percentage is $95\%$, but we can produce $90\%$, $99\%$, $99.9\%$ (or whatever) confidence intervals for the unknown parameter. The width of the confidence interval gives us some idea about how uncertain we are about the unknown parameter. A very wide interval may indicate that more data should be collected before anything very definite can be said about the parameter.
+<p>
 
-%-----------------------------------------------------%
+<!-- ##################################################################################################### -->
 {Confidence Interval}
 <ul>
 <li> General form of Confidence interval:<br> estimate $\pm$ (quantile $\times$ Std.Err)<br>
@@ -16,8 +17,8 @@ Confidence intervals are usually calculated so that this percentage is $95\%$, b
 <\ul>
 <p>
 
-%-----------------------------------------------------%
-{Confidence Interval: example}
+<!-- ##################################################################################################### -->
+
 
 <ul>
 <li> Seven meas urements of the pH of a buffer solution gave the following results:
@@ -33,9 +34,8 @@ utilizing $R$.<br>
 
 <li> $\mbox{Std.Err} = \mbox{std.dev} / \sqrt{n}$
 <\ul>
-<p>
 
-%-----------------------------------------------------%
+<p>
 {Confidence Interval: example}
 
 <pre><code>
@@ -55,62 +55,8 @@ utilizing $R$.<br>
 
 <p>
 
-%-----------------------------------------------------%
-{Confidence Interval: example}
-
 
 Thus the 95\% confidence interval for this problem is approximately [5:14; 5:19], while
 using the same code only taking $\alpha$ =0.01 will give us [5:13; 5:20].
 <p>
 
-%-----------------------------------------------------%
-{Confidence Interval}
-	<ul>
-		<li> General form of Confidence interval:<br> estimate $\pm$ (quantile $\times$ Std.Err)<br>
-		<li> Estimate: sample mean, sample proportion, difference of samples.
-		<li> quantile: quantile from $t$ distribution.
-		<li> Std.Err: Standard error for estimate.
-		<li> Lower and upper bounds are to be calculated.
-		<li> Sample standard deviations and sample sizes are usually relevant.
-		<li> Confidence: $100(1- \alpha)\%$ - use $alpha/2$ and $1-alpha/2$ quantiles.
-	<\ul>
-<p>
-
-%-----------------------------------------------------%
-{Confidence Interval: example}
-	
-	<ul>
-		<li> Seven meas urements of the pH of a buffer solution gave the following results:
-		<br>
-		
-		5.12 5.20 5.15 5.17 5.16 5.19 5.15.
-		
-		<li> Calculate (i) the 95\% and (ii) the 99\% confidence limits for the true pH
-		utilizing $R$.<br>
-		
-		<li> The standard error is the standard deviation of the sample over the square root of the sample size `n'.
-		<br>
-		
-		<li> $\mbox{Std.Err} = \mbox{std.dev} / \sqrt{n}$
-	<\ul>
-<p>
-
-%-----------------------------------------------------%
-{Confidence Interval: example}
-	
-	<pre><code>
-	> x<-c(5.12, 5.20, 5.15, 5.17, 5.16, 5.19, 5.15)
-	> n=length(x)   #sample size
-	> alpha = 0.05  #alpha
-	>
-	> LB95=mean(x)+qt(alpha/2,n-1)*sd(x)/sqrt(n)
-	> UB95=mean(x)+ qt(1-alpha/2,n-1)*sd(x)/sqrt(n)
-	>
-	> LB95
-	[1] 5.137975
-	> UB95
-	[1] 5.187739
-	
-	</code></pre>
-	
-<p>
