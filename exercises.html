@@ -265,3 +265,168 @@ source("myData.R")
 		par(mfrow =c(1,1)) 	#reset
 		\end{verbatim}
 		
+		
+
+
+
+
+xdat
+ 
+
+1.8
+ 
+
+2.9
+ 
+
+3.7
+ 
+
+4.5
+ 
+
+5.1
+ 
+
+6.4
+ 
+
+7.1
+ 
+
+
+
+ydat
+ 
+
+7.9
+ 
+
+7.2
+ 
+
+6.5
+ 
+
+5.8
+ 
+
+4.9
+ 
+
+3.9
+ 
+
+3.1
+ 
+
+ 
+
+1) What is the mean and standard deviation of both 'xdat' and 'ydat' ?
+
+ 
+
+2) What is the correlation coefficient of 'xdat' and 'ydat'?
+
+ 
+
+3) From the 'Orange' data set, what is the mean and standard deviation of the 'age' column?
+
+ 
+
+4) From the 'USArrests' data, what is the lowest and highest values in the 'Murder' column?
+
+ 
+
+5) From the 'iris' data set, what is the mean and standard deviation of petal widths of 'virginica' species subgroup?
+
+ 
+
+6) Write a simple function 'Zfunc' to perform the following task:
+
+ 
+
+Given three values  (mu),  (sigma) and X, the function will return a value Z , defined as follows.
+
+ 
+
+Z=X-
+
+ 
+
+The default values are = 0,  = 1 and X = 1 respectively.
+
+ 
+
+7) For all species, make a plot of the petal lengths (x-axis) and petal widths (y axis). (plot character: 14 , colour: blue ) 
+
+ 
+
+8) Add a sloped line (line type: 2, colour: green) to this plot. The intercept is  1.1 and the slope is 2.23.
+
+ 
+
+9) Add the title "Iris data scatterplot" to your plot. 
+
+ 
+
+10) Briefly describe what the 'lm' function is used for.
+
+ 
+
+ 
+
+<!-- ##################################################################################### -->
+Part 1: Determining the Regression Equation
+
+# Part I : Simple Linear Regression 
+Dist=c(1.4,3.8,7.5,10.2,11.7,15.0) 
+Merc=c(2.4,2.5,1.3,1.3,0.7,1.2) 
+Fit1=lm(Merc~Dist) 
+
+
+Part 2: Correlation Test
+
+ Part II : 
+Gluc = c(0,2,4,6,8,10) 
+Absrb = c(0.002,0.15,0.294,0.434,0.57,0.704) 
+cor.test(Absrb,Gluc) 
+
+
+Part 3: Simple Linear Regression
+ 
+# Part III : 
+
+Conc= c(30,40,50,60,70,0,10,20) 
+
+Absrb=
+
+Fit3=lm(Absrb~Conc) 
+
+
+Part 4: Simple Linear Regression
+
+# Part IV : 
+Gold = c(30,40,50,60,70,0,10,20) 
+Absrb= c(0.413,0.468,0.528,0.574,0.635,0.257,0.314,0.364) 
+Fit4 = lm(Absrb ~ Gold) 
+
+
+Part 5: Comparing Methods of Measurement
+
+# Part V : Comparing Analytical Methods? 
+ISE =c(108,12,152,3,106,11,128,12,160,128) 
+Grav=c(105,16,113,0,108,11,141,11,182,118) 
+Fit5a = lm(ISE ~ Grav) 
+summary(Fit5a) 
+
+
+
+Fit5b = lm(Grav ~ ISE) 
+summary(Fit5b) 
+
+
+
+
+
+		
