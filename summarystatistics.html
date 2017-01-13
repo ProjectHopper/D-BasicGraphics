@@ -1,4 +1,21 @@
-	
+	\section{Summary Statistics}
+
+The \texttt{R} command \texttt{summary()} returns a summary statistics for a simple dataset.
+The \texttt{R} command \texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
+Also, the quartiles are computed a different way.
+
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+> summary(mtcars$mpg)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  10.40   15.43   19.20   20.09   22.80   33.90 
+>
+> fivenum(mtcars$mpg)
+[1] 10.40 15.35 19.20 22.80 33.90
+\end{verbatim}
+\end{myindentpar}
+
 	\chapter{Descriptive Statistics}
 	
 	\section{Basic Statistics}
