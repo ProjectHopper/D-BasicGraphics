@@ -1,0 +1,55 @@
+documentclass[ModuleBmain.tex]{subfiles}
+\begin{document}
+
+
+\subsection{Correlation}
+
+A correlation coefficient is a number between -1 and 1 which measures the degree to which two variables are linearly related. If there is perfect linear relationship with positive slope between the two variables, we have a correlation coefficient of 1; if there is positive correlation, whenever one variable has a high (low) value, so does the other.
+
+If there is a perfect linear relationship with negative slope between the two variables, we have a correlation coefficient of -1; if there is negative correlation, whenever one variable has a high (low) value, the other has a low (high) value.
+A correlation coefficient of 0 means that there is no linear relationship between the variables.
+
+We can determine the Pearson Correlation coefficient in R using the \texttt{cor()} command.
+To get a more complete statistical analysis, with formal tests, we can use the command \texttt{cor.test()}
+The interpretation of the output from the cor.test()procedure is very similar to procedures we have already encountered. The null hypothesis is that the correlation coefficient is equal to zero. This is equivalent to saying that there is no linear relationship between variables.
+
+
+\begin{framed}
+\begin{verbatim}
+C=c(0,2,4,6,8,10,12) 
+F=c(2.1,5.0,9.0,12.6,17.3,21.0,24.7)
+cor.test(C,F)
+\end{verbatim}
+\end{framed}
+\begin{verbatim}
+
+        Pearson's product-moment correlation
+
+data:  C and F 
+t = 47.1967, df = 5, p-value = 8.066e-08
+alternative hypothesis: true correlation is not equal to 0 
+95 percent confidence interval:
+ 0.9920730 0.9998421 
+sample estimates:
+      cor 
+0.9988796 
+\end{verbatim}
+
+
+\subsection{Spearman and Kendall Correlation}
+Spearman and Kendall correlations are both \textbf{\emph{rank correlations}}. 
+To implement Spearman and Kendall correlation, simply specify the type in the \texttt{method=" "} argument.
+\begin{verbatim}
+> cor(G,D)
+[1] 0.3167869
+>
+> cor(G,D,method="spearman")
+[1] 0.1785714
+>
+> cor(G,D,method="kendall")
+[1] 0.1428571
+> 
+\end{verbatim}
+The interpretation is very similar, but there are no confidence intervals for the estimates.
+
+\end{document}
