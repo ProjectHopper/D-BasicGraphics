@@ -1,4 +1,4 @@
-%---------------------------------------------------------------------
+<!-- ################################################################################ -->
 <br>{Non-linear regression}
 Example: In an experiment to determine the effect of concentrations of chemicals on absorbances the following
 results were obtained:
@@ -24,7 +24,7 @@ results were obtained:
 <p>
 
 
-<br>{Model fitting}
+  <br><h4>Model fitting</h4>
 We fit a linear model and a quadratic model. We need to create a new variable, `conc.sq`' which is simply the square
 of the concentrations.
 <pre><code>
@@ -41,7 +41,8 @@ of the concentrations.
 </code></pre>
 <p>
 
-<br>{Quadratic model}
+<br>
+<h4>Quadratic model</h4>
 <pre><code>
 Call:
 lm(formula = Abs ~ Conc + Conc.sq)
@@ -73,10 +74,10 @@ Clearly the second model is better.
 <p>
 
 
-<br>{Non linear models}
+<br>
+<h4>Non linear models</h4>
 <ul>
-<li>
-When a curve is evident in the data, can try using
+<li> When a curve is evident in the data, can try using
 quadratic, cubic etc terms.
 
 <li> Can also try logs, exponentials etc.
