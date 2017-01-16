@@ -1,12 +1,39 @@
-﻿<!-- ################################################################################################################################# -->
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="RWorkshop.GitHub.io : Website">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>RWorkshop.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+          <h1 id="project_title">RWorkshop.GitHub.io</h1>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+<!-- ################################################################################################################################# -->
 <br>
 
 {1.2 Command Line Interface}
 <ul>
-<li> When you start \texttt{R}, the command line interface window will appear on screen. This is one
-of many windows in the \texttt{R} environment, others including graphical output windows, or script
+<li> When you start <tt>R</tt>, the command line interface window will appear on screen. This is one
+of many windows in the <tt>R</tt> environment, others including graphical output windows, or script
 editors. 
-<li> \texttt{R} code can be entered into the command line directly. 
+	<li> <tt>R</tt> code can be entered into the command line directly. 
 <li> Alternatively code can be saved
 to a script, which can be run inside a session using the \texttt{source()} function.
 </ul>
@@ -28,9 +55,9 @@ users prefer the arrow approach.
 
 
 <ul>
-\item You can also use $->$ as an assignment operator, reversing the
+<li> You can also use $->$ as an assignment operator, reversing the
 usual assignment positions. (This is actually really useful).
-\item Commands are separated either by
+<li>Commands are separated either by
 a semi colon or by a newline.
 </ul>
 \begin{figure}
@@ -65,11 +92,11 @@ a semi colon or by a newline.
 <!-- ################################################################################################################################# -->
 
 <h4> Reserved Words - Bad names for Objects</h4>
-\begin{itemize}
-	\item Some names are used by the system, e.g.\texttt{T, F,q,c} etc . 
-	\item Avoid using these. (This is the rule I broke earlier on)
-	\item Also avoid using command names like \textbf{mean} and \textbf{sum}
-\end{itemize}
+<ul>
+<li> Some names are used by the system, e.g.\texttt{T, F,q,c} etc . 
+<li> Avoid using these. (This is the rule I broke earlier on)
+<li> Also avoid using command names like \textbf{mean} and \textbf{sum}
+	      </ul>
 
 
 <!-- ################################################################################################################################# -->
@@ -85,19 +112,19 @@ letters.
 <!-- ################################################################################################################################# -->
 
 <h4>Camel Case</h4>
-\begin{framed}
+<pre><code>
 	\texttt{camelCase}
 	
 	\texttt{variableName}
 	
 	\texttt{AlsoCamelCase}
-\end{framed}
+</code></pre>
 
 
 <!-- ################################################################################################################################# -->
 <br>
 {1.4 Commenting}
-For the sake of readability, it is good practice to comment code. The \# character at the
+For the sake of readability, it is good practice to comment code. The # character at the
 beginning of a line signifies a comment, which is not executed. Lines of hashtags can be used
 to identify the beginning and end of code segments
 \begin{figure}
