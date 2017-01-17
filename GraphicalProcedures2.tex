@@ -15,59 +15,6 @@ help(matplot)
 
  
 
-\section{Scatterplots (with \texttt{locator} and \texttt{identify})}
-\noindent Using two variables in the \texttt{plot()} function will result in scatter-plot, a graph with the first argument as the variable plotted on the x-axis and the second argument as the variable plotted on the y-axis.
-\begin{framed}
-\begin{verbatim}
-X=c(4.53, 0.21, 3.42, 9.19, 6.17, 1.91, 7.9, 11.8, 1.06, 2.7)
-Y=c(14.42, 2.52, 6.56, 15.6, 9.94, 9.82, 14.32, 10.71, 3.02, 13.82)
-
-plot(X,Y,pch=18,col="red")
-\end{verbatim}
-\end{framed}
-
-
-\begin{center}
-\includegraphics[scale=0.35]{IDent1}
-\end{center}
-%---Insert Graphs (IDent1)
-
-\subsection{The \texttt{locator()} function}
-We can use the  \texttt{\textbf{locator()}} command to find out more about the position of observations. Suppose we are looking for the information on one only point, so we specify ``1" as an argument. (let's choose the first point from the right-handside in this instance).
-
-
-\noindent Type the following, then click on the point, on the scatter-plot using your mouse (i.e. precisely on the point).
-
-
-\begin{framed}
-\begin{verbatim}
-locator(1)
-\end{verbatim}
-\end{framed}
-The XY co-ordinates of where the mouse was clicked will appear on screen.
-\begin{framed}
-\begin{verbatim}
-> locator(1)
-$x
-[1] 11.76287
-
-$y
-[1] 10.7516
-\end{verbatim}
-\end{framed}
-
-\subsection{The \texttt{identify()} function}
-Suppose we wish to identify which case (ie. row number) that a data-point corresponds to.
-For this we use the \textbf{\texttt{identify()}} command. We specify the X and Y variables as arguments (It is possible to have more than one pair of predictor and response variables on the same scatterplot).
-
-\begin{framed}
-\begin{verbatim}
-identify(X,Y)
-\end{verbatim}
-\end{framed}
-
-\noindent The observation corresponds to the 8th case. Find out which case corresponds to the lowest data point (i.e. one with the smallest ``y-value"). 
-\newpage
 %-------------------------------------------------- %
 \section{Enhancing plots}
 
@@ -227,28 +174,6 @@ text(x=5,y=3,"Text to be Added")
 
 %----------------------------------------------------------------------%
 
-%----------------------------------------------------------------------%
-
-\subsection{Title and Subtitles}
-It is good practice to have a title attached to your scatterplot. The chosen title (``titlename") of the plot is specified using the argument \texttt\textbf{{main="titlename"}}. Text for a subtitle (here ``subtitle text" ) may also be inserted into the plot, using the argument  \texttt\textbf{{sub="subtitletext"}}. Another way to add a title is using the \texttt{title()} function, as a separate command to plot.
-
-
-\begin{framed}
-\begin{verbatim}
-Palette=c("lightblue","blue","navyblue","midnightblue")
-hist(iris$Petal.Length,col=Palette,
-main="Iris Data Set", sub="Distribution of Sepal Lenghts")
-\end{verbatim}
-\end{framed}
-%---IMAGE ATTACH 3
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{./irishist4}
-\caption{}
-\label{fig:irishist4}
-\end{figure}
 
 
 \subsection{Fonts for Labels and Axes}
@@ -281,83 +206,3 @@ mtext("Enhanced Scatterplot", side=4,col="red ")
 
 
 
-\subsection{Adding Lines to a Scatter Plot}
-Previously we have used scatter plots to plot bivariate data. They were constructed using the \texttt{\textbf{plot()}} command.  
-
-Using the \texttt{\textbf{abline()}} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
-
-
-
-\begin{framed}
-\begin{verbatim}
-
-plot(mtcars$mpg,mtcars$wt,pch=18,col="red")
-title("Cars Data Set",sub="MPG v Weight")
-
-# Now to Add Lines
-abline(v=mean(mtcars$mpg))
-abline(h=mean(mtcars$wt))
-abline(a=5,b=-1/6)
-\end{verbatim}
-\end{framed}
-
-\begin{center}[h!]
-\includegraphics[scale=0.55]{linesDemo}
-\end{center}
-
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{\textbf{col=}} argument. Finally we can change the line type to one of four possible types, using the lty argument.
-The line types are follows 
-\begin{itemize}
-\item \texttt{\textbf{lty =1}}   Normal full line (default)
-\item \texttt{\textbf{lty =2}}  Dashed line 
-\item \texttt{\textbf{lty =3}}   Dotted line
-\item \texttt{\textbf{lty =4}}   Dash-dot line
-\end{itemize}
-
-
-\subsubsection{Adding a Regresion Line to a Plot}
-In Regression models, scatterplots are often used to depict the relationship between the predictor variable ($x$) and a response variable ($y$).
-
-
-\begin{framed}
-\begin{verbatim}
-Fit1 = lm(mpg~wt,data=mtcars)
-coef(Fit1)
-#(Intercept)          wt 
-#  37.285126   -5.344472 
-plot(wt,mpg,pch=18,col="red")
-abline(coef(Fit1))
-\end{verbatim}
-\end{framed}
-\begin{center}
-\includegraphics[scale=0.35]{coefPlot}
-\end{center}
-
-%\subsection{Line Types and Line Width}
-%To specify a line width, we use the \texttt\textbf{{lwd=}} argument.
-
-\subsection{Combining Plots}
-Multiple plots can be combined into a single graph, arranged vertically, horizontally or in a grid.
-
-This can be implemented with \texttt{\textbf{par( )}} function, specifying the arrangment using the \texttt{\textbf{mfrow=}} argeument.
-
-Suppose we require a histogram above a boxplot (with horizontal orientation). If we consider this as a grid, we have an array of two rows, with one column.
-
-\begin{framed}
-\begin{verbatim}
-# 2 plots arranged in 2 rows and 1 column
-
-
-par(mfrow=c(2,1))
-
-
-hist(mtcars$wt, main="Histogram of wt",col=c("lightblue","blue"))
-boxplot(mtcars$
-wt, main="Boxplot of wt",horizontal=TRUE,col="lightblue")
-
-\end{verbatim}
-\end{framed}
-
-\begin{center}[h1]
-\includegraphics[scale=0.65]{combiPlot}
-\end{center}
