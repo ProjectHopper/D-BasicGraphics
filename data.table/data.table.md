@@ -31,6 +31,3 @@ See <strong>data.table compared to dplyr</strong> on <a href="http://stackoverfl
 <li>has <strong><a href="https://en.wikipedia.org/wiki/Dependency_hell">no dependencies</a></strong> at all other than base R itself, for simpler production/maintenance</li>
 <li>the R dependency is <strong>as old as possible for as long as possible</strong> and we test against that version; e.g., v1.9.8 released on 25-Nov-2016 bumped the dependency up from 4.5 year old R 2.14.0 to 3 year old R 3.0.0.</li>
 </ul>
-<p>Version 1.0 was released to CRAN in 2006. In June 2014 we moved from R-Forge to GitHub.</p>
-<p><a href="https://twitter.com/MattDowle/status/720872742933831680"><img src="/Rdatatable/data.table/wiki/pictures/birthday.png" alt=""></a></p>
-<p>Guidelines for filing issues / pull requests: <a href="https://github.com/Rdatatable/data.table/blob/master/Contributing.md">Contribution Guidelines</a>.</p>
