@@ -1,2 +1,2 @@
-# D-BasicGraphics
+# Statistics With R Workshop
 Basic Graphics
