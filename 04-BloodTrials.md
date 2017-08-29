@@ -1,0 +1,178 @@
+### Exercise Question 1 (6 marks)
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
+A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
+A study has obtained the following test scores for 12 randomly selected patients suffering from the disease. 
+119 131 115 107 125 96 128 99 103 103 105 109
+(see DAT49)
+1.	Compute a 99% confidence interval for the mean of patient’s blood factor scores.[2 Marks]
+
+2.	We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
+
+
+3.	Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
+
+
+### Inference Procedures  - Question 1 (6 marks)
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
+A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
+
+A study has obtained the following test scores for 12 randomly selected patients suffering from the disease in one area of the UK
+119 131 115 107 125 96 128 99 103 103 105 109
+(see DAT49)
+
+A similar study has obtained the following test scores for 14 randomly selected patients suffering from the disease in Dublin, Ireland.
+120 140 112 109 114 116  99 108 109 111 109 131 117 101
+(see DAT79)
+The variance of both data sets are equal. 
+You may assume that both data sets are normally distributed.
+
+The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
+
+1.	Formally state both the null hypothesis and alternative hypothesis. [2 Mark]
+2.	From the R code output, what is the resultant p-value? [1 Mark]
+3.	What is your conclusion for the hypothesis test, based on this p-value? [2 Marks]
+4.	Compute a 95% confidence interval for the difference of means of both data sets. [1 Mark ] 
+
+ 
+
+### Inference Procedures  - Question 1 (5 marks)
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
+A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  Specifically they are carrying out research on the effects of experimental medication has on the blood factor level.
+For a group of 14 volunteer patients the following test scores for were obtained both prior to the medication, and after the medication.
+Patient	A	B	C	D	E	F	G	H	I	J	K	L	M	N
+Before	120	140	112	109	114	116	99	108	109	111	109	131	117	101
+After	104	112	110	107	101	103	101	102	103	102	101	120	112	103
+
+ (see DAT79 and DAT81)
+For now , you may assume that the case-wise differences are normally distributed.
+The clinical research organization wishes to determine if there is a significant improvement (lessening of the blood factor level) due to the medication. 
+Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
+1.	Formally state both the null hypothesis and alternative hypothesis. [2 Mark]
+
+2.	From the R code output, what is the resultant p-value? [1 Mark]
+
+3.	What is your conclusion for the hypothesis test, based on this p-value? [2 Marks]
+
+### Inference Procedures  - Question 1 (6 marks)
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
+A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
+A study has obtained the following test scores for 14 randomly selected patients suffering from the disease. 
+$$ 104 112 110 107 101 103 101 102 103 102 101 120 112 103 $$
+(see DAT81)
+
+1.	Compute a 99% confidence interval for the mean of patient’s blood factor scores.[2 Marks]
+2.	We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
+3.	Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
+
+### Inference Procedures  - Question 1 (5 marks)
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
+A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
+A study has obtained the following test scores for 15 randomly selected patients suffering from the disease in Edinburgh, Scotland.
+113 115 120 109 105 103 103  99 128  96 125 107 115 131 119
+(see DAT88)
+A similar study has obtained the following test scores for 14 randomly selected patients suffering from the disease in Dublin, Ireland.
+120 140 112 109 114 116  99 108 109 111 109 131 117 101
+(see DAT79)
+You may assume that both data sets are normally distributed.
+
+The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. 
+
+1.	Perform a appropriate formal test to determine whether or not both data sets have equal variance. State both the null hypothesis and alternative hypothesis. [2 Marks]
+2.	From the R code output, what is your conclusion of this test, using the resultant p-value? [2 Marks]
+3.	Compute a 95% confidence interval for the variance ratio of both data sets. [1 Marks]
+
+
+ 
+
+Inference Procedures  - Question 2 (6 marks)
+This question is a continuation of Question 1. You may assume that all the statements and conclusion made in Question 1 apply to Question 2.
+The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. 
+Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
+
+1.	Formally state both the null hypothesis and alternative hypothesis for this procedure. [2 Mark]
+
+
+2.	From the R code output, what is the resultant p-value? [1 Mark]
+
+
+3.	What is the 95% confidence interval for the difference in means? [1 Mark]
+
+
+
+4.	What is your conclusion for the hypothesis test, based on the p-value only? [2 Marks]
+
+
+Testing Normality - Question 1 (4 Marks)
+Consider the following datasets A and B. The values for each data set are found in the specified data sets.
+	Variable	Data Set
+1	A	X101
+2	B	X102
+
+Answer the following questions. 
+1)	Use a graphical procedure was carried out to determine whether or not the data set A is normally distributed. Sketch your output. [1 Mark]
+
+2)	Use a graphical procedure was carried out to determine whether or not the data set B is normally distributed. Sketch your output. [1 Mark]
+
+
+3)	Perform a formal hypothesis test for testing the normality of data set A.  State your null and alternative hypothesis. [1 Mark]
+
+4)	Perform a formal hypothesis test for testing the normality of data set B.  State your null and alternative hypothesis. [1 Mark]
+ 
+
+Testing Equality of Variance - Question 2 (3 Marks)
+
+Consider the three following data sets X, Y and Z. 
+Sample	Data Set
+X	X110
+Y	X114
+Z	X115
+
+For each of the three possible pairings, state if the assumption of equality of variance is valid. Justify your conclusion. 
+
+ANOVA Procedures  - Question 3 (6 marks)
+Specimens of milk from dairies in three different districts are assayed for their concentrations of the radioactive isotope Strontium-90. 
+The results, in picocuries per litre, are as shown in the table below. 
+District	Observations	Dataset
+A	6.7 6.1 6.8 8.0 7.5	X111
+B	7.5 10.3 11.6 10.9 6.9 9.2 8.8	X112
+C	10.3 9.8 12.9 11.9	X113
+		
+Combined		X100
+	Grouping Variable	X109
+
+1.	Write out the ANOVA table. You are not required to add the “Totals” Row. [4 Marks]
+
+2.	Carry out an analysis of variance of these data, conducting your significance test at the 5% level. [2 Marks]
+
+ 
+
+Diagnostic for Linear Models - Question 4 (7 Marks)
+Consider the variables X1, X2 and Y. We wish to fit a linear model to the data, where Y is the dependent variable and X1 and X2 are the independent variables.
+	Variable	Data Set
+1	Y	X078
+2	X1	X077
+3	X2	X079
+
+
+
+
+
+1.	Fit a linear model as instructed above.  State the Regression Equation [1 Mark ] 
+
+2.	Construct and examine the diagnostic plots for this fitted model.  
+
+Sketch the “Residual Versus Fitted Values” Plot  (i.e. Diagnostic Plot 1 ). 
+Comment on the pattern of covariates in this plot. [1  Marks]
+
+Sketch the Normal Probability Plot for Residuals ( i.e. Diagnostic Plot 2). 
+Comment on the pattern of covariates in this plot. [1 Marks]
+
+
+3.	For any points specifically identified in either of the diagnostic plots – state the Cook’s Distance value.   [1 Mark]
+
+Hint: use “ X <-round(X,5)” to make the answers easier to read.
+
+4.	State the Akaike Information Criterion value for this model. [1 Marks]
+
+5.	Compute a robust linear regression model for this data set. (Hint: Remember to load the MASS package. Also you may use the default weighting method.)
+Write out the regression equation for this fitted model. [2 Marks]
