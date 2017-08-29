@@ -312,7 +312,56 @@ Also the null difference (0) lies within the confidence interval.\\
 All of the variations described previously (i.e. specifying the null value, the confidence level and the alternative hypothesis)
 apply to the two sample $t$-test also.
 
+%----------------------------------------------------%
+\subsubsection{Two Sample t test}
 
+The two-sample t test is used to test the hypothesis that two samples may
+be assumed to come from distributions with the same mean.
+
+The theory for the two-sample t test is not very different in principle from
+that of the one-sample test. Data are now from two groups, $x_{11}, . . . , x_{1n1}$
+and $x_{21}, . . . , x_{2n2}$ , which we assume are sampled from the normal distributions
+$N(µ_{1}, \sigma^{1}_{2} )$ and
+$N(µ_{2}, \sigma^{2}_{2} )$, and it is desired to test the null hypothesis
+$\mu_{1} = \mu_{2}$. You then calculate
+
+\[
+t = \frac{\bar{X}_{1}-\bar{X}_{2}}{S.E.(\bar{X}_{1}-\bar{X}_{2})}
+\]
+
+
+\subsubsection{Two Sample Tests}
+
+
+All of the previous hypothesis tests and confidence intervals can be
+extended to the two-sample case.
+
+The same assumptions apply, i.e. data are normally distributed in
+each population and we may want to test if the mean in one
+population is the same as the mean in the other population, etc.
+
+Normality can be checked using histograms, boxplots and Q-Q
+plots as before. The Anderson-Darling test can be used on
+each group of data also.
+
+
+%------------------------------------------------------%
+\subsubsection{Implementation}
+
+This can be carried out in R by hand:
+
+\footnotesize \begin{verbatim}
+>obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
+>row.tots <- apply(obs.vals, 1, sum)
+>col.tots <- apply(obs.vals, 2, sum)
+>exp.vals <- row.tots%o%col.tots/sum(obs.vals)
+>TS <- sum((obs.vals-exp.vals)^2/exp.vals)
+>TS
+>[1] 1.777415
+ \end{verbatim}\normalsize
+
+
+%------------------------------------------------------%
 %-
 ###Paired t tests
 For `before/after' procedures, the corresponding elements of both data sets are said to be `paired'.
