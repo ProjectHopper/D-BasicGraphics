@@ -1,18 +1,18 @@
 
-%-
-###Statistical Inference
-\begin{itemize
-\item $R$ commands for statistical inference procedures \item
-t.test() - testing procedure for means.
-\begin{itemize
-\item One sample \item Two sample \item Paired
-\end{itemize
-\item prop.test() - testing procedure for proportions.
-\begin{itemize
-\item One sample \item Two sample
-\end{itemize
-\item var.test() - testing procedure for variances.
-\end{itemize
+
+### Statistical Inference
+
+*  $R$ commands for statistical inference procedures 
+*  t.test() - testing procedure for means.
+
+*  One sample *  Two sample *  Paired
+
+*  prop.test() - testing procedure for proportions.
+
+*  One sample *  Two sample
+
+*  var.test() - testing procedure for variances.
+
 
 
 
@@ -23,12 +23,12 @@ t.test() - testing procedure for means.
 
 If we have a single sample we might want to answer several
 questions:
-\begin{itemize
-\item What is the mean value? \item Is the mean value
+
+*  What is the mean value? *  Is the mean value
 significantly different from current theory? (Hypothesis test)
-\item What is the level of uncertainty associated with our
+*  What is the level of uncertainty associated with our
 estimate of the mean value? (Confidence interval)
-\end{itemize
+
 To ensure that our analysis is correct we need to check for
 outliers in the data (i.e. boxplots) and we also need to check
 whether the data are normally distributed or not.
@@ -40,16 +40,16 @@ whether the data are normally distributed or not.
 
 Graphical methods are often used to check that the data being
 analysed are normally distributed. We can use
-\begin{itemize
-\item Histogram - check for symmetry \item Boxplot - symmetry and
-outliers \item Normal probability (Q-Q) plot
 
-\item Other procedures
-\begin{itemize
-\item Kolmogorov-Smirnov test (ks.test())\item Shapiro Wilk test (shapiro.test()) \item
-Grubb's test \item Anderson Darling test
-\end{itemize
-\end{itemize
+*  Histogram - check for symmetry *  Boxplot - symmetry and
+outliers *  Normal probability (Q-Q) plot
+
+*  Other procedures
+
+*  Kolmogorov-Smirnov test (ks.test())*  Shapiro Wilk test (shapiro.test()) * 
+Grubb's test *  Anderson Darling test
+
+
 We shall revert to these tests later.
 
 
@@ -59,34 +59,34 @@ We shall revert to these tests later.
 %-
 ###Hypothesis testing for a mean
 
-\begin{itemize
-\item (Last week : confidence interval for a mean) \item Revision:
+
+*  (Last week : confidence interval for a mean) *  Revision:
 For large samples (n >= 30) and/or if the population standard
 deviation ($\sigma$) is known, the usual test statistic is given
 by: $Z =\frac{\bar{X - \mu{SE(\bar{X)$
 
-\item $SE(\bar{X) = \sigma /\sqrt{n$ or $s / \sqrt{n$. \item For small samples, use the $t-$distribution
+*  $SE(\bar{X) = \sigma /\sqrt{n$ or $s / \sqrt{n$. *  For small samples, use the $t-$distribution
 with $n-1$ degrees of freedom.
-\item
+* 
 Critical value from tables.
-\item Compare test statistics and critical values.
-\end{itemize
+*  Compare test statistics and critical values.
+
 
 
 
 
 %-
 ###One sample t-test: t.test()
-\begin{itemize
-\item We can use the $R$ command `t.test()' to perform both procedures.
-\item The t.test() command determines a confidence interval for the
+
+*  We can use the $R$ command `t.test()' to perform both procedures.
+*  The t.test() command determines a confidence interval for the
 mean of a data set, and performs a hypothesis test on the mean.
-\item
+* 
 The default null hypothesis is $H_{0: \mu = 0$.
-\item The default alternative hypothesis is $H_{1: \mu \neq 0$.\\
-\item The default confidence level is 95\% (hence default $\alpha$ = 0.05).
-\item Base all decisions on p-values, i.e. reject the null if less than $\alpha$ or $\alpha/2$.
-\end{itemize
+*  The default alternative hypothesis is $H_{1: \mu \neq 0$.\\
+*  The default confidence level is 95\% (hence default $\alpha$ = 0.05).
+*  Base all decisions on p-values, i.e. reject the null if less than $\alpha$ or $\alpha/2$.
+
 
 
 %-
@@ -145,18 +145,18 @@ mean
 
 
 \subsection[containsverbatim]{One sample t-test: Decision rule
-\begin{itemize
-\item The null hypothesis is $H_{0: \mu = 0$.
-\item The alternative hypothesis is $H_{1: \mu \neq 0$.
-\item The p-value is given in the output.
+
+*  The null hypothesis is $H_{0: \mu = 0$.
+*  The alternative hypothesis is $H_{1: \mu \neq 0$.
+*  The p-value is given in the output.
 <pre><code>
 > test1$p.value
 [1] 5.514e-05                                                           $
 </code></pre>
-\item This is a 2 tailed test, so compare p.value with $\alpha/2$.
-\item The p-value is extremely small and is less than $\alpha/2$
-\item Therefore we reject the null hypothesis. $\mu$ must be greater than 0.
-\end{itemize
+*  This is a 2 tailed test, so compare p.value with $\alpha/2$.
+*  The p-value is extremely small and is less than $\alpha/2$
+*  Therefore we reject the null hypothesis. $\mu$ must be greater than 0.
+
 
 %
 ###One sample t-test: Null hypotheses
@@ -194,14 +194,14 @@ alternative hypothesis:
 </code></pre>
 
 ###One sample t-test: significance
-\begin{itemize
 
-\item The p-value remains the same (it is independent of $\alpha$).
-\item We fail to reject the null hypothesis.
-\item A 90\% confidence interval is calculated.
-\item The confidence interval validates the decision not to reject the null
+
+*  The p-value remains the same (it is independent of $\alpha$).
+*  We fail to reject the null hypothesis.
+*  A 90\% confidence interval is calculated.
+*  The confidence interval validates the decision not to reject the null
 hypothesis ( $\mu$ lies within the interval).
-\end{itemize
+
 
 
 
@@ -210,10 +210,10 @@ hypothesis ( $\mu$ lies within the interval).
 ###The alternative hypothesis
 The default alternative hypothesis is the `two tailed' or `not equal' hypothesis.\\
 Both the one tailed alternative hypotheses can be specified using the `alternative' parameter.
-\begin{itemize
-\item alternative = "less"
-\item alternative = "greater"
-\end{itemize
+
+*  alternative = "less"
+*  alternative = "greater"
+
 
 <pre><code>
 > t.test(x,mu=3, alternative ="less")
@@ -263,18 +263,18 @@ Again we fail to reject the null hypothesis.
 
 %--
 ###Two Sample t-test
-\begin{itemize
-\item The two-sample t-test is one of the most commonly used
-hypothesis tests. \item It is applied to compare whether the
+
+*  The two-sample t-test is one of the most commonly used
+hypothesis tests. *  It is applied to compare whether the
 average difference between two groups is really significant or if
-it is due instead to random chance. \item It helps to answer
+it is due instead to random chance. *  It helps to answer
 questions like whether the average success rate is higher after
-implementing a new sales tool than before, \item or whether the
+implementing a new sales tool than before, *  or whether the
 test results of patients who received a drug are better than test
 results of those who received a placebo.
-\item
+* 
 $H_{0: \mu_{x = \mu_{y \quad v \quad \mu_{x \neq \mu_{y$\\
-\end{itemize
+
 
 
 %--
@@ -423,23 +423,22 @@ Both the p-value and the confidence interval validate the conclusion that we sho
 
 
 ### Hypothesis Tests for a Proportion 
-\begin{itemize
-\item We can also perform a hypothesis test for a population
+
+*  We can also perform a hypothesis test for a population
 proportion, p. The $R$ function to carry out such a test is
 prop.test.
 
-\item Example: A manufacturer claims that the proportion of
+*  Example: A manufacturer claims that the proportion of
 defective items produced is approximately 4\%. A random sample of
 size 50 is taken, 3 of which are defective. Is the manufacturer's
 claim justified?
-\end{itemize
+
 <pre><code>
 >prop.test(x=3, n=50, p = 0.04, alternative = "two.sided",
 conf.level = 0.95)
 </code></pre>
 
-\end{document
-%---
+
 ###Proportion test : Results
 
 <pre><code>
@@ -459,12 +458,12 @@ sample estimates:
 
 ###prop.test
 Paramaters
-\begin{itemize
-\item x   number of success ( value or vector)
-\item n   sample size (value or vector)
-\item p   Null hypothesis value is 50\%($ H_0: p = 0.5 $)
-\item conf.level confidence level (default is 95\%)
-\end{itemize
+
+*  x   number of success ( value or vector)
+*  n   sample size (value or vector)
+*  p   Null hypothesis value is 50\%($ H_0: p = 0.5 $)
+*  conf.level confidence level (default is 95\%)
+
 
 ###prop.test
 <pre><code>
