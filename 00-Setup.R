@@ -19,6 +19,6 @@ Sigma <- matrix(c(9,8,8,25),2,2)
 HW <- data.frame(mvrnorm(n = 5000, c(55, 170), Sigma))
 
 #####################################
-source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/ma4605A.R')
-source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/ma4605B.R')
+source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/MA4605A.R')
+source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/MA4605B.R')
 source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/examdata.R')
