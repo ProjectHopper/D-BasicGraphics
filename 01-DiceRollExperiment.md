@@ -1,8 +1,8 @@
 ### Central Limit Theorem
 
-Hypothesis testing and confidence interval construction are based on the \textbf{\textit{Central Limit Theorem}}.
+Hypothesis testing and confidence interval construction are based on the ***Central Limit Theorem***.
 
-Lets consider the following Dice experiment. First we will simulate the outcome of one fair roll of a die (both of the following pieces of code can be used to ``roll a die".
+We will simulate the outcome of one roll of a fair die. (both of the following pieces of code can be used to roll a die).
 <pre><code>
 Dice1=floor(runif(50,min=1,max=7))  
 
