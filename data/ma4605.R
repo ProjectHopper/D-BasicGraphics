@@ -17,7 +17,7 @@ t.test(NIRS)
 t.test(NIRS, conf.level = 0.95)
 t.test(NIRS, conf.level = 0.99)
 
-CWdiff = UVSA –NIRS
+CWdiff = UVSA - NIRS
 
 t.test(UVSA, NIRS, paired= TRUE)
 ###################
