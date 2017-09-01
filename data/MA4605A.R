@@ -106,27 +106,24 @@ Fit2res = resid(Fit2)
 
 #--------------------------------------------#
 
-plot(Fit2)
+# plot(Fit2)
 # Hit Return after inspecting each screen
 
-plot(Fit2, which=c(1))
-
-plot(Fit2, which=c(2))
-
-plot(Fit2, which=c(3))
-
-plot(Fit2, which=c(4))
-
-plot(Fit2, which=c(5))
-
-plot(Fit2, which=c(6)) 
+# plot(Fit2, which=c(1))
+# plot(Fit2, which=c(2))
+# plot(Fit2, which=c(3))
+# plot(Fit2, which=c(4))
+# plot(Fit2, which=c(5))
+# plot(Fit2, which=c(6)) 
 
 
 
-cooks.distance(Fit2)
+# cooks.distance(Fit2)
+
 # Make it easier to read the output
 # specify 6 decimal places only.
-round( cooks.distance(Fit2) ,6)
+
+# round( cooks.distance(Fit2) ,6)
 
 
 #--------------------------------------------#
