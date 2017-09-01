@@ -36,7 +36,7 @@ summary(myModel)
 coef(myModel)
 # enhanced scatterplot
 plot(Dist, Merc, pch=16, col='red', cex=1.5)
-title(“Scatterplot')
+title('Scatterplot')
 abline(coef(myModel))
 #This adds a line to the scatterplot
 
@@ -54,7 +54,7 @@ Abs1 = c(0.002,0.150,0.294,0.434,0.570,0.704)
 Conc = c(10,15,20,25,30,0,5)
 Abs2 = c(0.251,0.390,0.498,0.625,0.763,0.003,0.127)
 # hint: fit a regression model
-# Call it something like “RegModel' or “myNewModel2'
+# Call it something like 'RegModel' or 'myNewModel2'
 # use the commands summary(), coef() and confint()
 
 
