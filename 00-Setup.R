@@ -10,7 +10,7 @@ SW <- read.csv('https://raw.githubusercontent.com/RWorkshop/SuperWorld/master/Ve
 install.packages('MethComp') # Systolic Blood Pressure
 install.packages('outliers')
 install.packages('nortest')
-
+install.packages('broom')
 ###############################
 
 library(MASS)
