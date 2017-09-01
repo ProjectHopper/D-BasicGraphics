@@ -20,3 +20,4 @@ HW <- data.frame(mvrnorm(n = 5000, c(55, 170), Sigma))
 
 #####################################
 source('https://gist.githubusercontent.com/DragonflyStats/e99b44fa0b256947dd8eef60f41dedc2/raw/58d95e913c1d68578fe11a5f9fd5a22793dbe257/MA4605LabClasses.R')
+source('https://raw.githubusercontent.com/RWorkshop/Statistics-With-R-Workshop/master/data/examdata.R')
