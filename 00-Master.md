@@ -34,23 +34,7 @@ outliers in the data (i.e. boxplots) and we also need to check
 whether the data are normally distributed or not.
 
 
-%-
-###Checking normality
 
-
-Graphical methods are often used to check that the data being
-analysed are normally distributed. We can use
-
-*  Histogram - check for symmetry *  Boxplot - symmetry and
-outliers *  Normal probability (Q-Q) plot
-
-*  Other procedures
-
-*  Kolmogorov-Smirnov test (ks.test())*  Shapiro Wilk test (shapiro.test()) * 
-Grubb's test *  Anderson Darling test
-
-
-We shall revert to these tests later.
 
 
 
