@@ -6,5 +6,14 @@ Cappun <- read.csv('https://raw.githubusercontent.com/RWorkshop/workshopdatasets
 SW <- read.csv('https://raw.githubusercontent.com/RWorkshop/SuperWorld/master/Version1/Superworld.csv')
 
 ###################
-# Systolic Blood Pressure
-install.packages('MethComp')
+
+install.packages('MethComp') # Systolic Blood Pressure
+install.packages('outliers')
+install.packages('nortest')
+
+###############################
+
+library(MASS)
+
+Sigma <- matrix(c(9,8,8,25),2,2)
+HW <- data.frame(mvrnorm(n = 5000, c(55, 170), Sigma))
