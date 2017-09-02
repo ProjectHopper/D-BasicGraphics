@@ -1,4 +1,4 @@
-### Exercise Question 1 (6 marks)
+### Question 1 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
 A study has obtained the following test scores for 12 randomly selected patients suffering from the disease. 
@@ -13,7 +13,7 @@ A study has obtained the following test scores for 12 randomly selected patients
 
 ---------------------------------------------------------------------------------------------
 
-### Inference Procedures  - Question 1 (6 marks)
+### Question 2 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
 A study has obtained the following test scores for 12 randomly selected patients suffering from the disease in one area of the UK:
@@ -35,7 +35,7 @@ The clinical research organization wishes to determine if there is a significant
 
 ----------------------------------------------------------------------
 
-### Inference Procedures  - Question 1 (5 marks)
+### Question 3 (5 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  Specifically they are carrying out research on the effects of experimental medication has on the blood factor level.
 For a group of 14 volunteer patients the following test scores for were obtained both prior to the medication, and after the medication.
@@ -59,7 +59,7 @@ Perform an appropriate hypothesis test for this hypothesis test, using a signifi
 
 --------------------------------------------------------------------------------------------------------------
 
-### Inference Procedures  - Question 1 (6 marks)
+###  Question 4 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
 A study has obtained the following test scores for 14 randomly selected patients suffering from the disease. 
@@ -70,7 +70,9 @@ $$ 104 112 110 107 101 103 101 102 103 102 101 120 112 103 $$
 2.	We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
 3.	Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
 
-### Inference Procedures  - Question 1 (5 marks)
+--------------------------------------------------------------------------------------------------------------
+
+### Question 5 (5 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
@@ -94,8 +96,8 @@ The clinical research organization wishes to determine if there is a significant
 
 ------------------------------------------------------------------------------------------------------------------------
  
-### Inference Procedures  - Question 2 (6 marks)
-***This question is a continuation of Question 1. You may assume that all the statements and conclusion made in Question 1 apply to Question 2.***
+### Question 6 (6 marks)
+***This question is a continuation of Question 5. You may assume that all the statements and conclusion made in Question 1 apply to Question 2.***
 
 The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. 
 Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
@@ -107,26 +109,23 @@ Perform an appropriate hypothesis test for this hypothesis test, using a signifi
 
 ------------------------------------------------------------------------------------------------------------------------
  
-### Testing Normality - Question 1 (4 Marks)
+### Question 7 (4 Marks)
 Consider the following datasets A and B. The values for each data set are found in the specified data sets.
 	Variable	Data Set
-1	A	X101
-2	B	X102
+1	A		X101
+2	B		X102
 
 Answer the following questions. 
-1)	Use a graphical procedure was carried out to determine whether or not the data set A is normally distributed. Sketch your output. [1 Mark]
 
-2)	Use a graphical procedure was carried out to determine whether or not the data set B is normally distributed. Sketch your output. [1 Mark]
-
-
-3)	Perform a formal hypothesis test for testing the normality of data set A.  State your null and alternative hypothesis. [1 Mark]
-
-4)	Perform a formal hypothesis test for testing the normality of data set B.  State your null and alternative hypothesis. [1 Mark]
+1. Use a graphical procedure was carried out to determine whether or not the data set A is normally distributed. Sketch your output. [1 Mark]
+2. Use a graphical procedure was carried out to determine whether or not the data set B is normally distributed. Sketch your output. [1 Mark]
+3. Perform a formal hypothesis test for testing the normality of data set A.  State your null and alternative hypothesis. [1 Mark]
+4 .Perform a formal hypothesis test for testing the normality of data set B.  State your null and alternative hypothesis. [1 Mark]
  
 
 ------------------------------------------------------------------------------------------------------------------------
  
-### Testing Equality of Variance - Question 2 (3 Marks)
+### Testing Equality of Variance - Question 8 (3 Marks)
 
 Consider the three following data sets X, Y and Z. 
 
@@ -139,7 +138,7 @@ For each of the three possible pairings, state if the assumption of equality of 
 
 ------------------------------------------------------------------------------------------------------------------------
  
-### ANOVA Procedures  - Question 3 (6 marks)
+### ANOVA Procedures  - Question 9 (6 marks)
 Specimens of milk from dairies in three different districts are assayed for their concentrations of the radioactive isotope Strontium-90. The results, in picocuries per litre, are as shown in the table below. 
 
 District	Observations			Dataset
