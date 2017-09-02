@@ -2,7 +2,7 @@
 
 Two random variables x and y are called independent if the probability distribution of one variable is not affected by the presence of another.
 
-Assume f(i,j( is the observed frequency count of events belonging to both i-th category of x and j-th category of y. Also assume eij to be the corresponding expected count if x and y are independent. The null hypothesis of the independence assumption is to be rejected if the p-value of the following Chi-squared test statistics is less than a given significance level α.
+Assume f(i,j) is the observed frequency count of events belonging to both i-th category of x and j-th category of y. Also assume eij to be the corresponding expected count if x and y are independent. The null hypothesis of the independence assumption is to be rejected if the p-value of the following Chi-squared test statistics is less than a given significance level α.
 
 #### Example
 In the built-in data set survey, the Smoke column records the students smoking habit, while the Exer column records their exercise level. The allowed values in Smoke are "Heavy", "Regul" (regularly), "Occas" (occasionally) and "Never". As for Exer, they are "Freq" (frequently), "Some" and "None".
