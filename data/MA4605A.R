@@ -6,18 +6,21 @@ X = c(0.07, 0.07,0.08,0.07,0.07,0.08,0.08,0.09,0.08)
 
 # Lab B
 
-UVSA = c(84.63,84.38,84.08,84.41,83.82,83.90,84.17) 
-NIRS = c(83.15,83.72,83.84,84.20,83.92,84.16, 84.02)
+UVSA <- c(84.63,84.38,84.08,84.41,83.82,83.55,83.92,83.69,84.06,84.03)
+NIRS <- c(83.15,83.72,83.84,84.20,83.92,84.16,84.02,83.60,84.13,84.25)
 
 t.test(UVSA)
 t.test(UVSA, conf.level = 0.95)
 
 t.test(UVSA, conf.level = 0.99)
 t.test(NIRS)
+
 t.test(NIRS, conf.level = 0.95)
 t.test(NIRS, conf.level = 0.99)
 
-CWdiff = UVSA - NIRS
+Diffs = UVSA - NIRS
+
+t.test(Diffs)
 
 t.test(UVSA, NIRS, paired= TRUE)
 ###################
@@ -87,14 +90,14 @@ Acetic=c(4.543, 5.159, 5.366, 5.759, 4.663, 5.697, 5.892, 6.078, 4.898,
 
 
 
-FitA = lm(Taste ~ Acetic); 
-FitB = lm(Taste ~ H2S); 
-FitC = lm(Taste ~ Lactic)
+# FitA = lm(Taste ~ Acetic); 
+# FitB = lm(Taste ~ H2S); 
+# FitC = lm(Taste ~ Lactic)
 
-Fit1 = lm(Taste ~ Acetic + H2S); 
-Fit2 = lm(Taste ~ Acetic + Lactic);
-Fit3 = lm(Taste ~ H2S + Lactic);
-FitAll = lm(Taste ~ Acetic + H2S + Lactic)
+# Fit1 = lm(Taste ~ Acetic + H2S); 
+# Fit2 = lm(Taste ~ Acetic + Lactic);
+# Fit3 = lm(Taste ~ H2S + Lactic);
+# FitAll = lm(Taste ~ Acetic + H2S + Lactic)
 ###################
 # Lab E
 
