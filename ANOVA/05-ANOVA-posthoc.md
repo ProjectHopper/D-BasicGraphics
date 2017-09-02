@@ -1,6 +1,6 @@
 
 ### One-Way ANOVA
-In R, we can run the ANOVA with the aov command.
+In R, we can run the ANOVA with the ``aov` command.
 <pre><code>
 a1 <- aov(write ~ ses) 
 summary(a1)
@@ -15,7 +15,7 @@ From this output, we can see that ses is significant in the 2-degrees of freedom
 
 However, this will require three tests (high vs. low, high vs. middle, low vs. middle), so we wish to adjust what we consider to be statistically significant to account for this multiplicity of tests.  
 
-For an one-way ANOVA (ANOVA with a single factor) We can first see the unadjusted p-values using the pairwise.t.test command and indicating no adjustment of p-values:
+For an one-way ANOVA (ANOVA with a single factor) We can first see the unadjusted p-values using the ``pairwise.t.test`` command and indicating no adjustment of p-values:
 <pre><code>
 pairwise.t.test(write, ses, p.adj = "none")
 
@@ -59,7 +59,7 @@ P value adjustment method: holm
 </code></pre>
 We can see that the adjustments all lead to increased p-values, but consistently the high-low and high-middle pairs appear to be significantly different at alpha = .05. 
 
-The pairwise.t.test command does not offer Tukey post-hoc tests, but there are other R commands that allow for Tukey comparisons. Below, we show code for using the TukeyHSD (Tukey Honest Significant Differences).
+The ``pairwise.t.test`` command does not offer Tukey post-hoc tests, but there are other R commands that allow for Tukey comparisons. Below, we show code for using the TukeyHSD (Tukey Honest Significant Differences).
 <pre><code>
 TukeyHSD(a1)
 
@@ -76,7 +76,7 @@ high-medium 3.987477  0.3296892 7.645265 0.0289035
 </code></pre>
 We can see that these results are significant with what we saw using other adjustments for the p-values.
 
-Two (or more) Factor ANOVA
+### Two (or more) Factor ANOVA
 You may be fitting an ANOVA with multiple factors.  Below we look at write on ses and female.
 <pre><code>
 a2 <- aov(write ~ ses + female)
@@ -89,7 +89,7 @@ Residuals   196  15622    79.7
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 </code></pre>
-We can look at pair-wise comparisons of the ses levels after adjusting for female. The TukeyHSDcommand still works well, though now we must specify which factor is of interest.
+We can look at pair-wise comparisons of the ses levels after adjusting for female. The ``TukeyHSD`` command still works well, though now we must specify which factor is of interest.
 <pre><code>
 TukeyHSD(a2, "ses")
   Tukey multiple comparisons of means
