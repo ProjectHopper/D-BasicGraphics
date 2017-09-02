@@ -40,10 +40,10 @@ A test of a specific blood factor has been devised so that, for adults in the UK
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  Specifically they are carrying out research on the effects of experimental medication has on the blood factor level.
 For a group of 14 volunteer patients the following test scores for were obtained both prior to the medication, and after the medication.
 
-| P | A   | B   | C       | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   |
+| Patient | A   | B   | C       | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   |
 |---|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| b | 120 | 140 | 112 | 109 | 114 | 116 | 99  | 108 | 109 | 111 | 109 | 131 | 117 | 101 |
-| A | 104 | 112 | 110 |107 | 101 | 103 | 101 | 102 | 103 | 102 | 101 | 120 | 112 | 103 |     
+| Before | 120 | 140 | 112 | 109 | 114 | 116 | 99  | 108 | 109 | 111 | 109 | 131 | 117 | 101 |
+| After | 104 | 112 | 110 |107 | 101 | 103 | 101 | 102 | 103 | 102 | 101 | 120 | 112 | 103 |     
 
 
 *(see DAT79 and DAT81)*
@@ -65,12 +65,15 @@ Perform an appropriate hypothesis test for this hypothesis test, using a signifi
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
 A study has obtained the following test scores for 14 randomly selected patients suffering from the disease. 
-$$ 104 112 110 107 101 103 101 102 103 102 101 120 112 103 $$
-(see DAT81)
+<pre><code>
+104 112 110 107 101 103 101 102 103 102 101 120 112 103 
+</code></pre>
 
-1.	Compute a 99% confidence interval for the mean of patient’s blood factor scores.[2 Marks]
-2.	We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
-3.	Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
+*(see DAT81)*
+
+1. Compute a 99% confidence interval for the mean of patient’s blood factor scores.[2 Marks]
+2. We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
+3. Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -79,14 +82,16 @@ A test of a specific blood factor has been devised so that, for adults in the UK
 
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
 A study has obtained the following test scores for 15 randomly selected patients suffering from the disease in Edinburgh, Scotland.
-
+<pre><code>
 113 115 120 109 105 103 103  99 128  96 125 107 115 131 119
+</code></pre>
 (see DAT88)
 
 A similar study has obtained the following test scores for 14 randomly selected patients suffering from the disease in Dublin, Ireland.
-
+<pre><code>
 120 140 112 109 114 116  99 108 109 111 109 131 117 101
-(see DAT79)
+</code></pre>
+*(see DAT79)*
 
 You may assume that both data sets are normally distributed.
 
@@ -131,10 +136,11 @@ Answer the following questions.
 
 Consider the three following data sets X, Y and Z. 
 
-Sample	Data Set
-X	X110
-Y	X114
-Z	X115
+| Sample 	| Data Set 	|
+|--------	|----------	|
+| X      	| X110     	|
+| Y      	| X114     	|
+| Z      	| X115     	|
 
 For each of the three possible pairings, state if the assumption of equality of variance is valid. Justify your conclusion. 
 
@@ -143,18 +149,15 @@ For each of the three possible pairings, state if the assumption of equality of 
 ### ANOVA Procedures  - Question 9 (6 marks)
 Specimens of milk from dairies in three different districts are assayed for their concentrations of the radioactive isotope Strontium-90. The results, in picocuries per litre, are as shown in the table below. 
 
-District	Observations			Dataset
-A		6.7 6.1 6.8 8.0 7.5		X111
-B		7.5 10.3 11.6 10.9 6.9 9.2 8.8	X112
-C		10.3 9.8 12.9 11.9		X113
-		
-Combined					X100
-Grouping Variable				X109
+| District          | Observations                   | Dataset |
+|-------------------|--------------------------------|---------|
+| A                 | 6.7 6.1 6.8 8.0 7.5            | X111    |
+| B                 | 7.5 10.3 11.6 10.9 6.9 9.2 8.8 | X112    |
+| C                 | 10.3 9.8 12.9 11.9             | X113    |
+| Combined          |                                | X100    |
+| Grouping Variable |                                | X109    |
+
 
 1.	Write out the ANOVA table. You are not required to add the “Totals” Row. [4 Marks]
-
 2.	Carry out an analysis of variance of these data, conducting your significance test at the 5% level. [2 Marks]
-
- 
-
 
