@@ -40,11 +40,13 @@ A test of a specific blood factor has been devised so that, for adults in the UK
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  Specifically they are carrying out research on the effects of experimental medication has on the blood factor level.
 For a group of 14 volunteer patients the following test scores for were obtained both prior to the medication, and after the medication.
 
-Patient	A	B	C	D	E	F	G	H	I	J	K	L	M	N
-Before	120	140	112	109	114	116	99	108	109	111	109	131	117	101
-After	104	112	110	107	101	103	101	102	103	102	101	120	112	103
+| P | A   | B   | C       | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   |
+|---|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| b | 120 | 140 | 112 | 109 | 114 | 116 | 99  | 108 | 109 | 111 | 109 | 131 | 117 | 101 |
+| A | 104 | 112 | 110 |107 | 101 | 103 | 101 | 102 | 103 | 102 | 101 | 120 | 112 | 103 |     
 
-(see DAT79 and DAT81)
+
+*(see DAT79 and DAT81)*
 
 For now , you may assume that the case-wise differences are normally distributed.
 The clinical research organization wishes to determine if there is a significant improvement (lessening of the blood factor level) due to the medication. 
