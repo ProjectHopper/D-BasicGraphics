@@ -11,7 +11,7 @@ A study has obtained the following test scores for 12 randomly selected patients
 2. We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly.
 3. Perform a suitable hypothesis test for this procedure, using a significance level of 5%. What is the p-value? 
 
-<hline>
+---------------------------------------------------------------------------------------------
 
 ### Inference Procedures  - Question 1 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
