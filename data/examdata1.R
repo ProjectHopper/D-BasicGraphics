@@ -226,7 +226,7 @@ set.seed(5063);X182<- sample(180:250,n,T)/5;
 #
 set.seed(5064);X183<- sample(180:250,n,T)/5;set.seed(5065);X184<- sample(180:250,n,T)/5;
 set.seed(5066);X185<- sample(180:250,n,T)/5;set.seed(5067);X186<- sample(180:250,n,T)/5;
-5set.seed(5068);X187<- sample(180:250,n,T)/5;set.seed(5069);X188<-
+set.seed(5068);X187<- sample(180:250,n,T)/5;set.seed(5069);X188<-
 set.seed(5070);X189<- sample(180:250,n,T)/5;set.seed(5071);X190<-
 set.seed(5072);X191<- sample(180:250,n,T)/5;
 #
