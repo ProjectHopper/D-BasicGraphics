@@ -1,39 +1,39 @@
 ### Exercise Question 1 (6 marks)
-A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
+A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
 A study has obtained the following test scores for 12 randomly selected patients suffering from the disease. 
+
 119 131 115 107 125 96 128 99 103 103 105 109
+
 (see DAT49)
-1.	Compute a 99% confidence interval for the mean of patient’s blood factor scores.[2 Marks]
 
-2.	We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly. [3 Marks]
+1. Compute a 99% confidence interval for the mean of patient’s blood factor score.
+2. We wish to determine whether or not the mean score for patients is significantly different from the general population. Using the confidence interval, perform a hypothesis test. State your null and alternative hypothesis clearly.
+3. Perform a suitable hypothesis test for this procedure, using a significance level of 5%. What is the p-value? 
 
-
-3.	Perform a hypothesis test for this procedure, using a significance level of 5%. What is the p-value? [1 Mark]
-
+<hline>
 
 ### Inference Procedures  - Question 1 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is Normally distributed with mean 100 and standard deviation 10.
 A clinical research organization is carrying out research on the blood factor levels for sufferers of a particular disease.  
+A study has obtained the following test scores for 12 randomly selected patients suffering from the disease in one area of the UK:
 
-A study has obtained the following test scores for 12 randomly selected patients suffering from the disease in one area of the UK
-119 131 115 107 125 96 128 99 103 103 105 109
-(see DAT49)
+119 131 115 107 125 96 128 99 103 103 105 109   (see DAT49)
 
 A similar study has obtained the following test scores for 14 randomly selected patients suffering from the disease in Dublin, Ireland.
-120 140 112 109 114 116  99 108 109 111 109 131 117 101
-(see DAT79)
-The variance of both data sets are equal. 
-You may assume that both data sets are normally distributed.
+
+120 140 112 109 114 116  99 108 109 111 109 131 117 101 (see DAT79)
+
+The variance of both data sets are equal. You may assume that both data sets are normally distributed.
 
 The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
 
-1.	Formally state both the null hypothesis and alternative hypothesis. [2 Mark]
-2.	From the R code output, what is the resultant p-value? [1 Mark]
-3.	What is your conclusion for the hypothesis test, based on this p-value? [2 Marks]
-4.	Compute a 95% confidence interval for the difference of means of both data sets. [1 Mark ] 
+1.	Formally state both the null hypothesis and alternative hypothesis. 
+2.	From the R code output, what is the resultant p-value? 
+3.	What is your conclusion for the hypothesis test, based on this p-value? 
+4.	Compute a 95% confidence interval for the difference of means of both data sets. 
 
- 
+ <hline>
 
 ### Inference Procedures  - Question 1 (5 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
@@ -47,12 +47,15 @@ After	104	112	110	107	101	103	101	102	103	102	101	120	112	103
 For now , you may assume that the case-wise differences are normally distributed.
 The clinical research organization wishes to determine if there is a significant improvement (lessening of the blood factor level) due to the medication. 
 Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
-1.	Formally state both the null hypothesis and alternative hypothesis. [2 Mark]
 
-2.	From the R code output, what is the resultant p-value? [1 Mark]
+1. Formally state both the null hypothesis and alternative hypothesis. [2 Mark]
 
-3.	What is your conclusion for the hypothesis test, based on this p-value? [2 Marks]
+2. From the R code output, what is the resultant p-value? [1 Mark]
 
+3. What is your conclusion for the hypothesis test, based on this p-value? [2 Marks]
+
+<hline>
+	
 ### Inference Procedures  - Question 1 (6 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
 A clinical research organization needs to test whether the mean score of sufferers from a particular disease differs from the mean score of the general population on this test.  
