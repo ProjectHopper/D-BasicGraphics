@@ -19,7 +19,8 @@ Graphical methods are often used to check that the data being analysed are norma
 *  Boxplot - symmetry and outliers 
 *  Normal probability (Q-Q) plot
 
-*  Other procedures
+
+As well as graphical procedures, we have formal hypothesis tests implemented in statistical software.
 
 *  Kolmogorov-Smirnov test (ks.test())
 *  Shapiro Wilk test (shapiro.test())  
