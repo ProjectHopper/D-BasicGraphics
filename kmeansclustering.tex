@@ -1,0 +1,66 @@
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+K-means Clustering
+
+
+In this this exercise, you will implement the K-means algorithm and use it for image compression.
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+
+You will first start on an example 2D dataset that will help you gain an intuition of
+
+how the K-means algorithm works. After that, you wil use the K-means algorithm for image
+
+compression by reducing the number of colors that occur in an image to only those that are most common in that image.
+
+
+You will be using ex7.m for this part of the exercise.
+
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+1.1 Implementing K-means
+
+
+The K-means algorithm is a method to automatically cluster similar data examples together.
+
+
+The intuition behind K-means is an iterative procedure that starts by guessing the initial centroids, and then refines this guess by repeatedly assigning examples to their closest centroids and then recomputing the centroids based on the assignments.
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+
+The inner-loop of the algorithm repeatedly carries out two steps: 
+
+
+(i) Assigning each training example to its closest centroid 
+
+(ii) Recomputing the mean of each centroid using the points assigned to it. 
+
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+The K-means algorithm will always converge to some final set of means for the centroids.
+
+Note that the converged solution may not always be ideal and depends on the initial setting of the centroids. 
+
+
+Therefore, in practice the K-means algorithm is usually run a few times with different random initializations. 
+
+
+One way to choose between these different solutions from different random initializations is to choose the one with the lowest cost function value (distortion).
+\end{frame}
+%==================================================================================================================== %
+\begin{frame}
+\textbf{Random initialization}
+
+The initial assignments of centroids for the example dataset in ex7.m were designed so that you will see the same gure as in Figure 1. 
+
+
+In practice, a good strategy for initializing the centroids is to select random examples from the training set.
+
+\end{frame}
+%==================================================================================================================== %
+\end{document}
