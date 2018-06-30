@@ -22,18 +22,19 @@ A study has obtained the following test scores for 12 randomly selected patients
 
 A similar study has obtained the following test scores for 14 randomly selected patients suffering from the disease in Dublin, Ireland.
 
-120 140 112 109 114 116  99 108 109 111 109 131 117 101 (see DAT79)
+120 140 112 109 114 116  99 108 109 111 109 131 117 101
 
 The variance of both data sets are equal. You may assume that both data sets are normally distributed.
 
 The clinical research organization wishes to determine if there is a significant difference between the two groups of patients. Perform an appropriate hypothesis test for this hypothesis test, using a significance level of 5%. 
 
-1. Formally state both the null hypothesis and alternative hypothesis. 
-2. From the R code output, what is the resultant p-value? 
-3. What is your conclusion for the hypothesis test, based on this p-value? 
-4. Compute a 95% confidence interval for the difference of means of both data sets. 
+#### Questions
+* 1. Formally state both the null hypothesis and alternative hypothesis. 
+* 2. From the R code output, what is the resultant p-value? 
+* 3. What is your conclusion for the hypothesis test, based on this p-value? 
+* 4. Compute a 95% confidence interval for the difference of means of both data sets. 
 
-----------------------------------------------------------------------
+<!---------------------------------------------------------------------->
 
 ### Question 3 (5 marks)
 A test of a specific blood factor has been devised so that, for adults in the UK and Ireland, the test score is normally distributed with mean 100 and standard deviation 10.
