@@ -1,0 +1,22 @@
+
+FabricWear=c(527, 561, 456, 377, 475, 466, 296, 325, 
+621, 664, 426, 476, 561, 540, 301, 235, 
+724, 743, 460, 426, 626, 682, 322, 304) 
+
+Filler = structure(c(1L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 
+1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 2L), .Label = c("F1", 
+"F2"), class = "factor")
+
+Proportion = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), .Label = c("Q1", 
+"Q2", "Q3"), class = "factor")
+
+Surface= structure(c(1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L, 
+2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L), .Label = c("T0", 
+"T1"), class = "factor")
+
+Experiment=data.frame(FabricWear,Filler,Proportion,Surface)
+
+Model1= aov(FabricWear ~ Filler*Proportion*Treatment)
+
+Model2 = aov(FabricWear ~ Filler*Proportion*Treatment - Filler:Proportion:Treatment)
