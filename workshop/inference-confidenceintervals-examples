@@ -1,0 +1,115 @@
+%---------------------------------------------------------------------------------------------------Inference%
+\chapter{Statistical Inference}
+
+\section{Confidence Interval examples}
+
+\subsection{Example}
+A random sample of 15 observations is taken from a normally distributed population
+of values. The sample mean is 94.2 and the sample variance is 24.86.
+Calculate a 99\% confidence interval for the population mean.
+
+
+\subsubsection{Solution}
+$t_(14,0.005) = 2.977$
+99\% CI is $94.2 \pm 2.977 \sqrt{24.86/15}$ \\i.e. $94.2 \pm 3.83$ \\i.e. $(90.37,98.03)$
+
+
+\subsection{Example 1: paired T test}
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+  \hline
+X & 5.20 & 5.15 & 5.17 & 5.16 & 5.19 & 5.15\\
+Y & 5.20 & 5.15 & 5.17 & 5.16 & 5.19 & 5.15\\
+  \hline
+\end{tabular}
+
+
+\subsection{Example 2}
+
+Seven measurements of the pH of a buffer solution gave the
+following results:
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+  \hline
+5.12 & 5.20 & 5.15 & 5.17 & 5.16 & 5.19 & 5.15\\
+  \hline
+\end{tabular}
+
+Task 1: Calculate the 95\% confidence limits for the true pH
+utilizing $R$.
+
+
+Solution. We are using Student t distribution with six degrees of
+freedom and the following code gives us the confidence interval
+for this problem.
+\begin{verbatim}
+>x <- c(5.12, 5.20, 5.15, 5.17, 5.16, 5.19, 5.15)
+>n =length(x)
+>alpha =0.05
+>stderr =sd(x)/sqrt(n)
+>LB=mean(x)+qt(alpha/2,6)* stderr
+>UB=mean(x)+qt(1-alpha/2,6)* stderr
+>LB
+#[1] 5.137975
+>UB
+#[1]5.187739
+\end{verbatim}
+
+
+\subsubsection{example}
+A survey of study habits wishes to determine whether the mean
+study hours completed by women at a particular college is higher
+than for men at the same college. A sample of $n_1$ = 10 women and
+$n_2$ = 12 men were taken, with mean hours of study $\bar{x}_1$ =
+120 and $\bar{x}_2$ = 105 respectively. The standard deviations
+were known to be $\sigma_1$ = 28 and $\sigma_2$ = 35.
+
+The hypothesis being tested is:
+
+\begin{eqnarray}
+H_{0}: \mu_1 = \mu_2\qquad \qquad (\mu_1 - \mu_2= 0)\\
+H_{a}: \mu_1 \neq \mu_2 \qquad \qquad (\mu_1 - \mu_2 \neq 0)
+\end{eqnarray}
+
+In $R$, the test statistic is calculated using:
+
+\begin{verbatim}
+xbar1 <- 120
+xbar2 <- 105
+sd1 <- 28
+sd2 <- 35
+n1 <- 10
+n2 <-12
+TS <- ( (xbar1 - xbar2) - (0) )/sqrt( (sd1^2/n1) + (sd2^2/n2) )
+TS
+[1] 1.116536
+\end{verbatim}
+Now need to calculate the critical value or the p-value.
+
+
+The critical value can be looked up using qnorm. Since this is a
+one-tailed test and there is a > sign in $H_1$:
+
+\begin{verbatim}
+qnorm(0.95)
+[1] 1.644854
+\end{verbatim}
+
+Since the test statistic is less than the critical value ( 1.116536 < 1:645 )there is not enough evidence to reject $H_0$
+and conclude that the population mean hours study for women is
+not higher than the population mean hours study for men.
+
+
+The p-value is determined using pnorm.
+
+Careful! Remember pnorm
+gives the probability of getting a value LESS than the value specified. We want the probability of getting a value greater than
+the test statistic.
+\begin{verbatim}
+1-pnorm(1.116536) # OR pnorm(1.116536, lower.tail=FALSE)
+[1] 0.1320964
+\end{verbatim}
+\newpage
+
+

@@ -1,0 +1,70 @@
+
+
+Rationale And Purpose Of The Module: 
+To give students a clear understanding of the importance of statistical methods in their work.
+
+To introduce students to the most widely used statistical techniques in the chemical process industries.
+
+To develop skills in the use of these techniques through actual case studies using statistical software packages
+
+
+ Syllabus: 
+Hypothesis testing - type I  and type II error, one and two-tailed tests, oc curves.
+Statistical process control - various charts, mean/range, individuals/moving range, cusum charts.  
+Capability studies - capability indices.  
+Correlation and Regression - method of least squares, multiple regression, linear and non-linear models, regression analysis, analysis of residuals.  
+Importance of plotting data.  
+Design of experiments and analysis of variance - one and two way ANOVA, interaction, factorial designs, responses and factors, Plackett-Burman design, response surface methodology.
+
+
+ Learning Outcomes: 
+
+
+Cognitive (Knowledge, Understanding, Application, Analysis, Evaluation, Synthesis) 
+On completion of this module students should be able to:
+
+Determine probabilities based on the Normal distribution
+
+Construct confidence intervals and conduct hypothesis tests for mean(s) and variances.
+
+Construct appropriate ANOVA tables based on whether a single factor, multiple factors, blocking factors and/or a Latin square design is under investigation and perform post hoc tests.
+
+Calculate a contrast table, main effects, sums of squares and ANOVA table for 2^k factorial designs, identify significant factors and optimise the response. 
+
+Describe, test and model the relationship between two or more quantitative variables.
+
+Construct appropriate control charts, test for process control, determine process capability indices.
+
+
+ Affective (Attitudes and Values) 
+None
+
+ Psychomotor (Physical Skills) 
+None
+
+ How The Module Will Be Taught and What Will Be The Learning Experiences Of The Students: 
+Lectures and tutorials
+
+ Research Findings Incorporated In To The Syllabus (If Relevant): 
+
+
+Prime Texts: 
+
+(1997) Statistical analysis methods for chemists ¿ a software based approach , 
+
+
+Other Relevant Texts: 
+
+Miller, J.C., and Miller, J.C. (2005) Statistics and Chemometrics for Analytical Chemistry , Pearson 
+
+Box, G.E.P., Hunter, J.S. and Hunter, W.G. (2005) Statistics for Experimenters: Design, Innovation, and Discovery , Wiley 
+
+
+Programme(s) In Which This Module Is Offered: 
+
+
+Semester - Year To Be First Offered: 
+Autumn - 08/09
+
+ Module Leader: 
+Krzysztof.Podgorski@staffmail.ul.ie 

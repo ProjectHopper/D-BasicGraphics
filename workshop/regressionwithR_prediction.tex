@@ -1,0 +1,81 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{framed}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{MA4128} \rhead{Kevin O'Brien} \chead{Assumptions for Linear Models} %\input{tcilatex}
+
+\begin{document}
+
+\section{Prediction}
+Suppose we want to know the predicted value $\hat{y}$ at x = 30. Could
+write out the equation using the parameter estimates and fill in the
+required value for x:
+\begin{framed}
+\begin{verbatim}
+>19.94379 + 2.07497*30
+[1] 82.19289
+\end{verbatim}
+\end{framed}
+Alternatively, could use the predict function:
+\begin{framed}
+\begin{verbatim}
+predict(model,list(x=30))
+1
+82.19289
+\end{verbatim}
+\end{framed}
+For linear plots use abline for superimposing the model on a
+scatterplot of the data points. For curved responses, use the
+predict function to generate the lines.
+
+\subsection{Confidence and Prediction Intervals}
+Fitted lines are often presented with uncertainty bands around
+them. There are two types of bands:
+\begin{itemize}
+\item Confidence bands - refer to the POPULATION.
+\item Prediction bands - refer to an INDIVIDUAL.
+\end{itemize}
+
+One way to get intervals:
+\begin{framed}
+\begin{verbatim}
+predict(model, interval="confidence")
+predict(model, interval="prediction")
+\end{verbatim}
+\end{framed}
+
+In order plot the bands on the same plot as the fitted line, use the
+following:
+\begin{framed}
+\begin{verbatim}
+grid <- seq(5,50)
+pi <- predict(model, list(x=grid), interval="prediction")
+ci <- predict(model, list(x=grid), interval="confidence")
+plot(SLR1$x, SLR1$y, xlab="x", ylab="y")
+matlines(grid, pi, lty=c(1,2,2), col=c("black", "blue","blue"))
+matlines(grid, ci, lty=c(1,3,3), col=c("black", "red","red"))
+legend("bottomright", legend=c("Prediction Interval", "Confidence Interval"),
+lty=2:3, col=c("blue","red"), bty="n")
+\end{verbatim}
+\end{framed}
+
+
+\end{document}

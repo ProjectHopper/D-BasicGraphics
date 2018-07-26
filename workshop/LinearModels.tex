@@ -1,0 +1,865 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+%\usepackage[dvips]{graphicx}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\usepackage{vmargin}
+% left top textwidth textheight headheight
+% headsep footheight footskip
+\setmargins{3.0cm}{2.5cm}{15.5 cm}{22cm}{0.5cm}{0cm}{1cm}{1cm}
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{arabic}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ill}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\renewcommand{\thenotation}{}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\title{MA4605}
+\author{ } \date{ }
+
+
+\begin{document}
+\author{Kevin O'Brien}
+\title{MA4605}
+
+\tableofcontents \setcounter{tocdepth}{2}
+%-------------------------------------------------
+
+\chapter{Chemometrics}
+
+
+\section{Statistical Assumptions}
+
+\section{Overview}
+
+\begin{itemize}
+\item Normal probability plot \item Outliers \item dixon test
+\item Grubbs test
+\end{itemize}
+
+\section{Grubb's Test}
+
+Grubb's Test for Detecting Outliers
+Statisticians have devised several ways to detect outliers. Grubbs' test is particularly easy to follow. This method is also called the ESD method (extreme studentized deviate).
+The first step is to quantify how far the outlier is from the others. Calculate the ratio Z as the difference between the outlier and the mean divided by the SD. If Z is large, the value is far from the others. Note that you calculate the mean and SD from all values, including the outlier.
+
+
+
+Since 5% of the values in a Gaussian population are more than 1.96 standard deviations from the mean, your first thought might be to conclude that the outlier comes from a different population if Z is greater than 1.96. This approach only works if you know the population mean and SD from other data. Although this is rarely the case in experimental science, it is often the case in quality control. You know the overall mean and SD from historical data, and want to know whether the latest value matches the others. This is the basis for quality control charts.
+
+When analyzing experimental data, you don't know the SD of the population. Instead, you calculate the SD from the data. The presence of an outlier increases the calculated SD. Since the presence of an outlier increases both the numerator (difference between the value and the mean) and denominator (SD of all values), Z does not get very large. In fact, no matter how the data are distributed, Z can not get larger than, where N is the number of values. For example, if N=3, Z cannot be larger than 1.155 for any set of values.
+
+Grubbs and others have tabulated critical values for Z which are tabulated below. The critical value increases with sample size, as expected.
+
+If your calculated value of Z is greater than the critical value in the table, then the P value is less than 0.05. This means that there is less than a $5\%$ chance that you'd encounter an outlier so far from the others (in either direction) by chance alone, if all the data were really sampled from a single Gaussian distribution. Note that the method only works for testing the most extreme value in the sample (if in doubt, calculate Z for all values, but only calculate a P value for Grubbs' test from the largest value of Z.
+
+Once you've identified an outlier, you may choose to exclude that value from your analyses. Or you may choose to keep the outlier, but use robust analysis techniques that do not assume that data are sampled from Gaussian populations.
+
+If you decide to remove the outlier, you then may be tempted to run Grubbs' test again to see if there is a second outlier in your data. If you do this , you cannot use the same table.
+
+
+\subsection{Critical values for Z}
+
+Calculate Z as shown above. Look up the critical value of Z in the table below, where N is the number of values in the group. If your value of Z is higher than the tabulated value, the P value is less than 0.05.
+
+
+
+
+
+
+
+
+\subsection{Computing an approximate P value}
+
+You can also calculate an approximate P value as follows.
+
+
+N is the number of values in the sample, Z is calculated for the suspected outlier as shown above.
+Look up the two-tailed P value for the student t distribution with the calculated value of T and N-2 degrees of freedom. Using Excel, the formula is =TDIST(T,DF,2) (the '2' is for a two-tailed P value).
+
+
+Multiply the P value you obtain in step 2 by N. The result is an approximate P value for the outlier test. This P value is the chance of observing one point so far from the others if the data were all sampled from a Gaussian distribution. If Z is large, this P value will be very accurate. With smaller values of Z, the calculated P value may be too large.
+
+
+
+\subsection{Dixon's Q test}
+
+In statistics, Dixon's Q test, or simply the Q test, is used for identification and rejection of outliers. This test should be used sparingly and never more than once in a data set. To apply a Q test for bad data, arrange the data in order of increasing values and calculate Q as defined:
+
+\begin{equation}
+Q = \frac{\mbox{Gap}}{\mbox{Range}}
+\end{equation}
+
+Where gap is the absolute difference between the outlier in question and the closest number to it. If $Q_calculated > Q_table$, then reject the questionable point.
+
+
+\section{Overview of experimental design}
+
+Introduction
+Analysis of variance (ANOVA) is a popular tool that has an applicability and
+power that we can only start to appreciate in this course. The idea of analysis of
+variance is to investigate how variation in structured data can be split into pieces associated
+with components of that structure. We look only at one-way and two-way
+classifications, providing tests and confidence intervals that are widely used in practice.
+
+\begin{itemize}
+\item Two-way ANOVA without interactions. \item Two-way ANOVA with
+interactions.\item Two-way ANOVA with replicates \item Three-way
+factorial design.
+\end{itemize}
+
+
+\section{MA4605: ANOVA}
+We compute the test statistics $F = 62/3 \sim 20.7$ while the
+$95\%$ quantile of F distribution with 3 and 8 degrees of freedom
+is given as
+\begin{verbatim}
+>qf(0.95,3,8)
+4.066181
+\end{verbatim}
+
+We clearly see that the test informs us about a significant
+difference between the means. But which means are different?
+
+The least significant difference method described in Section 3.9.
+
+We compute the least significant difference $s \sqrt{2/n} \times
+t$, where $s^{2}$ is within sample estimate of variance and $t$ is
+the $97.5\%$ quantile of Student-$t$ distribution with $h(n-1)$
+degrees of freedom.
+
+\begin{verbatim}
+>sqrt(mean(s))*sqrt(2/3)*qt(0.975,8)
+# 3.261182
+>m=apply(x,1,mean)
+>m
+#[1] 101 102 97 92
+\end{verbatim}
+
+The associated degrees of freedom: for within-sample $h(n - 1)$
+(in our example $4 \times 2 = 8$), for between-sample $h - 1$ (in
+our example 3). Total number of degrees freedom $hn-1$ and we see
+$hn - 1 = h(n-1) + h - 1$.
+
+But there is more then the relation between degrees of freedom.
+Namely SST = SSM + SSR; where
+
+WRONG
+\begin{eqnarray}
+SST = \sum_{j}\sum_{j}(x-\bar{x})^2\\
+SSM= \sum_{j}\sum_{j}(x-\bar{x})^2\\
+SSE = \sum_{j}\sum_{j}(x-\bar{x})^2\\
+\end{eqnarray}
+
+
+\begin{verbatim}
+x=c(102,100,101,101,101,104,97,95,99,90,92,94)
+factors=c(rep("A",3),rep("B",3),rep("C",3),rep("D",3))
+res=aov(x˜factors) anova(res)
+
+Analysis of Variance Table Response:
+
+x   Df Sum Sq Mean Sq   F value Pr(>F) factors 3 186 62
+20.6670.0004002 *** Residuals 8 24 3
+---
+Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 . 0.1 1
+\end{verbatim}
+\newpage
+
+\section{Weighted Regression}
+
+\textbf{Homoscedasticity} - the standard deviations of
+y-observations from the straight line are the same independently
+of the underlying x-observations.
+
+\textbf{Heteroscedasticity} - the standard deviations of
+y-observations depend on the underlying x-observations.
+
+In the first case, standard regression analysis should be
+performed, while in the second the weighted regression is more
+suitable.
+
+\begin{verbatim}
+>Conc=c(0,2,4,6,8,10)
+>StDev=c(0.001,0.004,0.010,0.013,0.017,0.022)
+>Abs=c(0.009,0.158,0.301,0.472,0.577,0.739)
+>n=length(Conc)
+>weights=StDevˆ(-2)/mean(StDevˆ(-2))
+>wreg=lm(Abs˜Conc,weights=weights)
+>reg=lm(Abs˜Conc)
+>summary(wreg)
+\end{verbatim}
+
+
+It is often convienent to express the regression analysis using
+ANOVA table. The following equation is the basis for such
+representation
+
+It is often shortened to SST = SSLR + SSR; where SST is referred
+
+to as the total sum of squares, SSLR is the sum of squares due to
+linear regression (within regression), SSR is the sum of squares
+due to residuals (outside regression).
+
+\subsection{R square}
+$R^2$ is a measure of variation explained by regression.
+
+The following coefficient has a natural interpretation as amount
+of variability in the data that is explained by the regression
+fit: $R^2 = SSLR/SST = 1 - SSR/SST$.
+
+A similar interpretation is given to the adjusted coefficient
+$R^2_{adj}$ which is given by $R^2_{adj} = 1 - MSR/MST $; where
+MSR is the mean squared error due to residuals, and MST is the
+total mean squared error.
+
+The adjusted coefficient is accounting for the degrees of freedom
+used for each source of variation and is often a more reliable
+indicator of variability than $R^2$. $R^2_{adj}$ is always smaller
+than $R^2$.
+
+
+\section{Testing Normality}
+An assessment of the normality of data is a prerequisite for many statistical tests as normal data is an underlying assumption in parametric testing. There are two main methods of assessing normality - graphically and numerically.
+
+
+%------------------------------------------------------------------------%
+\chapter{Linear Models}
+\section{Multiple Linear Regression}
+\section{Variable Selection Procedures}
+
+\begin{verbatim}
+           Coefficients  Std Error    t Stat      P-value
+Intercept  0.002107      0.004787     0.440144    0.678209
+Conc       0.025164      0.000266     94.76047    2.48E-09
+\end{verbatim}
+
+Intercept and Slope estimates are the coefficient.
+
+\begin{itemize}
+\item Akaike Information Criterion
+\item Multicollinearity
+\end{itemize}
+
+$95\%$ confidence interval for slope
+\begin{itemize}
+\item Estimate of Slope     = 	0.025164
+\item Std. Error for slope 	= 	0.000266 from \texttt{R} output
+\item Quantiles (given) 	=	-2.57 	for Lower bound
+				            =   2.57  	for Upper bound
+
+\item Lower bound		=	0.025164 + (-2.57)( 0.000266)
+				=	0.0243
+`
+\item Upper bound		=	0.025164 + (2.57)( 0.000266)
+				=	0.0257
+
+\item Confidence Interval = [0.0243, 0.0257]
+\end{itemize}
+%------------------------------------------------------------------------%
+
+
+
+
+
+\section{Kolmogorov-Smirnov test}
+ The Kolmogorov-Smirnov test is defined by:
+\\
+H$_0$:     The data follow a specified distribution\\
+H$_1$:     The data do not follow the specified distribution\\
+
+Test Statistic:     The Kolmogorov-Smirnov test statistic is defined as
+
+where F is the theoretical cumulative distribution of the distribution being tested which must be a continuous distribution (i.e., no discrete distributions such as the binomial or Poisson), and it must be fully specified
+
+\subsection{ Characteristics and Limitations of the K-S Test}
+
+
+An attractive feature of this test is that the distribution of the K-S test statistic itself does not depend on the underlying cumulative distribution function being tested. Another advantage is that it is an exact test (the chi-square goodness-of-fit test depends on an adequate sample size for the approximations to be valid). Despite these advantages, the K-S test has several important limitations:
+\begin{enumerate}
+\item It only applies to continuous distributions.
+\item It tends to be more sensitive near the center of the distribution than at the tails.
+\item Perhaps the most serious limitation is that the distribution must be fully specified. That is, if location, scale, and shape parameters are estimated from the data, the critical region of the K-S test is no longer valid. It typically must be determined by simulation.
+\end{enumerate}
+Due to limitations 2 and 3 above, many analysts prefer to use the Anderson-Darling goodness-of-fit test.
+
+However, the Anderson-Darling test is only available for a few specific distributions.
+
+\section{The Anderson–Darling test}
+
+The Anderson–Darling test is a statistical test of whether there is evidence that a given sample of data did not arise from a given probability distribution.
+
+In its basic form, the test assumes that there are no parameters to be estimated in the distribution being tested, in which case the test and its set of critical values is distribution-free. However, the test is most often used in contexts where a family of distributions is being tested, in which case the parameters of that family need to be estimated and account must be taken of this in adjusting either the test-statistic or its critical values.
+
+When applied to testing if a normal distribution adequately describes a set of data, it is one of the most powerful statistical tools for detecting most departures from normality.
+
+\section{The Shapiro-Wilk test of normality}
+Performs the Shapiro-Wilk test of normality.
+\begin{verbatim}
+> x<- rnorm(100, mean = 5, sd = 3)
+> shapiro.test(x)
+
+        Shapiro-Wilk normality test
+
+data:  rnorm(100, mean = 5, sd = 3)
+W = 0.9818, p-value = 0.1834
+\end{verbatim}
+In this case, the p-value is greater than 0.05, so we fail to reject the null hypothesis that the
+data set is normally distributed.
+\begin{verbatim}
+>y <- runif(100, min = 2, max = 4)
+> shapiro.test(y)
+
+        Shapiro-Wilk normality test
+
+data:  runif(100, min = 2, max = 4)
+W = 0.9499, p-value = 0.0008215
+\end{verbatim}
+In this case, the p-value is less than 0.05, so we reject the null hypothesis that the
+data set is normally distributed.
+
+\section{Analysis of Two-factor Designs}
+
+A two-factor analysis of variance consists of three significance tests: a test of each of the two main effects and a test of the interaction of the variables. An analysis of variance summary table is a convenient way to display the results of the significance tests. A summary table for the hypothetical experiment described in the section on factorial designs and a graph of the means for the experiment are shown below.
+
+\begin{verbatim}
+                 Sum of        Mean
+SOURCE   df      Squares      Square      F       p
+     T    1    47125.3333  47125.3333  384.174   0.000
+     D    2       42.6667     21.3333    0.174   0.841
+    TD    2     1418.6667    709.3333    5.783   0.006
+ ERROR   42     5152.0000    122.6667
+ TOTAL   47    53738.6667
+\end{verbatim}
+
+\subsection{Sources of Variation}
+
+The summary table shows four sources of variation: (1) Task, (2) Drug dosage, (3) the Task x Drug dosage interaction, and (4) Error.
+
+\subsection{Degrees of Freedom}
+
+\begin{itemize}
+\item The degrees of freedom total is always equal to the total number of numbers in the analysis minus one. The experiment on task and drug dosage had eight subjects in each of the six groups resulting in a total of 48 subjects. Therefore, df total = 48 - 1 = 47.
+
+\item The degrees of freedom for the main effect of a factor is always equal to the number of levels of the factor minus one. Therefore, df task = 2 - 1 = 1 since there were two levels of task (simple and complex). Similarly, df dosage = 3 - 1 = 2 since there were three levels of drug dosage (0 mg, 100 mg, and 200 mg).
+
+\item The degrees of freedom for an interaction is equal to the product of the degrees of freedom of the variables in the interaction. Thus, the degrees of freedom for the Task x Dosage interaction is the product of the degrees of freedom for task (1) and the degrees of freedom for dosage (2). Therefore, df Task x Dosage = 1 x 2 = 2.
+
+\item The degrees of freedom error is equal to the degrees of freedom total minus the degrees of freedom for all the effects. Therefore, df error = 47 - 1 - 2 - 2 = 42.
+\end{itemize}
+
+\subsection{Mean Squares}
+As in the case of a one-factor design, each mean square is equal to the sum of squares divided by the degrees of freedom. For instance, Mean square dosage = 42.6667/2 = 21.333 where the sum of squares dosage is 42.6667 and the degrees of freedom dosage is 2.
+
+
+\subsection{F Ratios}
+The F ratio for an effect is computed by dividing the mean square for the effect by the mean square error. For example, the F ratio for the Task x Dosage interaction is computed by dividing the mean square for the interaction ( 709.3333) by the mean square error (122.6667). The resulting F ratio is: F = 709.3333/122.6667 = 5.783
+
+
+\subsection{Probability Values}
+To compute a probability value for an F ratio, you must know the degrees of freedom for the F ratio. The degrees of freedom numerator is equal to the degrees of freedom for the effect. The degrees of freedom denominator is equal to the degrees of freedom error. Therefore, the degrees of freedom for the F ratio for the main effect of task are 1 and 42, the degrees of freedom for the F ratio for the main effect of drug dosage are 2 and 42, and the degrees of freedom for the F for the Task x Dosage interaction are 2 and 42.
+
+An F distribution calculator can be used to find the probability values. For the interaction, the probability value associated with an F of 5.783 with 2 and 42 df is 0.006.
+
+\subsection{Drawing Conclusions}
+
+When a main effect is significant, the null hypothesis that there is no main effect in the population can be rejected. In this example, the effect of task was significant. Therefore it can be concluded that, in the population, the mean time to complete the complex task is greater than the mean time to complete the simple task (hardly surprising). The effect of dosage was not significant. Therefore, there is no convincing evidence that the mean time to complete a task (in the population) is different for the three dosage levels
+
+The significant Task x Dosage interaction indicates that the effect of dosage (in the population) differs depending on the level of task. Specifically, increasing the dosage slows down performance on the complex task and speeds up performance on the simple task. The effect of increasing the dosage therefore depends on whether the task is complex of simple.
+
+There will always be some interaction in the sample data. The significance test of the interaction lets you know whether you can infer that there is an interaction in the population.
+
+\section{Regression}
+Unweighted regression requires that the variability of the
+residuals is constant over the measured range of values.
+(This is called homoskedasticity).
+
+Weighted regression does not have this requirement.
+There may be differing variability over the range of values.
+(This is called heteroskedasticity).
+
+Weighted regression requires extra information on the standard deviations of the responses so as to compute the weights.
+
+Unweighted regression doesn’t need or use any information on the response standard deviations.
+
+Weighted regression is preferable if heteroskedasticity evident in the data
+
+(If there is not constant variance for the residuals over the range of values)
+
+%------------------------------------------------------------------------------------------------%
+\subsection{R square}
+The model with the highest R2 and adjusted R2  is the preferable of all candidate models
+The quadratic model is the preferable model in that case.
+
+%------------------------------------------------------------------------------------------------%
+
+\section{Example: Poisson}
+
+A computer server breaks down on average once every three months.
+
+\begin{itemize}
+\item What is the probability that the server breaks down three times in a quarter?
+\item What is the probability that a server breaks down exactly five times in one year?
+\end{itemize}
+
+
+%--------------------------------------------------------------------------------------------------%
+\section{Example}
+
+An accounting firm wishes to test the claim that no more than 1\% of a large
+number of transactions contains errors. In order to test this claim, they
+examine a random sample of 144 transactions and find that exactly 3 of
+these are in error.
+
+An accounting firm wishes to test the claim that no more than 5% of a large
+number of transactions contains errors. In order to test this claim, they examine a
+random sample of 225 transactions and find that exactly 20 of these are in error.
+
+\section{Example}
+
+In the past, 18\% of shoppers have bought a particular brand of breakfast cereal.
+After an advertising campaign, a random sample of 220 shoppers is taken and 55 of the sample have bought this brand of cereal.
+
+Write down the null and the alternative hypothesis for this problem, and state whether it is a one tailed or two tailed test
+
+The conventional treatment for a disease has been shown to be effective in
+80\% of all cases. A new drug is being promoted by a pharmaceutical
+company; the Department of Health wishes to test whether the new treatment
+is more effective than the conventional treatment.
+
+Write down the null and the alternative hypothesis for this problem, and state whether it is a one tailed or two tailed test
+
+
+
+
+\section{Sample size Estimation}
+For a certain variable, the standard deviation in a large population is equal to 12.5.
+How big a sample is needed to be 95\% sure that the sample mean is within 1.5 units of the population mean?
+
+
+For a certain variable, the standard deviation in a large population is equal to 8.5.
+How big a sample is needed to be 90\% sure that the sample mean is within 1.5
+units of the population mean?
+
+
+
+
+
+
+\subsection{Example}
+Suppose that 9 bags of salt granules are selected from the supermarket
+shelf at random and weighed. The weights in grams are 812.0, 786.7, 794.1,
+791.6, 811.1, 797.4, 797.8, 800.8 and 793.2. Give a 95\% confidence interval for the
+mean of all the bags on the shelf. Assume the population is normal.
+
+
+Here we have a random sample of size n = 9. The mean is 798.30. The sample
+variance is $s^2 = 72.76$, which gives a sample standard deviation $s = 8.53$.
+
+The upper 2.5\% point of the Student's $t$ distribution with n-1 (= 9-1 = 8) degrees of freedom is 2.306.
+
+The 95\% confidence interval is therefore from \\
+$(798.30 - 2.306 \times (8.53/\sqrt{9}), 798.30 + 2.306 \times (8.53/\sqrt{9})$\\
+which is\\
+$(798.30 - 6.56, 798.30 + 6.56) = (791.74, 804.86)$\\
+It is sometimes more useful to write this as $798.30 \pm 6.56$.
+
+Note that even if we do not assume the population is normal (that assumption is
+never really true) the Central Limit Theorem might suggest that the confidence interval
+is nearly right. A larger confidence would increase the length of the interval, so we
+trade off increased certainty of coverage against a longer interval.
+
+\subsection{Example}
+Ten soldiers visit the rifle range on two different weeks. The first
+week their scores are:
+67 24 57 55 63 54 56 68 33 43
+The second week they score
+70 38 58 58 56 67 68 77 42 38
+Give a 95\% confidence interval for the improvement in scores from week one to
+week two.
+
+
+\subsubsection{Answer}
+
+
+This is a case of paired samples, for the scores are repeated observations for each
+soldier, and there is good reason to think that the soldiers will differ from each other
+in their shooting skill. So we work with the individual differences between the scores.
+We shall have to assume that the pairwise differences are a random sample from a
+normal distribution.
+
+The differences are:
+
+3 14 1 3 -7 13 12 9 9 -5
+
+
+Effectively we now have a single sample of size 10, and want a 95\% confidence
+interval for the mean of the population from which these differences are drawn. For
+this we use a Student's $t$ interval. The sample mean of the differences is 5.2, and
+$s^2$ = 54.84. So $s = 7.41$, and the 95\% $t$ interval for the difference in the means is
+$5.2 - 2.26(7.41)/\sqrt{10},  5.2 + 2.26(7.41)/\sqrt{10} = (.0.1, 10.5)$.
+
+\subsection{Example} A sample of 50 households in one community
+shows that 10 of them are watching a TV special on the national
+economy. In a second community, 15 of a random sample of 50
+households are watching the TV special. We test the hypothesis
+that the overall proportion of viewers in the two communities does
+not differ, using the 1 percent level of significance, as follows:
+
+\subsection{2 sided test}
+A two-sided test is used when we are concerned about a possible
+deviation in either direction from the hypothesized value of the
+mean. The formula used to establish the critical values of the
+sample mean is similar to the formula for determining confidence
+limits for estimating the population mean, except that the
+hypothesized value of the population mean m0 is the reference
+point rather than the sample mean.
+
+
+
+\subsection{The $t$ distribution}
+TESTING A HYPOTHESIS CONCERNING THE MEAN BY USE OF THE t
+DISTRIBUTION:
+
+The $t$ distribution is the appropriate basis for
+determining the standardized test statistic when the sampling
+distribution of the mean is normally distributed but $s$ is not
+known. The sampling distribution can be assumed to be normal
+either because the population is normal or because the sample is
+large enough to invoke the central limit theorem. The $t$
+distribution is required when the sample is small ($n < 30$). For
+larger samples, normal approximation can be used. For the critical
+value approach, the procedure is identical to that described in
+Section 10.3 for the normal distribution, except for the use of $t$
+instead of z as the test statistic.
+
+\section{Confidence Interval} CONFIDENCE INTERVALS FOR THE MEAN\\
+suppose that you wish to estimate the mean sales amount per
+retail outlet for a particular consumer product during the past
+year. The number of retail outlets is large. Determine the
+95 percent confidence interval given that the sales amounts are
+assumed to be normally distributed, $\bar{X} = $3,425, s = $200$ ,
+and $n = 25.$\\ Ans. $3;346:60 to $3;503:40
+\\
+8.24. Referring to Problem 8.23, determine the 95 percent
+confidence interval given that the population is assumed to be
+normally distributed, $\bar{X} = $3,425, s = $200$ , and $n = 25.$
+\\Ans. $3;342:44 to $3;507:56
+\section{Two sample test}
+Suppose one has two independent samples, x1, ..., xm and y1, ...,
+yn, and wishes to test the hypothesis that the mean of the x
+population is equal to the mean of the y population:
+
+$H0 : \mu_{x} = \mu_{y}.$
+
+Alternatively this can be formulated as $H0 : \mu_{x} - \mu_{y} =
+0$.
+
+Let $\bar{X}$ and $\bar{Y}$ denote the sample means of the xs and
+ys and let $S_{x}$ and $S_{y}$ denote the respective standard
+deviations. The standard test of this hypothesis $H_{0}$ is based
+on the t statistic
+\begin{equation}T = \frac{\bar{X} - \bar{Y} }{S_{p} \sqrt{1/m + 1/n} }
+\end{equation}
+
+where $S_{p}$ is the pooled standard deviation.
+
+\begin{equation}
+S_{p} = \sqrt{ \frac{(m-1)S^{2}_{x} +  (n-1)S^{2}_{y}}{m + n - 2}}
+\end{equation}
+
+Under the hypothesis $H_{0}$, the test statistic T has a t
+distribution with $m + n - 2$ degrees of freedom when
+\begin{itemize} \item both the xs and ys are independent random samples
+from normal distributions \item the standard deviations of the x
+and y populations, $\sigma_{x}$ and $\sigma_{y}$, are equal
+\end{itemize}.
+
+Suppose the level of significance of the test is set at $\alpha$.
+Then one will reject H when $|T| < tn+m.2,\alpha/2$, where
+$tdf,\alpha$ is the $(1 - \alpha)$ quantile of a t random variable
+with df degrees of freedom.
+
+If the underlying assumptions of
+
+\subsection{Paired T test}
+The mean and standard deviation of the sample d values are
+obtained by use of the basic formulas in Chapters 3 and 4, except
+that d is substituted for X.
+
+The mean difference for a set of differences between paired
+observations is $\bar{d} = \frac{\sum d_{i}}{n}$.
+
+The deviations formula and the computational formula for the
+standard deviation of the differences between paired observations
+are, respectively,
+
+\begin{eqnarray}
+S_{d} = \sqrt{\frac{\sum (d_{i}-\bar{d})^2}{n-1}}\\
+S_{d} = \sqrt{\frac{ \sum (d^2)- n(\bar{d}^2)}{n-1}}\\
+\end{eqnarray}
+
+The standard error of the mean difference between paired
+observations is obtained for the standard error of the mean.
+\subsubsection{Hypotheses}
+\begin{eqnarray*}
+H_{0}: \mu_{d} = 0\\
+H_{1}: \mu_{d} \neq 0\\
+\end{eqnarray*}
+
+%----------------------------------------------------------------------------------------------------------------------SLR%
+\chapter{Linear Regression}
+\section{Simple Linear Regression}
+
+We start with a scatter diagram between two variables as before. This time, we want
+to know what line will best fit the data.
+
+The theory we learn here assumes we are going to use a straight line, and not a curve of any kind, though in some disciplines (physics or finance, for example) a curve would be more appropriate.
+
+We have to find the line of best fit. Before we can do this, we must assume that one
+variable is dependent on the other. By convention we call the dependent variable y
+and the independent variable x. We have to work out the slope of the line, and the
+point at which it cuts the y axis.
+
+Again, by convention, we call these values and respectively for the population.
+
+The basic model is therefore given as follows.
+
+The model of a random variable Y, the dependent variable, which is related to random
+variable X, the independent (or predictor or explanatory) variable by the equation:
+\begin{equation}
+Y = \alpha + \beta X + \epsilon
+\end{equation}
+
+where $\alpha$ and $\beta$ are constants and $\epsilon ~ N ( 0,\sigma^2)$ , a random error term. The
+coefficients $\alpha$ and $\beta$  are theoretical values and can only be estimated from sample data.
+
+The estimates are generally written as $a$ and $b$.
+
+Given a sample of bivariate data, $(x_1,y_1),(x_2,y_2) ,.........., (x_n,y_n)$, $a$ and $b$ can be
+estimated. To fit a line to some data as in this case, an objective must be chosen to
+define which straight line best describes the data. The most common objective is to
+minimise the sum of the squared distance between the observed value of $y_i$
+and the corresponding predicted value $\hat{y}_i$.
+
+The estimated least squares regression line is written as:
+$y = a + b\times x$
+We can derive the formulae for $b$ and $a$.
+
+
+
+The line is called the sample regression line of y on x.
+
+The following example demonstrates the calculation of a and b and the use of the resultant
+equation to estimate y for a given x.
+
+\subsection{Ordinary least squares}
+Ordinary least squares (OLS) is a technique for estimating the unknown parameters in a linear regression model. This method minimizes the sum of squared distances between the observed responses in a set of data, and the fitted responses from the regression model.
+
+\subsection{Regression example}
+A study was made by a retailer to determine the relation between weekly advertising
+expenditure and sales (in thousands of pounds). Find the equation of a regression line
+to predict weekly sales from advertising. Estimate weekly sales when advertising
+costs are £35,000.
+
+Adv. Costs(in £‘000) 40 20 25 20 30 50 40 20 50 40 25 50
+
+Sales (in £‘000) 385 400 395 365 475 440 490 420 560 525 480 510
+
+
+
+\subsection{example}
+Concentration (ng/ml) 0 5 10 15 20 25 30
+Absorbance 0.003 0.127 0.251 0.390 0.498 0.625 0.763
+
+\begin{verbatim}
+# DO A FULL LINEAR REGRESSION ANALYSIS ON THE DATA
+
+>concentration=c(0,5,10,15,20,25,30)
+>absorbance=c(0.03,0.127,0.251,0.390,0.498,0.625,0.763)
+>regr=lm(absorbance~concentration)
+# READ AS; ABSORBANCE DEPENDENT ON CONCENTRATION
+>summary(regr)
+\end{verbatim}
+
+This output from this code is as follows:
+\begin{verbatim}
+Call:
+lm(formula = absorbance ~ concentration)
+
+Residuals:
+        1         2         3         4         5         6         7
+ 0.015357 -0.010571 -0.009500  0.006571 -0.008357 -0.004286  0.010786
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)
+(Intercept)   0.0146429  0.0079787   1.835    0.126
+concentration 0.0245857  0.0004426  55.551 3.58e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.01171 on 5 degrees of freedom
+Multiple R-squared: 0.9984,     Adjusted R-squared: 0.9981
+F-statistic:  3086 on 1 and 5 DF,  p-value: 3.576e-08
+
+\end{verbatim}
+
+
+\begin{itemize}
+\item Estimation of Slope = 0.0251643 \item  Standard error of the
+estimation of the slope is 0.0002656 \item Estimation of Intercept
+= 0.0021071 \item Standard error of the estimation of the
+intercept is 0.0047874 \item Degrees-of-Freedom1 = 7-2 = 5 • The
+critical values for testing is are -2.57 and 2.57 since the area
+under the Student’s t distribution
+curve with 5 degrees-of-freedom outside this range is 5%
+\item p-value for intercept is 67.8\% implying that it is not
+significantly different from zero \item The p-value for the
+intercept is the area under the Student’s t-distribution curve
+with 5 degrees-of-freedom outside the range of [-0.44,0.44]. \item
+p-value for slope is less than 5\% implying that it is
+significantly different from zero \item The p-value for the slope
+is the area under the Student’s t-distribution curve with 5
+degrees of- freedom outside the range of [-94.76,94.76].
+\end{itemize}
+
+\subsection{Regression example}
+
+A survey was conducted in 9 areas of the USA to investigate the relationship between
+divorce rate (y) and residential mobility (x). Divorce rates in the annual number per 1000 in the population
+and the residential mobility is measured by the percentage of the population that moved house in the last
+five years.
+
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+Area & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9  \\
+x & 40 & 38 & 46 & 49 & 47 & 43 & 51 & 57 & 55\\
+y & 3.9 & 3.4 & 5.2 & 4.8 & 5.6 & 5.8 & 6.6 & 7.6 & 5.8\\
+  \hline
+\end{tabular}
+
+\begin{itemize}
+\item Check that the following statements are correct.
+
+\begin{itemize}
+\item sum of x data = 426
+\item sum of squares of x data = 20494
+\item sum of y data = 48.7
+\item sum of squares of y data = 276.81
+\item sum of products of x and y data = 2361
+\end{itemize}
+
+\item Derive the estimates for the slope and intercept of the regression line.
+\item Estimate the divorce rate for areas that has a residential mobility of 39 and 60 respectively.
+\item Which of these estimates is likely to be more accurate? Why?
+
+\end{itemize}
+
+\section{Regression}
+
+The argument to lm is a model formula in which the tilde symbol
+(~) should be read as ``described by”.
+
+
+This was seen several times earlier, both in connection with
+boxplots and stripcharts and with the t and Wilcoxon tests.
+
+
+
+\subsection{Multiple Linear Regression}
+The \texttt{lm()} function handles much more
+complicated models than simple linear regression. There can be many other things besides a dependent and a descriptive variable in a model formula.
+
+A multiple linear regression analysis (which we discuss in Chapter
+11) of, for example, y on x1, x2, and x3 is specified as $y ~ x1 +
+x2 + x3$.
+
+
+This is an F test for the hypothesis that the regression coefficient is zero. This test is not really interesting in a
+simple linear regression analysis since it just duplicates information already given—it becomes more interesting when there is more than one explanatory variable.
+
+\subsection{Regression}
+
+\begin{verbatim}
+> lm(short.velocity~blood.glucose)
+\end{verbatim}
+
+\section{Inference for Regression}
+To determine the confidence interval for the slope we use the
+following equation:
+\begin{equation}
+b \pm t_{1-\alpha/2,n-2} S.E.(b)
+\end{equation}
+
+\begin{itemize}
+\item b = Estimation of Slope (0.0251643) \item S.E.(b) = Standard
+Error of Slope(0.0002656) \item n = Sample Size (7) \item $\alpha$
+= Alpha Value (5\%) \item $t_{1-\alpha/2,n-2}$ = Quantile Value
+from Student’s t-distribution (2.570582)
+\end{itemize}
+
+\begin{equation}
+(0.0251643) \pm (0.0002656)(2.570582) = [ 0.0245,0.0258 ]
+\end{equation}
+
+
+\subsection{Regression example}
+
+In a medical experiment concerning 12 patients with a certain type of ear condition,
+the following measurements were made for blood flow (y) and auricular pressure (x):
+
+\begin{verbatim}
+x<-c(8.5, 9.8, 10.8, 11.5, 11.2, 9.6, 10.1, 13.5, 14.2, 11.8, 8.7, 6.8)
+y<-c(3 ,12, 10, 14, 8 ,7 ,9 ,13, 17, 10, 5 ,5)
+\end{verbatim}
+
+
+(Sx =126.5 Sxx =1,381.85 Sy =113 Syy =1251 Sxy =1272.2)
+
+
+\begin{itemize}
+\item Calculate the equation of the least-squares fitted regression line of blood flow
+on auricular pressure.
+\item Confirm the following values: Sx =126.5, Sxx =1381.85, Sy =113, Syy =1251, Sxy =1272.2.
+\item Calculate the correlation coefficient.
+
+\begin{verbatim}
+> cor(x,y)
+[1] 0.8521414
+\end{verbatim}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+%------------------------------------------------%
+%\newpage
+%\addcontentsline{toc}{section}{Bibliography}
+%\bibliography{MA4125bib}
+\end{document} 

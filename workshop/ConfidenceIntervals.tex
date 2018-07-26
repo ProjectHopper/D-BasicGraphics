@@ -1,0 +1,164 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{MA4128} \rhead{Kevin O'Brien} \chead{Assumptions for Linear Models} %\input{tcilatex}
+
+\begin{document}
+	
+	\tableofcontents
+	\newpage
+	
+\section{Confidence Intervals}
+
+\subsection{Large sample distribution of sample mean}
+%Chemo 2009 2B
+
+\subsection{Confidence limits of the mean for large samples}
+Now that we know the form of the sampling distribution of the mean we can return to the problem of using a sample to define a range which we may reasonably assume includes the true value. (Remember that in doing this we are assuming systematic errors to be absent.) Such a range is known as a confidence interval and the extreme values of the range are called the confidence limits.
+
+The term 'confidence' implies that we can assert with a given degree of confidence, i.e. a ' certain probability, that the confidence interval does include the true value.
+
+The size of the confidence interval will obviously depend on how certain we want to be that it includes the true value: the greater the certainty, the greater the interval required.
+
+Figure 2.6 shows the sampling distribution of the mean for samples of size $n$. If we assume that this distribution is normal then $95\%$  of the sample means will lie in the range given by:
+\[ \mu - 1.96(\sigma/\sqrt{n}) < \mu < \mu + 1.96(\sigma/\sqrt{n}) (2.6)\]
+
+(The exact value 1.96 has been used in this equation rather than the approximate
+value, 2, quoted in Section 2.2. The reader can use Table A.1 to check that the pro-
+portion of values between z= -1.96 and z = 1.96 is indeed 0.95,)
+
+\subsection{Large Sample Confidence Intervals based on the sample mean}
+
+In practice, however, we usually have one sample, of known mean, and we require a range for $\mu$, the true value.
+
+Equation (2.6) can be rearranged to give this:
+\[ \bar{X} - 1.96(\sigma/\sqrt{n}) < \mu < \bar{X} + 1.96(\sigma/\sqrt{n}) (2.7)\]
+
+Equation (2.7) gives the $95\%$  confidence interval of the mean. The $95\%$  confidence
+limits are $\bar{X} \pm 19.6 \sigma/\sqrt{n}$
+In practice we are unlikely to know $\sigma$ exactly. However, provided that the sample is
+large, $\sigma$ can be replaced by its estimate, $s$.
+
+
+\subsection{Example of computations using R}
+Finding confidence intervals for the mean for the nitrate ion
+concentrations in Table 2.1.
+\begin{verbatim}
+#reading data
+x=scan("Table2_1.txt")
+#setting the confidence level
+CL=0.95
+#computing confidence interval
+n=length(x)
+pm=sd(x)*c(qnorm(0.025),qnorm(0.975))/sqrt(n)
+CI=mean(x)+pm
+\end{verbatim}
+
+\subsection{Small-Sample Case (n < 30)}
+If the data have a normal probability distribution and the sample
+standard deviation s is used to estimate the population
+standard deviation $s$, the interval estimate is given by:
+\[ \bar{X} \pm t_{\alpha/2}s /\sqrt{n} \]
+where $\alpha/2$ is the value providing an area of $\alpha/2$  in the upper tail
+of a Student's $t-$distribution with $n - 1$ degrees of freedom.
+
+
+\subsection{Confidence limits of the mean for small samples}
+
+As the sample size gets smaller, s becomes less reliable as an estimate of $\sigma$. This can
+be seen by again treating each column of the results in Table 2.2 as a sample of size
+five. The standard deviations of the 10 columns are \[\{0.009, 0.015, 0.026, 0.021
+0.013, 0.019, 0.013, 0.017, 0.010 and 0.018\}.\] We see that the largest value of $s$ is
+nearly three times the size of the smallest. To allow for this, equation (2.8) must be
+modified.
+
+For small samples, the confidence limits of the mean are given by
+\[ \bar{X} \pm t_{n-1}s /\sqrt{n} \]
+
+
+\newpage
+
+
+ 
+
+ 
+
+Confidence Intervals
+
+Calculation of upper and lower limits 
+
+We are initially asked to use a particular Confidence level (1-$\alpha$)\%  
+
+From it we deduce the Significance level required   ($\alpha$)\%  
+
+ is then determined from the tables
+
+ 
+
+Example letting the confidence level be 95\%, we immediately deduce that the
+
+Significance level is 5\%
+
+ 
+
+(1-$\alpha$/2) is therefore 97.5\%
+
+From the tables we see the associated Z value is 1.96
+
+ 
+
+ 
+
+ 
+
+ 
+
+The (1-$\alpha$)\%  [95\%]confidence interval means the true value of the parameter (i.e the mean) lies within our confidence interval with a probability of 95\%.
+
+ 
+
+The remaining $\alpha$\%  probability is distributed on either side of this confidence interval. In other words, the (1-$\alpha$)\%  confidence interval occurs within between the ($\alpha$/2)\% quantile and the (1-$\alpha$/2)\% quantile.
+
+ 
+
+A 95\% confidence interval is located between the 2.5\% and 97.5\% quantiles.
+
+ 
+
+Formally the lower limit 
+
+and the Upper limit is 
+
+ 
+
+Condensing the calculations
+
+ 
+
+We can use the symmetry property , the fact that , to simplify into this form 
+
+ 
+
+e.g. 
+
+ 
+
+\end{document}
